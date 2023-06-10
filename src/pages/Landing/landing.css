@@ -1,0 +1,76 @@
+.landing-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10rem;
+  margin: 2.5rem auto;
+}
+
+.header-image {
+  height: 70vh;
+  width: 30rem;
+}
+
+.landing-main .landing-right {
+  justify-content: space-between;
+  width: 50%;
+}
+
+.landing-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.landing-logo .logo-image {
+  height: 80px;
+  width: 90px;
+  object-fit: cover;
+}
+
+.landing-logo p {
+  text-transform: lowercase;
+  color: var(--primary-dark);
+  font-size: 36px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.landing-content {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.landing-content span {
+  color: var(--grey-color);
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.landing-content p {
+  font-size: small;
+}
+
+.join-now-btn {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  padding: 10px;
+  width: 100%;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+.login-link span {
+  color: var(--primary-dark);
+  cursor: pointer;
+}
+
+.header-image {
+  height: 70vh;
+  width: 30rem;
+}
