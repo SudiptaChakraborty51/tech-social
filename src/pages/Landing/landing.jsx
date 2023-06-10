@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/logo.png";
+import logoGif from "../../assets/logo-gif.gif";
 import header from "../../assets/header.svg";
 import "./landing.css";
 
@@ -11,7 +11,7 @@ const Landing = () => {
       <img src={header} alt="header" className="header-image" />
       <div className="lending-right">
         <div className="landing-logo">
-          <img src={logo} alt="logo" className="logo-image" />
+          <img src={logoGif} alt="logo" />
           <p>Tech-Social</p>
         </div>
         <div className="landing-content">

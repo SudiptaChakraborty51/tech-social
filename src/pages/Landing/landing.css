@@ -23,12 +23,6 @@
   gap: 1rem;
 }
 
-.landing-logo .logo-image {
-  height: 80px;
-  width: 90px;
-  object-fit: cover;
-}
-
 .landing-logo p {
   text-transform: lowercase;
   color: var(--primary-dark);
