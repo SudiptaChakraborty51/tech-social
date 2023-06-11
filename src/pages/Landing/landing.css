@@ -64,6 +64,10 @@
   cursor: pointer;
 }
 
+.login-link span:hover {
+  text-decoration: underline;
+}
+
 .header-image {
   height: 70vh;
   width: 30rem;
