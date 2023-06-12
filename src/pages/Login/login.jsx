@@ -1,12 +1,42 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./login.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { AuthContext } from "../../contexts/authContext";
+import {toast} from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
 
+  const {userLogin} = useContext(AuthContext);
+
   const [isPasswordHide, setIsPasswordHide] = useState(true);
+
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const guestUserData = {
+    email: "sudiptachakroborty20@gmail.com",
+    password: "sudipta@26",
+  };
+
+  const loginHandler = (e) => {
+    console.log(userData);
+    e.preventDefault();
+    if (!userData.email.trim() || !userData.password.trim()) {
+      toast.error("Enter valid input!");
+    } else {
+      userLogin(userData);
+    }
+  };
+
+  const loginAsGuestHandler = (e) => {
+    e.preventDefault();
+    setUserData(guestUserData);
+    userLogin(guestUserData);
+  };
 
   return (
       <div className="login">
@@ -21,6 +51,10 @@ const Login = () => {
               type="email"
               placeholder="test@gmail.com"
               required
+              value={userData.email}
+              onChange={(e) =>
+                setUserData((prev) => ({ ...prev, email: e.target.value }))
+              }
             />
           </div>
 
@@ -32,6 +66,11 @@ const Login = () => {
                 type={isPasswordHide ? "password" : "text"}
                 placeholder={isPasswordHide ? "********" : "Enter password"}
                 required
+                value={userData.password}
+                onChange={(e) =>
+                  setUserData((prev) => ({ ...prev, password: e.target.value }))
+                }
+
               />
               <span
                 onClick={() =>
@@ -47,10 +86,10 @@ const Login = () => {
             </div>
           </div>
 
-          <button className="login-button">
+          <button type="submit" className="login-button" onClick={loginHandler}>
             Login
           </button>
-          <button className="login-button guest">
+          <button type="submit" className="login-button guest" onClick={loginAsGuestHandler}>
             Login As Guest
           </button>
         </form>
