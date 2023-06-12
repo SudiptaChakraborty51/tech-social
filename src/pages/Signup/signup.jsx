@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./signup.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../contexts/authContext";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -8,22 +10,73 @@ const Signup = () => {
   const [isPasswordHide, setIsPasswordHide] = useState(true);
   const [isConfirmPasswordHide, setIsConfirmPasswordHide] = useState(true);
 
+  const { userSignup } = useContext(AuthContext);
+
+  const [userDetails, setUserDetails] = useState({
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const signupHandler = (e) => {
+    e.preventDefault();
+    if (
+      !userDetails?.firstName.trim() ||
+      !userDetails?.lastName.trim() ||
+      !userDetails?.username.trim() ||
+      !userDetails?.email.trim() ||
+      !userDetails?.password.trim() ||
+      !userDetails?.confirmPassword.trim()
+    ) {
+      toast.error("Enter valid input!");
+    } else if (userDetails?.password !== userDetails?.confirmPassword) {
+      toast.error("Password & Confirm password should match!");
+    } else {
+      userSignup(userDetails);
+    }
+  };
+
   return (
     <div className="signup">
       <h2>Sign Up</h2>
-      <form>
+      <form onSubmit={(e) => signupHandler(e)}>
         <div className="name">
           <div>
             <label for="first-name">
               First Name <span>*</span>
             </label>
-            <input id="first-name" placeholder="Test" required />
+            <input
+              id="first-name"
+              placeholder="Test"
+              required
+              value={userDetails.firstName}
+              onChange={(e) =>
+                setUserDetails((prev) => ({
+                  ...prev,
+                  firstName: e.target.value,
+                }))
+              }
+            />
           </div>
           <div>
             <label for="last-name">
               Last Name <span>*</span>
             </label>
-            <input id="last-name" placeholder="Admin" required />
+            <input
+              id="last-name"
+              placeholder="Admin"
+              required
+              value={userDetails.lastName}
+              onChange={(e) =>
+                setUserDetails((prev) => ({
+                  ...prev,
+                  lastName: e.target.value,
+                }))
+              }
+            />
           </div>
         </div>
 
@@ -31,7 +84,18 @@ const Signup = () => {
           <label for="username">
             Username <span>*</span>
           </label>
-          <input id="username" placeholder="testadmin" required />
+          <input
+            id="username"
+            placeholder="testadmin"
+            required
+            value={userDetails.username}
+            onChange={(e) =>
+              setUserDetails((prev) => ({
+                ...prev,
+                username: e.target.value,
+              }))
+            }
+          />
         </div>
 
         <div>
@@ -43,6 +107,13 @@ const Signup = () => {
             placeholder="test@gmail.com"
             required
             type="email"
+            value={userDetails.email}
+            onChange={(e) =>
+              setUserDetails((prev) => ({
+                ...prev,
+                email: e.target.value,
+              }))
+            }
           />
         </div>
 
@@ -58,6 +129,13 @@ const Signup = () => {
               minlength="4"
               maxlength="8"
               required
+              value={userDetails.password}
+              onChange={(e) =>
+                setUserDetails((prev) => ({
+                  ...prev,
+                  password: e.target.value,
+                }))
+              }
             />
             <span
               onClick={() =>
@@ -85,6 +163,13 @@ const Signup = () => {
                 isConfirmPasswordHide ? "********" : "Enter password"
               }
               required
+              value={userDetails.confirmPassword}
+              onChange={(e) =>
+                setUserDetails((prev) => ({
+                  ...prev,
+                  confirmPassword: e.target.value,
+                }))
+              }
             />
             <span
               onClick={() =>
