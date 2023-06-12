@@ -7,11 +7,14 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: uuid(),
-    firstName: "Adarsh",
-    lastName: "Balika",
-    username: "adarshbalika",
-    password: "adarshBalika123",
+    _id: "a7c2KIpr-t",
+    firstName: "Sudipta",
+    lastName: "Chakraborty",
+    username: "schakraborty",
+    email: "sudiptachakroborty20@gmail.com",
+    password: "sudipta@26",
+    bio: "Aspiring Frontend Developer",
+    website: "https://sudiptachakraborty.netlify.app/",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
