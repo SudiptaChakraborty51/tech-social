@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/authContext";
 
 const Signup = () => {
+  document.title = "tech-social | Signup";
   const navigate = useNavigate();
 
   const [isPasswordHide, setIsPasswordHide] = useState(true);

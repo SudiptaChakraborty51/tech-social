@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/authContext";
 import {toast} from "react-toastify";
 
 const Login = () => {
+  document.title = "tech-social | Login";
   const navigate = useNavigate();
 
   const {userLogin} = useContext(AuthContext);

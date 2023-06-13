@@ -5,6 +5,7 @@ import header from "../../assets/header.svg";
 import "./landing.css";
 
 const Landing = () => {
+  document.title = "tech-social";
   const navigate = useNavigate();
   return (
     <div className="landing-main">
