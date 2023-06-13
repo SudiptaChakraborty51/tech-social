@@ -32,7 +32,7 @@ const AuthProvider = ({ children }) => {
         authDispatch({ type: "SET_USER", payload: data?.foundUser });
         authDispatch({ type: "SET_TOKEN", payload: data?.encodedToken });
         toast.success("Login Successful!");
-        navigate(location?.state?.from?.pathname || "/");
+        navigate(location?.state?.from?.pathname || "/home");
       }
     } catch (e) {
       authDispatch({ type: "SET_LOGGEDIN_FALSE", payload: false });
@@ -53,7 +53,7 @@ const AuthProvider = ({ children }) => {
         authDispatch({ type: "SET_USER", payload: data?.createdUser });
         authDispatch({ type: "SET_TOKEN", payload: data?.encodedToken });
         toast.success("Signup Successful!");
-        navigate("/");
+        navigate(location?.state?.from?.pathname || "/home");
       }
     } catch (e) {
       authDispatch({ type: "SET_LOGGEDIN_FALSE", payload: false });

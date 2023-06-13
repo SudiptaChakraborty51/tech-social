@@ -7,6 +7,8 @@ import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing/landing";
 import Login from "./pages/Login/login";
 import Signup from "./pages/Signup/signup";
+import Home from "./pages/Home/home";
+import RequireAuth from "./components/Auth/requireAuth";
 
 function App() {
   return (
@@ -16,6 +18,9 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route element={<RequireAuth />}>
+            <Route path="/home" element={<Home />} />
+        </Route>
       </Routes>
       <ToastContainer
         position="bottom-right"
