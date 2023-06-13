@@ -37,3 +37,7 @@
   width: 90%;
   align-self: center;
 }
+
+.left-sidebar .create-post-btn:hover {
+    background-color: var(--primary-dark);
+}
