@@ -1,5 +1,5 @@
 .left-sidebar {
-  width: 12rem;
+  width: 15%;
   height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
