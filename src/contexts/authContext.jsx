@@ -11,10 +11,11 @@ const AuthProvider = ({ children }) => {
   const location = useLocation();
 
   const localStorageData = JSON.parse(localStorage.getItem("data"));
+  console.log(localStorageData);
 
   const initialAuth = {
-    isLoggedIn: false,
-    user: {},
+    isLoggedIn: localStorageData?.token ? true : false,
+    user: localStorageData?.user || {},
     token: localStorageData?.token || "",
   };
 
@@ -73,7 +74,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ authState, userLogin, userSignup, userLogout }}
+      value={{ authState, userLogin, userSignup, userLogout, localStorageData }}
     >
       {children}
     </AuthContext.Provider>
