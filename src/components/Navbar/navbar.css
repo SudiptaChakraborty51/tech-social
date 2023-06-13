@@ -21,6 +21,8 @@
 
 .navbar .left-nav h2 {
   color: var(--primary-dark);
+  margin: 0;
+  padding: 0;
 }
 
 .navbar .left-nav img {
