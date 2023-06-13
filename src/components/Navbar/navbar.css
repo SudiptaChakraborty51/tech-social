@@ -2,6 +2,7 @@
   padding: 0 2rem;
   box-shadow: 0 8px 6px -6px var(--grey-color);
   position: sticky;
+  height: 60px;
 }
 
 .navbar nav {
