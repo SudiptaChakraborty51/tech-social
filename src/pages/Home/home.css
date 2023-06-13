@@ -1,3 +1,9 @@
 .home-content {
     display: flex;
 }
+
+.home-main {
+    width: 60%;
+    text-align: center;
+    padding-top: 10px;
+}
