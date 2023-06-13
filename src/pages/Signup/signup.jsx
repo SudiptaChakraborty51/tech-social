@@ -128,7 +128,7 @@ const Signup = () => {
               type={isPasswordHide ? "password" : "text"}
               placeholder={isPasswordHide ? "********" : "Enter password"}
               minlength="4"
-              maxlength="8"
+              maxlength="10"
               required
               value={userDetails.password}
               onChange={(e) =>
