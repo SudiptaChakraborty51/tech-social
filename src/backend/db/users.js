@@ -15,7 +15,7 @@ export const users = [
     bio: "Aspiring Frontend Developer",
     website: "https://sudiptachakraborty.netlify.app/",
     profileAvatar:
-      "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686643850/tech-social/IMG-20211012-WA0170_pizgca.jpg",
+      "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686685042/tech-social/IMG_20230117_131338_xs5yms.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [],
@@ -31,7 +31,7 @@ export const users = [
     bio: "Senior Software Developer at Google",
     website: "https://johnwilliam.netlify.app/",
     profileAvatar:
-      "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686659909/tech-social/pexels-photo-2379004.jpeg_csbwg3.jpg",
+      "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686659911/tech-social/man3_a5om95.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     following: [],
