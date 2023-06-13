@@ -9,6 +9,7 @@ import Login from "./pages/Login/login";
 import Signup from "./pages/Signup/signup";
 import Home from "./pages/Home/home";
 import RequireAuth from "./components/Auth/requireAuth";
+import Explore from "./pages/Explore/explore";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route element={<RequireAuth />}>
-            <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
         </Route>
       </Routes>
       <ToastContainer
