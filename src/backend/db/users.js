@@ -14,6 +14,7 @@ export const users = [
     password: "sudipta@26",
     bio: "Aspiring Frontend Developer",
     website: "https://sudiptachakraborty.netlify.app/",
+    profileAvatar: "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686643850/tech-social/IMG-20211012-WA0170_pizgca.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
