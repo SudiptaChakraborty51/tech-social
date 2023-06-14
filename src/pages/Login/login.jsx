@@ -3,13 +3,13 @@ import "./login.css";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { AuthContext } from "../../contexts/authContext";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 
 const Login = () => {
   document.title = "tech-social | Login";
   const navigate = useNavigate();
 
-  const {userLogin} = useContext(AuthContext);
+  const { userLogin } = useContext(AuthContext);
 
   const [isPasswordHide, setIsPasswordHide] = useState(true);
 
@@ -40,65 +40,78 @@ const Login = () => {
   };
 
   return (
-      <div className="login">
-        <div className="login-logo"><img src={logo} alt="logo"/><h2>tech-social</h2></div>
-        <p>Social media for programmers</p>
-        <h2>Login</h2>
-        <form>
-          <div className="login-form-div">
-            <label for="email">Email Address <span>*</span></label>
+    <div className="login">
+      <div className="login-logo">
+        <img src={logo} alt="logo" />
+        <h2>tech-social</h2>
+      </div>
+      <p>Social media for programmers</p>
+      <h2>Login</h2>
+      <form>
+        <div className="login-form-div">
+          <label for="email">
+            Email Address <span>*</span>
+          </label>
+          <input
+            id="email"
+            type="email"
+            placeholder="test@gmail.com"
+            required
+            value={userData.email}
+            onChange={(e) =>
+              setUserData((prev) => ({ ...prev, email: e.target.value }))
+            }
+          />
+        </div>
+
+        <div className="login-form-div">
+          <label for="password">
+            Password <span>*</span>
+          </label>
+          <div className="password-wrapper">
             <input
-              id="email"
-              type="email"
-              placeholder="test@gmail.com"
+              id="password"
+              type={isPasswordHide ? "password" : "text"}
+              placeholder={isPasswordHide ? "********" : "Enter password"}
               required
-              value={userData.email}
+              value={userData.password}
               onChange={(e) =>
-                setUserData((prev) => ({ ...prev, email: e.target.value }))
+                setUserData((prev) => ({ ...prev, password: e.target.value }))
               }
             />
+            <span
+              onClick={() =>
+                setIsPasswordHide((isPasswordHide) => !isPasswordHide)
+              }
+            >
+              {isPasswordHide ? (
+                <i class="fa-regular fa-eye-slash"></i>
+              ) : (
+                <i class="fa-regular fa-eye"></i>
+              )}
+            </span>
           </div>
+        </div>
 
-          <div className="login-form-div">
-            <label for="password">Password <span>*</span></label>
-            <div className="password-wrapper">
-              <input
-                id="password"
-                type={isPasswordHide ? "password" : "text"}
-                placeholder={isPasswordHide ? "********" : "Enter password"}
-                required
-                value={userData.password}
-                onChange={(e) =>
-                  setUserData((prev) => ({ ...prev, password: e.target.value }))
-                }
+        <button type="submit" className="login-button" onClick={loginHandler}>
+          Login
+        </button>
+        <button
+          type="submit"
+          className="login-button guest"
+          onClick={loginAsGuestHandler}
+        >
+          Login As Guest
+        </button>
+      </form>
 
-              />
-              <span
-                onClick={() =>
-                  setIsPasswordHide((isPasswordHide) => !isPasswordHide)
-                }
-              >
-                {isPasswordHide ? (
-                  <i class="fa-regular fa-eye-slash"></i>
-                ) : (
-                  <i class="fa-regular fa-eye"></i>
-                )}
-              </span>
-            </div>
-          </div>
-
-          <button type="submit" className="login-button" onClick={loginHandler}>
-            Login
-          </button>
-          <button type="submit" className="login-button guest" onClick={loginAsGuestHandler}>
-            Login As Guest
-          </button>
-        </form>
-
-        <p onClick={() => navigate("/signup")} className="create-new-account-link">
-          Create New account <i class="fa-solid fa-angle-right"></i>
-        </p>
-      </div>
+      <p
+        onClick={() => navigate("/signup")}
+        className="create-new-account-link"
+      >
+        Create New account <i class="fa-solid fa-angle-right"></i>
+      </p>
+    </div>
   );
 };
 

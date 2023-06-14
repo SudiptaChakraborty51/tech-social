@@ -7,7 +7,7 @@
 }
 
 .login h2 {
-text-align: center;
+  text-align: center;
 }
 
 .login-logo {
@@ -23,17 +23,17 @@ text-align: center;
 }
 
 .login-logo h2 {
-    color: var(--primary-dark);
-    font-style: italic;
+  color: var(--primary-dark);
+  font-style: italic;
 }
 
 .login p {
-    text-align: center;
-    margin: 0;
+  text-align: center;
+  margin: 0;
 }
 
 .login-form-div {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .login input {
@@ -48,7 +48,7 @@ text-align: center;
 }
 
 .login label span {
-    color: var(--red-color);
+  color: var(--red-color);
 }
 
 .login input:focus {
@@ -101,13 +101,13 @@ text-align: center;
 }
 
 .create-new-account-link {
-    padding: 10px 0 20px 0;
+  padding: 10px 0 20px 0;
 }
 
 .create-new-account-link:hover {
-    color: var(--primary-dark);
-    text-decoration: underline;
-    cursor: pointer;
+  color: var(--primary-dark);
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {

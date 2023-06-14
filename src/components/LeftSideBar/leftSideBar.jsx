@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import "./leftSideBar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 
 const LeftSideBar = () => {
   const { userLogout } = useContext(AuthContext);
+  const { authState } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const getActiveStyle = ({ isActive }) => ({
     color: isActive && "var(--white-color)",
@@ -38,10 +41,22 @@ const LeftSideBar = () => {
       >
         <i class="fa-solid fa-user"></i> <span>Profile</span>
       </NavLink>
-      <p onClick={() => userLogout()} className="left-sidebar-items">
-        <i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span>
-      </p>
-      <button className="create-post-btn">Create New Post</button>
+      {authState?.token ? (
+        <p onClick={() => userLogout()} className="left-sidebar-items">
+          <i class="fa-solid fa-right-from-bracket"></i> <span>Logout</span>
+        </p>
+      ) : (
+        <p onClick={() => navigate("/login")} className="left-sidebar-items">
+          <i class="fa-solid fa-right-to-bracket"></i> <span>Login</span>
+        </p>
+      )}
+      <button
+        className="create-post-btn"
+        style={{ cursor: !authState?.token && "not-allowed" }}
+        disabled={!authState?.token && true}
+      >
+        Create New Post
+      </button>
     </div>
   );
 };

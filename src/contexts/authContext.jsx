@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import authReducer from "../reducer/authReducer";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -10,12 +10,12 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  console.log(location);
+
   const localStorageData = JSON.parse(localStorage.getItem("data"));
-  console.log(localStorageData);
 
   const initialAuth = {
-    isLoggedIn: localStorageData?.token ? true : false,
-    user: localStorageData?.user || {},
+    user: {},
     token: localStorageData?.token || "",
   };
 
@@ -29,14 +29,12 @@ const AuthProvider = ({ children }) => {
           "data",
           JSON.stringify({ user: data?.foundUser, token: data?.encodedToken })
         );
-        authDispatch({ type: "SET_LOGGEDIN_TRUE", payload: true });
         authDispatch({ type: "SET_USER", payload: data?.foundUser });
         authDispatch({ type: "SET_TOKEN", payload: data?.encodedToken });
         toast.success("Login Successful!");
         navigate(location?.state?.from?.pathname || "/home");
       }
     } catch (e) {
-      authDispatch({ type: "SET_LOGGEDIN_FALSE", payload: false });
       console.error(e);
       toast.error(e.response.data.errors[0]);
     }
@@ -50,14 +48,12 @@ const AuthProvider = ({ children }) => {
           "data",
           JSON.stringify({ user: data?.createdUser, token: data?.encodedToken })
         );
-        authDispatch({ type: "SET_LOGGEDIN_TRUE", payload: true });
         authDispatch({ type: "SET_USER", payload: data?.createdUser });
         authDispatch({ type: "SET_TOKEN", payload: data?.encodedToken });
         toast.success("Signup Successful!");
         navigate(location?.state?.from?.pathname || "/home");
       }
     } catch (e) {
-      authDispatch({ type: "SET_LOGGEDIN_FALSE", payload: false });
       console.error(e);
       toast.error(e.response.data.errors[0]);
     }
@@ -65,12 +61,18 @@ const AuthProvider = ({ children }) => {
 
   const userLogout = () => {
     localStorage.removeItem("data");
-    authDispatch({ type: "SET_LOGGEDIN_FALSE", payload: false });
     authDispatch({ type: "SET_USER", payload: {} });
     authDispatch({ type: "SET_TOKEN", payload: "" });
     toast.success("You're logged out!");
-    navigate("/");
   };
+
+  useEffect(() => {
+    if (localStorageData) {
+      authDispatch({ type: "SET_USER", payload: localStorageData?.user });
+      authDispatch({ type: "SET_TOKEN", payload: localStorageData?.token });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <AuthContext.Provider

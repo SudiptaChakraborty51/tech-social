@@ -1,0 +1,9 @@
+.explore-content {
+  display: flex;
+}
+
+.explore-main {
+  width: 60%;
+  text-align: center;
+  padding-top: 10px;
+}

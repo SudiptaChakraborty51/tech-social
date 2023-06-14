@@ -1,41 +1,41 @@
 .suggested-users-main {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .suggested-users-main .suggested-user {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .suggested-users-main .suggested-user .suggested-user-name-profile {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .suggested-users-main .suggested-user .user-avatar {
-    height: 50px;
-    width: 50px;
-    object-fit: cover;
-    border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .suggested-users-main .suggested-user .suggestedUser-name {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .suggested-users-main .suggested-user button {
-    background-color: var(--primary-color);
-    border: none;
-    color: var(--white-color);
-    height: 40px;
-    cursor: pointer;
+  background-color: var(--primary-color);
+  border: none;
+  color: var(--white-color);
+  height: 40px;
+  cursor: pointer;
 }
 
 .suggested-users-main .suggested-user button:hover {
-    background-color: var(--primary-dark);
+  background-color: var(--primary-dark);
 }
