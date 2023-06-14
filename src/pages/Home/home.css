@@ -3,7 +3,13 @@
 }
 
 .home-main {
-  width: 60%;
+  width: 57%;
   text-align: center;
-  padding-top: 10px;
+  padding: 10px 0;
+  position: relative;
+  left: 15%;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }

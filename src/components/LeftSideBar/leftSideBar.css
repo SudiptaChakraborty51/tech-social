@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 1rem;
   border-right: 1px solid var(--black-color);
+  position: fixed;
 }
 
 .left-sidebar p {

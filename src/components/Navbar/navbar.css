@@ -3,6 +3,9 @@
   box-shadow: 0 8px 6px -6px var(--grey-color);
   position: sticky;
   height: 60px;
+  top: 0;
+  z-index: 10;
+  box-sizing: border-box;
 }
 
 .navbar nav {
