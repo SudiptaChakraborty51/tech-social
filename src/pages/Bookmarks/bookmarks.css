@@ -1,0 +1,9 @@
+.bookmarks-content {
+  display: flex;
+}
+
+.bookmarks-main {
+  width: 60%;
+  text-align: center;
+  padding-top: 10px;
+}
