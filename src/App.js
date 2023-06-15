@@ -11,6 +11,7 @@ import Home from "./pages/Home/home";
 import RequireAuth from "./components/Auth/requireAuth";
 import Explore from "./pages/Explore/explore";
 import Bookmarks from "./pages/Bookmarks/bookmarks";
+import LikedPosts from "./pages/LikedPosts/likedPosts";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="liked-posts" element={<LikedPosts />} />
         </Route>
         <Route path="/explore" element={<Explore />} />
       </Routes>

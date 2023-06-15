@@ -35,6 +35,13 @@ const LeftSideBar = () => {
         <i class="fa-solid fa-bookmark"></i> <span>Bookmarks</span>
       </NavLink>
       <NavLink
+        to="/liked-posts"
+        className="left-sidebar-items"
+        style={getActiveStyle}
+      >
+        <i class="fa-solid fa-heart"></i> <span>Liked Posts</span>
+      </NavLink>
+      <NavLink
         to="/profile"
         className="left-sidebar-items"
         style={getActiveStyle}
