@@ -1,5 +1,6 @@
 .home-content {
   display: flex;
+  background-color: var(--offwhite-color);
 }
 
 .home-main {
