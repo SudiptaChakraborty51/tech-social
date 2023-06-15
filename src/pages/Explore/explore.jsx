@@ -3,14 +3,12 @@ import "./explore.css";
 import Navbar from "../../components/Navbar/navbar";
 import LeftSideBar from "../../components/LeftSideBar/leftSideBar";
 import RightSideBar from "../../components/RightSideBar/rightSideBar";
-import { AuthContext } from "../../contexts/authContext";
 import { DataContext } from "../../contexts/dataContext";
 import PostCard from "../../components/PostCard/postCard";
 
 const Explore = () => {
   document.title = "tech-social | Explore";
-  const { authState } = useContext(AuthContext);
-  const { dataState, postsLoading } = useContext(DataContext);
+  const { dataState } = useContext(DataContext);
 
   return (
     <div className="explore">
@@ -19,9 +17,8 @@ const Explore = () => {
         <LeftSideBar />
         <div
           className="explore-main"
-          style={{ width: !authState?.token && "75%" }}
         >
-          {postsLoading ? (
+          {dataState.postsLoading ? (
             <p>Loading...</p>
           ) : (
             dataState?.posts?.map((post) => (
@@ -31,7 +28,7 @@ const Explore = () => {
             ))
           )}
         </div>
-        {authState?.token && <RightSideBar />}
+        <RightSideBar />
       </div>
     </div>
   );

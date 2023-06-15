@@ -47,3 +47,7 @@
 .postcard-main small {
     color: var(--grey-color);
 }
+
+.postcard-main a {
+    color: blue;
+}

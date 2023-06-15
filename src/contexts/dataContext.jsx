@@ -13,22 +13,22 @@ import { AuthContext } from "./authContext";
 export const DataContext = createContext();
 
 const DataProvider = ({ children }) => {
-  const [usersLoading, setUsersLoading] = useState(false);
-  const [postsLoading, setPostsLoading] = useState(false);
   const { authState } = useContext(AuthContext);
 
   const [dataState, dataDispatch] = useReducer(dataReducer, {
     users: [],
+    usersLoading: false,
     posts: [],
+    postsLoading: false
   });
 
   const getAllUsers = async () => {
     try {
-      setUsersLoading(true);
+      dataState.usersLoading = true;
       const { data, status } = await axios.get("/api/users");
       if (status === 200) {
         dataDispatch({ type: "SET_ALL_USERS", payload: data?.users });
-        setUsersLoading(false);
+        dataState.usersLoading = false;
       }
     } catch (e) {
       toast.error(e.response.data.errors[0]);
@@ -37,11 +37,11 @@ const DataProvider = ({ children }) => {
 
   const getAllPosts = async () => {
     try {
-      setPostsLoading(true);
+      dataState.postsLoading = true;
       const { data, status } = await axios.get("/api/posts");
       if (status === 200) {
         dataDispatch({ type: "SET_ALL_POSTS", payload: data?.posts });
-        setPostsLoading(false);
+        dataState.postsLoading = false;
       }
     } catch (e) {
       toast.error(e.response.data.errors[0]);
@@ -56,7 +56,7 @@ const DataProvider = ({ children }) => {
   }, [authState.token]);
 
   return (
-    <DataContext.Provider value={{ dataState, usersLoading, postsLoading }}>
+    <DataContext.Provider value={{ dataState }}>
       {children}
     </DataContext.Provider>
   );

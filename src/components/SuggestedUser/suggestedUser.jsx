@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/authContext";
 import "./suggestedUser.css";
 
 const SuggestedUser = () => {
-  const { dataState, usersLoading } = useContext(DataContext);
+  const { dataState } = useContext(DataContext);
   const { localStorageData } = useContext(AuthContext);
 
   const suggestedUser = dataState?.users?.filter(
@@ -13,7 +13,7 @@ const SuggestedUser = () => {
 
   return (
     <div>
-      {usersLoading ? (
+      {dataState.usersLoading ? (
         <p>Loading...</p>
       ) : (
         <div className="suggested-users-main">
