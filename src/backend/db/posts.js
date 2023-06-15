@@ -90,4 +90,46 @@ export const posts = [
     createdAt: "2022-03-12T11:25:24+05:30",
     updatedAt: formatDate(),
   },
+  {
+    _id: "sfgjuk_ftbj_6789_fghuSD",
+    content:
+      "Complete Backend Developer Roadmap in 2023. 150+ Free + Paid Resources. Drop a 👋 in the comments. Make sure you follow me so that I can DM You.",
+    contentLink: "",
+    mediaURL: "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686843689/tech-social/FyZwDsoXgAIi2H-_ydbpe4.jpg",
+    likes: {
+      likeCount: 17,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [
+      {
+        _id: "fhy5d8_jr2K_17h8_jAk6BW",
+        username: "schakraborty",
+        text: "👋",
+        votes: {
+          upvotedBy: [],
+          downvotedBy: []
+        }
+      }
+    ],
+    username: "linaabott",
+    createdAt: "2023-06-12T10:25:07+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "e5Hyswe_btry_5g06_fGrYH3dc",
+    content:
+      "🚀Join us at agprop and help shape the future of real estate! We're hiring talented interns and developers for Full Stack, Frontend, Backend, UI/UX, & DevOps roles. Work with cutting-edge tech like cloud and machine learning. Send your resume to vrijraj.s@agprop.in",
+    contentLink: "",
+    mediaURL: "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686846308/tech-social/FvRFiZ9XoAA3xxo_n0rclt.jpg",
+    likes: {
+      likeCount: 15,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "julieadams",
+    createdAt: "2022-04-22T10:25:24+05:30",
+    updatedAt: formatDate(),
+  }
 ];
