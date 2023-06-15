@@ -43,4 +43,5 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 5px;
   padding: 5px 10px 30px 10px;
+  background-color: var(--white-color);
 }
