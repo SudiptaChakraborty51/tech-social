@@ -17,7 +17,10 @@ const Explore = () => {
       <Navbar />
       <div className="explore-content">
         <LeftSideBar />
-        <div className="explore-main">
+        <div
+          className="explore-main"
+          style={{ width: !authState?.token && "75%" }}
+        >
           {postsLoading ? (
             <p>Loading...</p>
           ) : (
