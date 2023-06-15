@@ -50,6 +50,7 @@ const PostCard = ({ post }) => {
       {mediaURL && mediaURL.split("/")[4] === "image" ? (
         <img
           src={mediaURL}
+          alt="post-pic"
           style={{ width: "100%", height: "300px", objectFit: "cover" }}
         />
       ) : (
