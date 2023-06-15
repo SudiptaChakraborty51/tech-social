@@ -6,6 +6,7 @@
   top: 0;
   z-index: 10;
   box-sizing: border-box;
+  background-color: var(--white-color);
 }
 
 .navbar nav {
