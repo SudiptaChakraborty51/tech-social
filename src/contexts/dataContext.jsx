@@ -2,8 +2,7 @@ import React, {
   createContext,
   useContext,
   useEffect,
-  useReducer,
-  useState,
+  useReducer
 } from "react";
 import { dataReducer } from "../reducer/dataReducer";
 import { toast } from "react-toastify";
@@ -19,7 +18,7 @@ const DataProvider = ({ children }) => {
     users: [],
     usersLoading: false,
     posts: [],
-    postsLoading: false
+    postsLoading: false,
   });
 
   const getAllUsers = async () => {
@@ -53,6 +52,7 @@ const DataProvider = ({ children }) => {
       getAllUsers();
       getAllPosts();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState.token]);
 
   return (

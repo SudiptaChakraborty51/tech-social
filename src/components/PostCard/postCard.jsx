@@ -43,7 +43,7 @@ const PostCard = ({ post }) => {
       </div>
       <p>{content}</p>
       {contentLink && (
-        <a href={`${contentLink}`} target="_blank">
+        <a href={`${contentLink}`} target="_blank" rel="noopener noreferrer">
           {contentLink}
         </a>
       )}
