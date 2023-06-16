@@ -55,7 +55,7 @@ const PostCard = ({ post }) => {
         </div>
         <i class="fa-solid fa-ellipsis"></i>
       </div>
-      <p>{content}</p>
+      <p className="content">{content}</p>
       {contentLink && (
         <a href={`${contentLink}`} target="_blank" rel="noopener noreferrer">
           {contentLink}
