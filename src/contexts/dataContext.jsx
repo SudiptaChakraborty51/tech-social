@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer
-} from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { dataReducer } from "../reducer/dataReducer";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -23,11 +18,11 @@ const DataProvider = ({ children }) => {
 
   const getAllUsers = async () => {
     try {
-      dataState.usersLoading = true;
+      dataDispatch({ type: "USERS_LOADING", payload: true });
       const { data, status } = await axios.get("/api/users");
       if (status === 200) {
         dataDispatch({ type: "SET_ALL_USERS", payload: data?.users });
-        dataState.usersLoading = false;
+        dataDispatch({ type: "USERS_LOADING", payload: false });
       }
     } catch (e) {
       toast.error(e.response.data.errors[0]);
@@ -36,11 +31,11 @@ const DataProvider = ({ children }) => {
 
   const getAllPosts = async () => {
     try {
-      dataState.postsLoading = true;
+      dataDispatch({ type: "POSTS_LOADING", payload: true });
       const { data, status } = await axios.get("/api/posts");
       if (status === 200) {
         dataDispatch({ type: "SET_ALL_POSTS", payload: data?.posts });
-        dataState.postsLoading = false;
+        dataDispatch({ type: "POSTS_LOADING", payload: false });
       }
     } catch (e) {
       toast.error(e.response.data.errors[0]);
