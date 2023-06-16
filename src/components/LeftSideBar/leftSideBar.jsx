@@ -11,8 +11,7 @@ const LeftSideBar = () => {
 
   const getActiveStyle = ({ isActive }) => ({
     color: isActive && "var(--white-color)",
-    backgroundColor: isActive && "var(--primary-color)",
-    fontWeight: isActive && "bold",
+    backgroundColor: isActive && "var(--primary-color)"
   });
 
   return (
