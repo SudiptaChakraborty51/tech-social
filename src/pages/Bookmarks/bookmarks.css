@@ -1,6 +1,5 @@
 .bookmarks-content {
   display: flex;
-  background-color: var(--offwhite-color);
 }
 
 .bookmarks-main {
@@ -13,4 +12,5 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 100%;
 }

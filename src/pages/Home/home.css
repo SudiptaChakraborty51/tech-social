@@ -1,6 +1,5 @@
 .home-content {
   display: flex;
-  background-color: var(--offwhite-color);
 }
 
 .home-main {
@@ -12,4 +11,5 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  height: 100%;
 }

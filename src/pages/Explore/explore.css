@@ -1,11 +1,10 @@
 .explore-content {
   display: flex;
-  background-color: var(--offwhite-color);
 }
 
 .explore-main {
   width: 58%;
-  padding: 20px 0;
+  padding: 10px 0;
   position: relative;
   left: 15%;
   border-radius: 0.75rem;
