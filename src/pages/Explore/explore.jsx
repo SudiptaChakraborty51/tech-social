@@ -29,7 +29,7 @@ const Explore = () => {
                 <h3>{sortOptions[sortByOption]}</h3>
                 <select onChange={(e) => setSortByOption(e.target.value)}>
                   {Object.keys(sortOptions).map((option) => (
-                    <option value={option}>{option}</option>
+                    <option value={option} key={option}>{option}</option>
                   ))}
                 </select>
               </div>

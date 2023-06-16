@@ -14,12 +14,12 @@ const Login = () => {
   const [isPasswordHide, setIsPasswordHide] = useState(true);
 
   const [userData, setUserData] = useState({
-    email: "",
-    password: "",
+    username: "",
+    password: ""
   });
 
   const guestUserData = {
-    email: "sudiptachakroborty20@gmail.com",
+    username: "schakraborty",
     password: "sudipta@26",
   };
 
@@ -49,17 +49,17 @@ const Login = () => {
       <h2>Login</h2>
       <form>
         <div className="login-form-div">
-          <label for="email">
-            Email Address <span>*</span>
+          <label for="username">
+            Username <span>*</span>
           </label>
           <input
-            id="email"
-            type="email"
-            placeholder="test@gmail.com"
+            id="username"
+            type="text"
+            placeholder="testadmin"
             required
-            value={userData.email}
+            value={userData.username}
             onChange={(e) =>
-              setUserData((prev) => ({ ...prev, email: e.target.value }))
+              setUserData((prev) => ({ ...prev, username: e.target.value }))
             }
           />
         </div>

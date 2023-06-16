@@ -15,16 +15,16 @@ const sign = require("jwt-encode");
  * */
 
 export const signupHandler = function (schema, request) {
-  const { email, password, ...rest } = JSON.parse(request.requestBody);
+  const { username, password, ...rest } = JSON.parse(request.requestBody);
   try {
     // check if username already exists
-    const foundUser = schema.users.findBy({ email: email });
+    const foundUser = schema.users.findBy({ username: username });
     if (foundUser) {
       return new Response(
         422,
         {},
         {
-          errors: ["Unprocessable Entity. Email Already Exists."],
+          errors: ["Unprocessable Entity. Username Already Exists."],
         }
       );
     }
@@ -35,7 +35,7 @@ export const signupHandler = function (schema, request) {
       createdAt: formatDate(),
       updatedAt: formatDate(),
       password,
-      email,
+      username,
       ...rest,
       followers: [],
       following: [],
@@ -43,7 +43,7 @@ export const signupHandler = function (schema, request) {
     };
     const createdUser = schema.users.create(newUser);
     const encodedToken = sign(
-      { _id, email },
+      { _id, username },
       process.env.REACT_APP_JWT_SECRET
     );
     return new Response(201, {}, { createdUser, encodedToken });
@@ -65,23 +65,23 @@ export const signupHandler = function (schema, request) {
  * */
 
 export const loginHandler = function (schema, request) {
-  const { email, password } = JSON.parse(request.requestBody);
+  const { username, password } = JSON.parse(request.requestBody);
   try {
-    const foundUser = schema.users.findBy({ email: email });
+    const foundUser = schema.users.findBy({ username: username });
     if (!foundUser) {
       return new Response(
         404,
         {},
         {
           errors: [
-            "The email you entered is not Registered. Not Found error",
+            "The username you entered is not Registered. Not Found error",
           ],
         }
       );
     }
     if (password === foundUser.password) {
       const encodedToken = sign(
-        { _id: foundUser._id, email },
+        { _id: foundUser._id, username },
         process.env.REACT_APP_JWT_SECRET
       );
       return new Response(200, {}, { foundUser, encodedToken });

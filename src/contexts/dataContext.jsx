@@ -51,7 +51,7 @@ const DataProvider = ({ children }) => {
   }, [authState.token]);
 
   return (
-    <DataContext.Provider value={{ dataState }}>
+    <DataContext.Provider value={{ dataState, dataDispatch }}>
       {children}
     </DataContext.Provider>
   );
