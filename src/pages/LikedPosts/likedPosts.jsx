@@ -11,7 +11,7 @@ const LikedPosts = () => {
   document.title = "tech-social | Liked Posts";
 
   const { authState } = useContext(AuthContext);
-  const { dataState, postsLoading } = useContext(DataContext);
+  const { dataState } = useContext(DataContext);
   const [postsLikedByUser, setPostsLikedByUser] = useState([]);
 
   useEffect(() => {
@@ -22,6 +22,7 @@ const LikedPosts = () => {
         )
       )
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataState?.posts]);
 
   return (
@@ -30,19 +31,13 @@ const LikedPosts = () => {
       <div className="liked-posts-content">
         <LeftSideBar />
         <div className="liked-posts-main">
-          {postsLoading ? (
-            <p>Loading...</p>
+          {postsLikedByUser?.length === 0 ? (
+            <h3>No liked Posts Yet</h3>
           ) : (
             <>
-              {postsLikedByUser?.length === 0 ? (
-                <h3>No liked Posts Yet</h3>
-              ) : (
-                <>
-                  {postsLikedByUser?.map((post) => (
-                    <PostCard key={post._id} post={post} />
-                  ))}
-                </>
-              )}
+              {postsLikedByUser?.map((post) => (
+                <PostCard key={post._id} post={post} />
+              ))}
             </>
           )}
         </div>

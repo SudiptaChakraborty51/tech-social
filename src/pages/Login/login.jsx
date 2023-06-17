@@ -15,7 +15,7 @@ const Login = () => {
 
   const [userData, setUserData] = useState({
     username: "",
-    password: ""
+    password: "",
   });
 
   const guestUserData = {
@@ -26,7 +26,7 @@ const Login = () => {
   const loginHandler = (e) => {
     console.log(userData);
     e.preventDefault();
-    if (!userData.email.trim() || !userData.password.trim()) {
+    if (!userData.username.trim() || !userData.password.trim()) {
       toast.error("Enter valid input!");
     } else {
       userLogin(userData);
