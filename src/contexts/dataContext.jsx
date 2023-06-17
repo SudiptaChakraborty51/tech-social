@@ -14,6 +14,7 @@ const DataProvider = ({ children }) => {
     usersLoading: false,
     posts: [],
     postsLoading: false,
+    bookmarks: [],
   });
 
   const getAllUsers = async () => {
@@ -42,10 +43,26 @@ const DataProvider = ({ children }) => {
     }
   };
 
+  const getAllBookmarks = async () => {
+    try {
+      const { data, status } = await axios.get(`api/users/bookmark`, {
+        headers: {
+          authorization: authState?.token,
+        },
+      });
+      if (status === 200) {
+        dataDispatch({ type: "SET_ALL_BOOKMARKS", payload: data?.bookmarks });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
     if (authState.token) {
       getAllUsers();
       getAllPosts();
+      getAllBookmarks();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState.token]);

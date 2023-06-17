@@ -3,12 +3,11 @@
 }
 
 .bookmarks-main {
-  width: 57%;
+  width: 58%;
   text-align: center;
-  padding: 10px 0;
+  padding-top: 20px;
   position: relative;
   left: 15%;
-  border-radius: 0.75rem;
   display: flex;
   align-items: center;
   flex-direction: column;

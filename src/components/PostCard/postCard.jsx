@@ -3,8 +3,10 @@ import "./postCard.css";
 import { DataContext } from "../../contexts/dataContext";
 import { AuthContext } from "../../contexts/authContext";
 import { toast } from "react-toastify";
-import {likePostHandler }from "../../utils/likePostHandler";
-import {dislikePostHandler} from "../../utils/dislikePostHandler";
+import { likePostHandler } from "../../utils/likePostHandler";
+import { dislikePostHandler } from "../../utils/dislikePostHandler";
+import { removeFromBookmarkPostHandler } from "../../utils/removeFromBookmarkHandler";
+import { addToBookmarkPostHandler } from "../../utils/bookmarkPostHandler";
 
 const PostCard = ({ post }) => {
   const {
@@ -34,7 +36,21 @@ const PostCard = ({ post }) => {
     likes?.likedBy?.filter(({ _id }) => _id === authState?.user?._id)
       ?.length !== 0;
 
-  console.log(likes.likedBy);
+  const isBookmarked = () =>
+    dataState?.bookmarks?.filter((postId) => postId === _id)?.length !== 0;
+
+  const bookmarkClickHandler = () => {
+    if (isBookmarked()) {
+      removeFromBookmarkPostHandler(authState?.token, _id, dataDispatch);
+      toast.success("Removed from Bookmarks");
+    } else {
+      addToBookmarkPostHandler(authState?.token, _id, dataDispatch);
+      toast.success("Added to Bookmarks");
+    }
+  };
+
+  console.log("bookmarks", dataState?.bookmarks);
+
   return (
     <div key={_id} className="postcard-main">
       <div className="postcard-header">
@@ -99,7 +115,18 @@ const PostCard = ({ post }) => {
           <span>{comments.length}</span>
         </div>
         <div>
-          <i className="fa-regular fa-bookmark"></i>
+          <i
+            className={`${
+              isBookmarked() ? "fa-solid" : "fa-regular"
+            } fa-bookmark`}
+            onClick={() => {
+              if (!authState?.token) {
+                toast.error("Please login to proceed!");
+              } else {
+                bookmarkClickHandler();
+              }
+            }}
+          ></i>
         </div>
         <div>
           <i class="fa-regular fa-share-from-square"></i>

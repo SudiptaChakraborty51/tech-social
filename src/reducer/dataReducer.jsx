@@ -8,6 +8,8 @@ export const dataReducer = (state, action) => {
       return { ...state, usersLoading: action.payload };
     case "POSTS_LOADING":
       return { ...state, postsLoading: action.payload };
+    case "SET_ALL_BOOKMARKS":
+      return { ...state, bookmarks: action.payload };
     default:
       return state;
   }
