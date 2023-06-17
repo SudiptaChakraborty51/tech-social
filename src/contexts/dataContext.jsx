@@ -15,6 +15,7 @@ const DataProvider = ({ children }) => {
     posts: [],
     postsLoading: false,
     bookmarks: [],
+    userPost: []
   });
 
   const getAllUsers = async () => {
@@ -58,6 +59,17 @@ const DataProvider = ({ children }) => {
     }
   };
 
+  const getUserPost = async (username) => {
+    try {
+      const {data, status} = await axios.get(`/api/posts/user/${username}`);
+      if(status === 200) {
+        dataDispatch({type: "SET_USER_POST", payload: data?.posts});
+      }
+    }catch(e){
+      console.error(e);
+    }
+  }
+
   useEffect(() => {
     if (authState.token) {
       getAllUsers();
@@ -68,7 +80,7 @@ const DataProvider = ({ children }) => {
   }, [authState.token]);
 
   return (
-    <DataContext.Provider value={{ dataState, dataDispatch }}>
+    <DataContext.Provider value={{ dataState, dataDispatch, getUserPost }}>
       {children}
     </DataContext.Provider>
   );

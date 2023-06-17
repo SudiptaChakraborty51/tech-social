@@ -60,3 +60,7 @@
 .postcard-buttons .fa-regular {
   color: var(--primary-dark);
 }
+
+.postcard-content-main {
+  cursor: pointer;
+}

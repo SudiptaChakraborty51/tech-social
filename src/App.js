@@ -12,6 +12,7 @@ import RequireAuth from "./components/Auth/requireAuth";
 import Explore from "./pages/Explore/explore";
 import Bookmarks from "./pages/Bookmarks/bookmarks";
 import LikedPosts from "./pages/LikedPosts/likedPosts";
+import PostDetails from "./pages/PostDetails/postDetails";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route element={<RequireAuth />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/post/:postID" element={<PostDetails />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="liked-posts" element={<LikedPosts />} />
         </Route>

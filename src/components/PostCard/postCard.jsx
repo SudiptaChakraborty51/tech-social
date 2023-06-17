@@ -7,6 +7,7 @@ import { likePostHandler } from "../../utils/likePostHandler";
 import { dislikePostHandler } from "../../utils/dislikePostHandler";
 import { removeFromBookmarkPostHandler } from "../../utils/removeFromBookmarkHandler";
 import { addToBookmarkPostHandler } from "../../utils/bookmarkPostHandler";
+import { useNavigate } from "react-router-dom";
 
 const PostCard = ({ post }) => {
   const {
@@ -24,6 +25,8 @@ const PostCard = ({ post }) => {
 
   const { dataState, dataDispatch } = useContext(DataContext);
   const { authState } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUserDetails(
@@ -48,9 +51,7 @@ const PostCard = ({ post }) => {
       toast.success("Added to Bookmarks");
     }
   };
-
-  console.log("bookmarks", dataState?.bookmarks);
-
+  
   return (
     <div key={_id} className="postcard-main">
       <div className="postcard-header">
@@ -71,6 +72,7 @@ const PostCard = ({ post }) => {
         </div>
         <i class="fa-solid fa-ellipsis"></i>
       </div>
+      <div className="postcard-content-main" onClick={() => navigate(`/post/${_id}`)}>
       <p className="content">{content}</p>
       {contentLink && (
         <a href={`${contentLink}`} target="_blank" rel="noopener noreferrer">
@@ -93,6 +95,7 @@ const PostCard = ({ post }) => {
           </video>
         )
       )}
+      </div>
       <hr />
       <div className="postcard-buttons">
         <div>
@@ -108,11 +111,11 @@ const PostCard = ({ post }) => {
               }
             }}
           ></i>{" "}
-          <span>{likes.likeCount}</span>
+          <span>{likes?.likeCount}</span>
         </div>
         <div>
           <i className="fa-regular fa-comment"></i>{" "}
-          <span>{comments.length}</span>
+          <span>{comments?.length}</span>
         </div>
         <div>
           <i
