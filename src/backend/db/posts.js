@@ -131,24 +131,7 @@ export const posts = [
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686846308/tech-social/FvRFiZ9XoAA3xxo_n0rclt.jpg",
     likes: {
       likeCount: 15,
-      likedBy: [
-        {
-          _id: "a7c2KIpr-t",
-          firstName: "Sudipta",
-          lastName: "Chakraborty",
-          username: "schakraborty",
-          email: "sudiptachakroborty20@gmail.com",
-          password: "sudipta@26",
-          bio: "Aspiring Frontend Developer",
-          website: "https://sudiptachakraborty.netlify.app/",
-          profileAvatar:
-            "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686685042/tech-social/IMG_20230117_131338_xs5yms.jpg",
-          createdAt: formatDate(),
-          updatedAt: formatDate(),
-          following: [],
-          followers: [],
-        },
-      ],
+      likedBy: [],
       dislikedBy: [],
     },
     comments: [],

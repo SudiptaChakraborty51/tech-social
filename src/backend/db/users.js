@@ -20,6 +20,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "s2d3Bie-8",
@@ -36,6 +37,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "e6a9Gqs-u",
@@ -52,6 +54,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "f1h5Jwv-m",
@@ -68,6 +71,7 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
   {
     _id: "l0y2Krn-5",
@@ -84,5 +88,6 @@ export const users = [
     updatedAt: formatDate(),
     following: [],
     followers: [],
+    bookmarks: [],
   },
 ];
