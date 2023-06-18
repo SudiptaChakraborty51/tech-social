@@ -1,13 +1,14 @@
 import React, { createContext, useEffect, useReducer } from "react";
 import authReducer from "../reducer/authReducer";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const localStorageData = JSON.parse(localStorage.getItem("data"));
 
@@ -29,7 +30,7 @@ const AuthProvider = ({ children }) => {
         authDispatch({ type: "SET_USER", payload: data?.foundUser });
         authDispatch({ type: "SET_TOKEN", payload: data?.encodedToken });
         toast.success("Login Successful!");
-        navigate("/home");
+        navigate(location?.state?.from?.pathname || "/");
       }
     } catch (e) {
       console.error(e);
@@ -48,7 +49,7 @@ const AuthProvider = ({ children }) => {
         authDispatch({ type: "SET_USER", payload: data?.createdUser });
         authDispatch({ type: "SET_TOKEN", payload: data?.encodedToken });
         toast.success("Signup Successful!");
-        navigate("/home");
+        navigate(location?.state?.from?.pathname || "/");
       }
     } catch (e) {
       console.error(e);

@@ -16,7 +16,7 @@ const LeftSideBar = () => {
 
   return (
     <div className="left-sidebar">
-      <NavLink to="/home" className="left-sidebar-items" style={getActiveStyle}>
+      <NavLink to="/" className="left-sidebar-items" style={getActiveStyle}>
         <i class="fa-solid fa-house"></i> <span>Home</span>
       </NavLink>
       <NavLink

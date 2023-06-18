@@ -20,11 +20,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/mockman" element={<Mockman />} />
-        <Route path="/" element={<Landing />} />
+        <Route path="/register" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route element={<RequireAuth />}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/post/:postID" element={<PostDetails />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
           <Route path="liked-posts" element={<LikedPosts />} />

@@ -8,7 +8,7 @@ const RequireAuth = () => {
   return authState.token ? (
     <Outlet />
   ) : (
-    <Navigate to="/" state={{ from: location }} replace />
+    <Navigate to="/register" state={{ from: location }} replace />
   );
 };
 
