@@ -51,7 +51,12 @@ const PostCard = ({ post }) => {
       toast.success("Added to Bookmarks");
     }
   };
-  
+
+  const copyLinkHandler = () => {
+    navigator.clipboard.writeText(`https://tech-social.vercel.app/post/${_id}`);
+    toast.success("Link Copied. Start sharing!");
+  };
+
   return (
     <div key={_id} className="postcard-main">
       <div className="postcard-header">
@@ -72,29 +77,32 @@ const PostCard = ({ post }) => {
         </div>
         <i class="fa-solid fa-ellipsis"></i>
       </div>
-      <div className="postcard-content-main" onClick={() => navigate(`/post/${_id}`)}>
-      <p className="content">{content}</p>
-      {contentLink && (
-        <a href={`${contentLink}`} target="_blank" rel="noopener noreferrer">
-          {contentLink}
-        </a>
-      )}
-      {mediaURL && mediaURL.split("/")[4] === "image" ? (
-        <img
-          src={mediaURL}
-          alt="post-pic"
-          style={{ width: "100%", height: "300px", objectFit: "cover" }}
-        />
-      ) : (
-        mediaURL && (
-          <video
-            controls
-            style={{ width: "100%", height: "auto", objectFit: "contain" }}
-          >
-            <source src={mediaURL} />
-          </video>
-        )
-      )}
+      <div
+        className="postcard-content-main"
+        onClick={() => navigate(`/post/${_id}`)}
+      >
+        <p className="content">{content}</p>
+        {contentLink && (
+          <a href={`${contentLink}`} target="_blank" rel="noopener noreferrer">
+            {contentLink}
+          </a>
+        )}
+        {mediaURL && mediaURL.split("/")[4] === "image" ? (
+          <img
+            src={mediaURL}
+            alt="post-pic"
+            style={{ width: "100%", height: "300px", objectFit: "cover" }}
+          />
+        ) : (
+          mediaURL && (
+            <video
+              controls
+              style={{ width: "100%", height: "auto", objectFit: "contain" }}
+            >
+              <source src={mediaURL} />
+            </video>
+          )
+        )}
       </div>
       <hr />
       <div className="postcard-buttons">
@@ -132,7 +140,10 @@ const PostCard = ({ post }) => {
           ></i>
         </div>
         <div>
-          <i class="fa-regular fa-share-from-square"></i>
+          <i
+            class="fa-regular fa-share-from-square"
+            onClick={copyLinkHandler}
+          ></i>
         </div>
       </div>
     </div>
