@@ -16,7 +16,6 @@ const Profile = () => {
   const { authState } = useContext(AuthContext);
   const { dataState } = useContext(DataContext);
 
-  const [profileLoading, setProfileLoading] = useState(false);
   const [profileData, setProfileData] = useState({});
   const [userPosts, setUserPosts] = useState([]);
 
@@ -33,14 +32,14 @@ const Profile = () => {
 
   const getUserPost = async () => {
     try {
-      const {data, status} = await axios.get(`/api/posts/user/${username}`);
-      if(status === 200) {
+      const { data, status } = await axios.get(`/api/posts/user/${username}`);
+      if (status === 200) {
         setUserPosts(data?.posts);
       }
-    }catch(e){
+    } catch (e) {
       console.error(e);
     }
-  }
+  };
 
   useEffect(() => {
     getUserDetails();
@@ -54,89 +53,82 @@ const Profile = () => {
       <div className="profile-content">
         <LeftSideBar />
         <div className="profile-main">
-          {profileLoading ? (
-            <p>Loading...</p>
-          ) : (
-            <div>
-              <div className="profile-container">
-                <div className="profile-container-header">
-                  <div className="profile-name-avatar">
-                    <img
-                      style={{
-                        width: "60px",
-                        height: "60px",
-                        objectFit: "cover",
-                        borderRadius: "50%",
-                      }}
-                      src={
-                        profileData?.profileAvatar ||
-                        `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
-                      }
-                      alt="avatar"
-                    />
-                    <div>
-                      <h3>
-                        {profileData?.firstName} {profileData?.lastName}
-                      </h3>
-                      <small>@{profileData?.username}</small>
-                    </div>
+          <div>
+            <div className="profile-container">
+              <div className="profile-container-header">
+                <div className="profile-name-avatar">
+                  <img
+                    style={{
+                      width: "60px",
+                      height: "60px",
+                      objectFit: "cover",
+                      borderRadius: "50%",
+                    }}
+                    src={
+                      profileData?.profileAvatar ||
+                      `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
+                    }
+                    alt="avatar"
+                  />
+                  <div>
+                    <h3>
+                      {profileData?.firstName} {profileData?.lastName}
+                    </h3>
+                    <small>@{profileData?.username}</small>
                   </div>
-                  {profileData?.username === authState?.user?.username ? (
-                    <button className="edit-button">
-                      <i className="fa-solid fa-pen fa-md"></i>
-                    </button>
-                  ) : (
-                    <button className="follow-button">Follow</button>
-                  )}
                 </div>
-                {profileData?.bio && <p>{profileData?.bio}</p>}
-                {profileData?.website && (
-                  <a
-                    href={profileData?.website}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {profileData?.website}
-                  </a>
+                {profileData?.username === authState?.user?.username ? (
+                  <button className="edit-button">
+                    <i className="fa-solid fa-pen fa-md"></i>
+                  </button>
+                ) : (
+                  <button className="follow-button">Follow</button>
                 )}
-                <p>
-                  <i class="fa-solid fa-calendar"></i> Joined{" "}
-                  {`${new Date(profileData?.createdAt)
-                    .toDateString()
-                    .split(" ")
-                    .slice(1, 4)
-                    .join(" ")}`}
-                </p>
-                <div className="profile-post-follow-details">
-                  <p>
-                    {userPosts?.length}{" "}
-                    {`${userPosts?.length > 1 ? "Posts" : "Post"}`}
-                  </p>
-                  <p>
-                    {profileData?.followers?.length}{" "}
-                    {`${
-                      profileData?.followers?.length > 1
-                        ? "Followers"
-                        : "Follower"
-                    }`}
-                  </p>
-                  <p>
-                    {profileData?.following?.length}{" "}
-                    {`${
-                      profileData?.following?.length > 1
-                        ? "Followings"
-                        : "Following"
-                    }`}
-                  </p>
-                </div>
               </div>
-              <div>
-                {userPosts.length > 0 && userPosts?.map((post) => (
-                  <PostCard key={post._id} post={post} />
-                ))}
+              {profileData?.bio && <p>{profileData?.bio}</p>}
+              {profileData?.website && (
+                <a href={profileData?.website} target="_blank" rel="noreferrer">
+                  {profileData?.website}
+                </a>
+              )}
+              <p>
+                <i class="fa-solid fa-calendar"></i> Joined{" "}
+                {`${new Date(profileData?.createdAt)
+                  .toDateString()
+                  .split(" ")
+                  .slice(1, 4)
+                  .join(" ")}`}
+              </p>
+              <div className="profile-post-follow-details">
+                <p>
+                  {userPosts?.length}{" "}
+                  {`${userPosts?.length > 1 ? "Posts" : "Post"}`}
+                </p>
+                <p>
+                  {profileData?.followers?.length}{" "}
+                  {`${
+                    profileData?.followers?.length > 1
+                      ? "Followers"
+                      : "Follower"
+                  }`}
+                </p>
+                <p>
+                  {profileData?.following?.length}{" "}
+                  {`${
+                    profileData?.following?.length > 1
+                      ? "Followings"
+                      : "Following"
+                  }`}
+                </p>
               </div>
             </div>
-          )}
+            <div>
+              {userPosts.length > 0 &&
+                userPosts?.map((post) => (
+                  <PostCard key={post._id} post={post} />
+                ))}
+            </div>
+          </div>
         </div>
         <RightSideBar />
       </div>
