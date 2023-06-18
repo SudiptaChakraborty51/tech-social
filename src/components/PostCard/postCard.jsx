@@ -23,7 +23,7 @@ const PostCard = ({ post }) => {
 
   const [userDetails, setUserDetails] = useState({});
 
-  const { dataState, dataDispatch } = useContext(DataContext);
+  const { dataState, dataDispatch, getUserPost } = useContext(DataContext);
   const { authState } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const PostCard = ({ post }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const isliked =
+  const isliked = () =>
     likes?.likedBy?.filter(({ _id }) => _id === authState?.user?._id)
       ?.length !== 0;
 
@@ -79,7 +79,10 @@ const PostCard = ({ post }) => {
       </div>
       <div
         className="postcard-content-main"
-        onClick={() => navigate(`/post/${_id}`)}
+        onClick={() => {
+          getUserPost(userDetails?.username);
+          navigate(`/post/${_id}`);
+        }}
       >
         <p className="content">{content}</p>
         {contentLink && (
@@ -108,12 +111,12 @@ const PostCard = ({ post }) => {
       <div className="postcard-buttons">
         <div>
           <i
-            className={`${isliked ? "fa-solid" : "fa-regular"} fa-heart`}
+            className={`${isliked() ? "fa-solid" : "fa-regular"} fa-heart`}
             onClick={() => {
               if (!authState?.token) {
                 toast.error("Please login to proceed!");
               } else {
-                isliked
+                isliked()
                   ? dislikePostHandler(authState?.token, _id, dataDispatch)
                   : likePostHandler(authState?.token, _id, dataDispatch);
               }

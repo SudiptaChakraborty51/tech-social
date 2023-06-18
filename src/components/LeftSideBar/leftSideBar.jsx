@@ -41,7 +41,7 @@ const LeftSideBar = () => {
         <i class="fa-solid fa-heart"></i> <span>Liked Posts</span>
       </NavLink>
       <NavLink
-        to="/profile"
+        to={`/profile/${authState?.user?.username}`}
         className="left-sidebar-items"
         style={getActiveStyle}
       >
