@@ -3,11 +3,9 @@ import "./navbar.css";
 import logo from "../../assets/logo.png";
 import { AuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
-import { DataContext } from "../../contexts/dataContext";
 
 const Navbar = () => {
   const { authState } = useContext(AuthContext);
-  const { getUserPost } = useContext(DataContext);
 
   const navigate = useNavigate();
   return (
@@ -22,7 +20,6 @@ const Navbar = () => {
           {authState?.token && (
             <img
               onClick={() => {
-                getUserPost(authState?.user?.username);
                 navigate(`/profile/${authState?.user?.username}`);
               }}
               src={

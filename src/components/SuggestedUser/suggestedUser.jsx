@@ -5,7 +5,7 @@ import "./suggestedUser.css";
 import { useNavigate } from "react-router-dom";
 
 const SuggestedUser = () => {
-  const { dataState, getUserPost } = useContext(DataContext);
+  const { dataState } = useContext(DataContext);
   const { localStorageData } = useContext(AuthContext);
 
   const suggestedUser = dataState?.users?.filter(
@@ -28,7 +28,6 @@ const SuggestedUser = () => {
                     <div
                       className="suggested-user-name-profile"
                       onClick={() => {
-                        getUserPost(username);
                         navigate(`/profile/${username}`);
                       }}
                     >

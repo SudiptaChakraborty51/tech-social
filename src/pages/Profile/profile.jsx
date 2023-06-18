@@ -18,24 +18,35 @@ const Profile = () => {
 
   const [profileLoading, setProfileLoading] = useState(false);
   const [profileData, setProfileData] = useState({});
+  const [userPosts, setUserPosts] = useState([]);
 
   const getUserDetails = async () => {
     try {
-      setProfileLoading(true);
       const { data, status } = await axios.get(`/api/users/${username}`);
       if (status === 200) {
         setProfileData(data?.user);
-        setProfileLoading(false);
       }
     } catch (e) {
       console.error(e);
     }
   };
 
+  const getUserPost = async () => {
+    try {
+      const {data, status} = await axios.get(`/api/posts/user/${username}`);
+      if(status === 200) {
+        setUserPosts(data?.posts);
+      }
+    }catch(e){
+      console.error(e);
+    }
+  }
+
   useEffect(() => {
     getUserDetails();
+    getUserPost();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username]);
+  }, [username, dataState?.posts, dataState?.users]);
 
   return (
     <div className="profile">
@@ -98,8 +109,8 @@ const Profile = () => {
                 </p>
                 <div className="profile-post-follow-details">
                   <p>
-                    {dataState?.userPost?.length}{" "}
-                    {`${dataState?.userPost?.length > 1 ? "Posts" : "Post"}`}
+                    {userPosts?.length}{" "}
+                    {`${userPosts?.length > 1 ? "Posts" : "Post"}`}
                   </p>
                   <p>
                     {profileData?.followers?.length}{" "}
@@ -120,7 +131,7 @@ const Profile = () => {
                 </div>
               </div>
               <div>
-                {dataState?.userPost?.map((post) => (
+                {userPosts.length > 0 && userPosts?.map((post) => (
                   <PostCard key={post._id} post={post} />
                 ))}
               </div>

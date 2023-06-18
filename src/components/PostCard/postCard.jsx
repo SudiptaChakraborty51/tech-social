@@ -23,7 +23,7 @@ const PostCard = ({ post }) => {
 
   const [userDetails, setUserDetails] = useState({});
 
-  const { dataState, dataDispatch, getUserPost } = useContext(DataContext);
+  const { dataState, dataDispatch } = useContext(DataContext);
   const { authState } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -80,7 +80,6 @@ const PostCard = ({ post }) => {
       <div
         className="postcard-content-main"
         onClick={() => {
-          getUserPost(userDetails?.username);
           navigate(`/post/${_id}`);
         }}
       >
