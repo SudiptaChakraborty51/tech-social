@@ -78,7 +78,7 @@ const PostCard = ({ post }) => {
             </small>
           </div>
         </div>
-        {username !== authState?.user?.username && <i class="fa-solid fa-ellipsis"></i>}
+        {username === authState?.user?.username && <i class="fa-solid fa-ellipsis"></i>}
       </div>
       <div
         className="postcard-content-main"
