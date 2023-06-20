@@ -18,11 +18,13 @@ const Home = () => {
     ({ username }) => username === authState?.user?.username
   );
 
+  console.log(loggedInUser);
+
   const postsOfFollowed = dataState?.posts?.filter(
     (post) =>
       loggedInUser?.following?.some(
         ({ username }) => username === post.username
-      ) || loggedInUser.username === post.username
+      ) || authState?.user?.username === post.username
   );
 
   const [sortByOption, setSortByOption] = useState("Latest");
