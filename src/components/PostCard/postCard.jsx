@@ -60,7 +60,7 @@ const PostCard = ({ post }) => {
   return (
     <div key={_id} className="postcard-main">
       <div className="postcard-header">
-        <div className="postcard-header-left">
+        <div className="postcard-header-left" onClick={() => navigate(`/profile/${username}`)}>
           <img src={userDetails?.profileAvatar} alt="avatar" />
           <div>
             <h4>{`${userDetails?.firstName} ${userDetails?.lastName}`}</h4>
