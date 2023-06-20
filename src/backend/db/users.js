@@ -16,7 +16,7 @@ export const users = [
     website: "https://sudiptachakraborty.netlify.app/",
     profileAvatar:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686685042/tech-social/IMG_20230117_131338_xs5yms.jpg",
-    createdAt: "2023-05-21T10:55:06+05:30",
+    createdAt: "2022-08-31T10:15:12+05:30",
     updatedAt: formatDate(),
     bookmarks: [],
   },
