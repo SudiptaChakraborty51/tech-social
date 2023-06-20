@@ -64,12 +64,7 @@ const Profile = () => {
               <div className="profile-container-header">
                 <div className="profile-name-avatar">
                   <img
-                    style={{
-                      width: "60px",
-                      height: "60px",
-                      objectFit: "cover",
-                      borderRadius: "50%",
-                    }}
+                    className="avatar"
                     src={
                       profileData?.profileAvatar ||
                       `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
@@ -89,7 +84,11 @@ const Profile = () => {
                   </button>
                 ) : (
                   <button
-                    className={isFollowed(dataState?.users, profileData?._id) ? "following-button" : "follow-button"}
+                    className={
+                      isFollowed(dataState?.users, profileData?._id)
+                        ? "following-button"
+                        : "follow-button"
+                    }
                     onClick={() => {
                       if (authState?.token) {
                         if (isFollowed(dataState?.users, profileData?._id)) {

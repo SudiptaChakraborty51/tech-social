@@ -37,6 +37,13 @@
   gap: 0.5rem;
 }
 
+.profile-name-avatar .avatar {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .profile-name-avatar div h3 {
   margin: 0;
 }
@@ -67,7 +74,7 @@
 }
 
 .profile-container .follow-button:hover {
-    background-color: var(--primary-dark);
+  background-color: var(--primary-dark);
 }
 
 .profile-container .following-button {
@@ -85,12 +92,12 @@
 }
 
 .profile-container .edit-button {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
 }
 
 .profile-container .edit-button i {
-    font-size: 18px;
-    color: var(--primary-dark);
-    cursor: pointer;
+  font-size: 18px;
+  color: var(--primary-dark);
+  cursor: pointer;
 }
