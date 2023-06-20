@@ -6,22 +6,23 @@ import { useNavigate } from "react-router-dom";
 import { followUserHandler } from "../../utils/followUserHandler";
 import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
 import { toast } from "react-toastify";
+import { isFollowed } from "../../utils/isFollowed";
 
 const SuggestedUser = () => {
   const { dataState, dataDispatch } = useContext(DataContext);
 
-  const { localStorageData } = useContext(AuthContext);
+  const { authState } = useContext(AuthContext);
 
   const getSuggestedUsers = () => {
     const suggestedUser = dataState?.users?.filter(
       ({ username, followers }) => {
-        if (username === localStorageData?.user?.username) {
+        if (username === authState?.user?.username) {
           return false;
         } else if (followers.length === 0) {
           return true;
         } else {
           return followers.some(
-            ({ username }) => username !== localStorageData?.user?.username
+            ({ username }) => username !== authState?.user?.username
           );
         }
       }
@@ -33,14 +34,6 @@ const SuggestedUser = () => {
 
   const navigate = useNavigate();
 
-  const isFollowed = (userId) => {
-    return dataState.users
-      ?.find(({ _id }) => _id === localStorageData?.user?._id)
-      ?.following?.find(({ _id }) => _id === userId)
-      ? true
-      : false;
-  };
-
   return (
     <div>
       {dataState.usersLoading ? (
@@ -50,7 +43,7 @@ const SuggestedUser = () => {
           {getSuggestedUsers().length > 0 ? (
             getSuggestedUsers()?.map(
               ({ _id, firstName, lastName, username, profileAvatar }) => {
-                console.log(isFollowed(_id));
+                console.log(isFollowed(dataState?.users, _id));
                 return (
                   <li key={_id} className="suggested-user">
                     <div
@@ -76,16 +69,16 @@ const SuggestedUser = () => {
                     </div>
                     <button
                       onClick={() => {
-                        if (localStorageData?.token) {
-                          if (isFollowed(_id)) {
+                        if (authState?.token) {
+                          if (isFollowed(dataState?.users, _id)) {
                             unfollowUserHandler(
-                              localStorageData?.token,
+                              authState?.token,
                               _id,
                               dataDispatch
                             );
                           } else {
                             followUserHandler(
-                              localStorageData?.token,
+                              authState?.token,
                               _id,
                               dataDispatch
                             );
@@ -96,7 +89,9 @@ const SuggestedUser = () => {
                         }
                       }}
                     >
-                      {isFollowed(_id) ? "Following" : "Follow"}
+                      {isFollowed(dataState?.users, _id)
+                        ? "Following"
+                        : "Follow"}
                     </button>
                   </li>
                 );
