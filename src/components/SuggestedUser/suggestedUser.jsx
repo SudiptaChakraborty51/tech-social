@@ -3,16 +3,43 @@ import { DataContext } from "../../contexts/dataContext";
 import { AuthContext } from "../../contexts/authContext";
 import "./suggestedUser.css";
 import { useNavigate } from "react-router-dom";
+import { followUserHandler } from "../../utils/followUserHandler";
+import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
+import { toast } from "react-toastify";
 
 const SuggestedUser = () => {
-  const { dataState } = useContext(DataContext);
+  const { dataState, dataDispatch } = useContext(DataContext);
+
   const { localStorageData } = useContext(AuthContext);
 
-  const suggestedUser = dataState?.users?.filter(
-    (user) => user?.username !== localStorageData?.user?.username
-  );
+  const getSuggestedUsers = () => {
+    const suggestedUser = dataState?.users?.filter(
+      ({ username, followers }) => {
+        if (username === localStorageData?.user?.username) {
+          return false;
+        } else if (followers.length === 0) {
+          return true;
+        } else {
+          return followers.some(
+            ({ username }) => username !== localStorageData?.user?.username
+          );
+        }
+      }
+    );
+    return suggestedUser?.length > 3
+      ? suggestedUser.splice(0, 3)
+      : suggestedUser;
+  };
 
   const navigate = useNavigate();
+
+  const isFollowed = (userId) => {
+    return dataState.users
+      ?.find(({ _id }) => _id === localStorageData?.user?._id)
+      ?.following?.find(({ _id }) => _id === userId)
+      ? true
+      : false;
+  };
 
   return (
     <div>
@@ -20,9 +47,10 @@ const SuggestedUser = () => {
         <p>Loading...</p>
       ) : (
         <div className="suggested-users-main">
-          {suggestedUser?.length > 0 &&
-            suggestedUser?.map(
+          {getSuggestedUsers().length > 0 ? (
+            getSuggestedUsers()?.map(
               ({ _id, firstName, lastName, username, profileAvatar }) => {
+                console.log(isFollowed(_id));
                 return (
                   <li key={_id} className="suggested-user">
                     <div
@@ -46,11 +74,37 @@ const SuggestedUser = () => {
                         <small>@{username}</small>
                       </div>
                     </div>
-                    <button>Follow</button>
+                    <button
+                      onClick={() => {
+                        if (localStorageData?.token) {
+                          if (isFollowed(_id)) {
+                            unfollowUserHandler(
+                              localStorageData?.token,
+                              _id,
+                              dataDispatch
+                            );
+                          } else {
+                            followUserHandler(
+                              localStorageData?.token,
+                              _id,
+                              dataDispatch
+                            );
+                          }
+                        } else {
+                          toast.error("Please login to follow");
+                          navigate("/login");
+                        }
+                      }}
+                    >
+                      {isFollowed(_id) ? "Following" : "Follow"}
+                    </button>
                   </li>
                 );
               }
-            )}
+            )
+          ) : (
+            <p>No suggested user is present.</p>
+          )}
         </div>
       )}
     </div>
