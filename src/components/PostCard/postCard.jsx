@@ -60,7 +60,10 @@ const PostCard = ({ post }) => {
   return (
     <div key={_id} className="postcard-main">
       <div className="postcard-header">
-        <div className="postcard-header-left" onClick={() => navigate(`/profile/${username}`)}>
+        <div
+          className="postcard-header-left"
+          onClick={() => navigate(`/profile/${username}`)}
+        >
           <img src={userDetails?.profileAvatar} alt="avatar" />
           <div>
             <h4>{`${userDetails?.firstName} ${userDetails?.lastName}`}</h4>
@@ -75,7 +78,7 @@ const PostCard = ({ post }) => {
             </small>
           </div>
         </div>
-        <i class="fa-solid fa-ellipsis"></i>
+        {username !== authState?.user?.username && <i class="fa-solid fa-ellipsis"></i>}
       </div>
       <div
         className="postcard-content-main"
