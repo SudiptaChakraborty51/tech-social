@@ -3,21 +3,27 @@ import "./profile.css";
 import Navbar from "../../components/Navbar/navbar";
 import LeftSideBar from "../../components/LeftSideBar/leftSideBar";
 import RightSideBar from "../../components/RightSideBar/rightSideBar";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { DataContext } from "../../contexts/dataContext";
 import axios from "axios";
 import PostCard from "../../components/PostCard/postCard";
+import { isFollowed } from "../../utils/isFollowed";
+import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
+import { followUserHandler } from "../../utils/followUserHandler";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   document.title = "tech-social | Profile";
 
   const { username } = useParams();
   const { authState } = useContext(AuthContext);
-  const { dataState } = useContext(DataContext);
+  const { dataState, dataDispatch } = useContext(DataContext);
 
   const [profileData, setProfileData] = useState({});
   const [userPosts, setUserPosts] = useState([]);
+
+  const navigate = useNavigate();
 
   const getUserDetails = async () => {
     try {
@@ -82,7 +88,33 @@ const Profile = () => {
                     <i className="fa-solid fa-pen fa-md"></i>
                   </button>
                 ) : (
-                  <button className="follow-button">Follow</button>
+                  <button
+                    className={isFollowed(dataState?.users, profileData?._id) ? "following-button" : "follow-button"}
+                    onClick={() => {
+                      if (authState?.token) {
+                        if (isFollowed(dataState?.users, profileData?._id)) {
+                          unfollowUserHandler(
+                            authState?.token,
+                            profileData?._id,
+                            dataDispatch
+                          );
+                        } else {
+                          followUserHandler(
+                            authState?.token,
+                            profileData?._id,
+                            dataDispatch
+                          );
+                        }
+                      } else {
+                        toast.error("Please login to follow");
+                        navigate("/login");
+                      }
+                    }}
+                  >
+                    {isFollowed(dataState?.users, profileData?._id)
+                      ? "Following"
+                      : "Follow"}
+                  </button>
                 )}
               </div>
               {profileData?.bio && <p>{profileData?.bio}</p>}
