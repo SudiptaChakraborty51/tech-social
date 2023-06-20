@@ -14,6 +14,7 @@
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  cursor: pointer;
 }
 
 .suggested-users-main .suggested-user .user-avatar {

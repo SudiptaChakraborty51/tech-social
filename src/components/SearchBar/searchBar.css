@@ -1,0 +1,48 @@
+/* .search-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+    align-items: center;
+} */
+
+.searched-users-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  background-color: var(--white-color);
+  position: absolute;
+  /* width: calc(100% - 20px); */
+}
+
+.searched-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.searched-user .searched-user-name-profile {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.searched-user .user-avatar {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.searched-user .searchedUser-name {
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-xmark {
+  cursor: pointer;
+}
