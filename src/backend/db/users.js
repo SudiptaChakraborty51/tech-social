@@ -16,10 +16,8 @@ export const users = [
     website: "https://sudiptachakraborty.netlify.app/",
     profileAvatar:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686685042/tech-social/IMG_20230117_131338_xs5yms.jpg",
-    createdAt: formatDate(),
+    createdAt: "2023-05-21T10:55:06+05:30",
     updatedAt: formatDate(),
-    following: [],
-    followers: [],
     bookmarks: [],
   },
   {
@@ -33,10 +31,8 @@ export const users = [
     website: "https://johnwilliam.netlify.app/",
     profileAvatar:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686659911/tech-social/man3_a5om95.jpg",
-    createdAt: formatDate(),
+    createdAt: "2022-03-12T10:35:21+05:30",
     updatedAt: formatDate(),
-    following: [],
-    followers: [],
     bookmarks: [],
   },
   {
@@ -50,10 +46,8 @@ export const users = [
     website: "https://linaabott.netlify.app/",
     profileAvatar:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686659986/tech-social/overjoyed-pretty-asian-woman-look-at-camera-with-sincere-laughter_b9hnrt.jpg",
-    createdAt: formatDate(),
+    createdAt: "2023-06-12T10:25:07+05:30",
     updatedAt: formatDate(),
-    following: [],
-    followers: [],
     bookmarks: [],
   },
   {
@@ -67,10 +61,8 @@ export const users = [
     website: "https://davidkyle.netlify.app/",
     profileAvatar:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686659910/tech-social/photo-1566753323558-f4e0952af115_cocrd5.jpg",
-    createdAt: formatDate(),
+    createdAt: "2022-03-12T11:25:24+05:30",
     updatedAt: formatDate(),
-    following: [],
-    followers: [],
     bookmarks: [],
   },
   {
@@ -84,10 +76,8 @@ export const users = [
     website: "https://julieadams.netlify.app/",
     profileAvatar:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686659986/tech-social/photo-1544005313-94ddf0286df2_qz2jqa.jpg",
-    createdAt: formatDate(),
+    createdAt: "2022-04-22T10:25:24+05:30",
     updatedAt: formatDate(),
-    following: [],
-    followers: [],
     bookmarks: [],
   },
 ];
