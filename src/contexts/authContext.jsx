@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
   const localStorageData = JSON.parse(localStorage.getItem("data"));
 
   const initialAuth = {
-    user: {},
+    user: localStorageData?.user || {},
     token: localStorageData?.token || "",
   };
 
