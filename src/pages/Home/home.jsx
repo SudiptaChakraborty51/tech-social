@@ -7,6 +7,7 @@ import { DataContext } from "../../contexts/dataContext";
 import { AuthContext } from "../../contexts/authContext";
 import PostCard from "../../components/PostCard/postCard";
 import { sortOptions, getSortedPosts } from "../../utils/sortPosts";
+import PostForm from "../../components/PostForm/postForm";
 
 const Home = () => {
   document.title = "tech-social | Home";
@@ -37,6 +38,7 @@ const Home = () => {
       <div className="home-content">
         <LeftSideBar />
         <div className="home-main">
+          <PostForm />
           {dataState?.postsLoading ? (
             <p>Loading...</p>
           ) : postsOfFollowed?.length === 0 ? (
