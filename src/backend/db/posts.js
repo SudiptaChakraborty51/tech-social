@@ -23,10 +23,6 @@ export const posts = [
         _id: "fyjksd_gb3j_37h8_fy7kBW",
         username: "davidkyle",
         text: "Awesome work Sudipta 🔥",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
       },
     ],
     username: "schakraborty",
@@ -50,10 +46,6 @@ export const posts = [
         _id: "gskytu_gdku_5789g_hsK4uRF",
         username: "linaabott",
         text: "Congratulations John!",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
       },
     ],
     username: "johnwilliam",
@@ -112,10 +104,6 @@ export const posts = [
         _id: "fhy5d8_jr2K_17h8_jAk6BW",
         username: "schakraborty",
         text: "👋",
-        votes: {
-          upvotedBy: [],
-          downvotedBy: [],
-        },
       },
     ],
     username: "linaabott",
