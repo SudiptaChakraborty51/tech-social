@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import CommentItem from "../CommentItem/commentItem";
 import { AuthContext } from "../../contexts/authContext";
+import "./comment.css";
 
 const Comment = ({ post }) => {
   console.log(post);
@@ -10,27 +11,23 @@ const Comment = ({ post }) => {
 
   return (
     <div>
-      <img
-        style={{
-          width: "50px",
-          height: "50px",
-          objectFit: "cover",
-          borderRadius: "50%",
-        }}
-        src={
-          authState?.user?.profileAvatar ||
-          `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
-        }
-        alt="profile-pic"
-      />
-      <div>
-        <input
-          type="text"
-          placeholder="Add a comment..."
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
+      <div className="comment-main-container">
+        <img
+          src={
+            authState?.user?.profileAvatar ||
+            `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
+          }
+          alt="profile-pic"
         />
-        <i class="fa-solid fa-paper-plane"></i>
+        <div className="comment-input-container">
+          <input
+            type="text"
+            placeholder="Add a comment..."
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+          />
+          <i class="fa-solid fa-paper-plane"></i>
+        </div>
       </div>
       {post?.comments?.length > 0 ? (
         post?.comments?.map((comment) => (
