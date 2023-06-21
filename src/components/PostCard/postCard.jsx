@@ -8,6 +8,7 @@ import { dislikePostHandler } from "../../utils/dislikePostHandler";
 import { removeFromBookmarkPostHandler } from "../../utils/removeFromBookmarkHandler";
 import { addToBookmarkPostHandler } from "../../utils/bookmarkPostHandler";
 import { useNavigate } from "react-router-dom";
+import Comment from "../Comment/comment";
 
 const PostCard = ({ post }) => {
   const {
@@ -27,6 +28,8 @@ const PostCard = ({ post }) => {
   const { authState } = useContext(AuthContext);
 
   const navigate = useNavigate();
+
+  const [showCommentSection, setShowCommentSection] = useState(false);
 
   useEffect(() => {
     setUserDetails(
@@ -78,7 +81,9 @@ const PostCard = ({ post }) => {
             </small>
           </div>
         </div>
-        {username === authState?.user?.username && <i class="fa-solid fa-ellipsis"></i>}
+        {username === authState?.user?.username && (
+          <i class="fa-solid fa-ellipsis"></i>
+        )}
       </div>
       <div
         className="postcard-content-main"
@@ -127,7 +132,10 @@ const PostCard = ({ post }) => {
           <span>{likes?.likeCount}</span>
         </div>
         <div>
-          <i className="fa-regular fa-comment"></i>{" "}
+          <i
+            className="fa-regular fa-comment"
+            onClick={() => setShowCommentSection(!showCommentSection)}
+          ></i>{" "}
           <span>{comments?.length}</span>
         </div>
         <div>
@@ -151,6 +159,11 @@ const PostCard = ({ post }) => {
           ></i>
         </div>
       </div>
+      {showCommentSection && (
+        <Comment
+          post={post}
+        />
+      )}
     </div>
   );
 };
