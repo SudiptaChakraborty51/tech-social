@@ -3,6 +3,8 @@ import "./postForm.css";
 import { AuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 import Picker from "emoji-picker-react";
+import { toast } from "react-toastify";
+import { uploadMedia } from "../../utils/uploadMedia";
 
 const PostForm = () => {
   const { authState } = useContext(AuthContext);
@@ -10,7 +12,7 @@ const PostForm = () => {
   const navigate = useNavigate();
 
   const [postContent, setPostContent] = useState("");
-  const [selectedImageName, setSelectedImageName] = useState(null);
+  const [media, setMedia] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const imageSelectHandler = () => {
@@ -19,13 +21,14 @@ const PostForm = () => {
     input.accept = "image/*";
     input.onchange = (e) => {
       const file = e.target.files[0];
-      const imageUrl = URL.createObjectURL(file);
-      setSelectedImageName(imageUrl);
+      Math.round(file.size / 1024000) > 1
+        ? toast.error("File size should not be more than 1Mb")
+        : setMedia(file);
     };
     input.click();
   };
 
-  console.log(selectedImageName);
+  console.log(media);
 
   const emojiClickHandler = (emojiObj) => {
     const emoji = emojiObj.emoji;
@@ -34,11 +37,19 @@ const PostForm = () => {
     setShowEmojiPicker(false);
   };
 
-  const isPostDisabled = postContent.trim() === "";
+  const isPostDisabled = postContent.trim() === "" && !media;
 
-  const postClickHandler = () => {
+  const postClickHandler = async() => {
+    // toast.loading("Creating a new Post...");
+    if(media) {
+      const response = await uploadMedia(media);
+      console.log(response);
+    } else {
+      console.log("Failed");
+    }
+    toast.success("Added new post successfully!");
     setPostContent("");
-    setSelectedImageName(null);
+    setMedia(null);
   };
 
   return (
@@ -61,10 +72,10 @@ const PostForm = () => {
           onChange={(e) => setPostContent(e.target.value)}
         ></textarea>
       </div>
-      {selectedImageName && (
+      {media && (
         <div className="selected-image-container">
-          <img src={selectedImageName} alt="Post" />
-          <button onClick={() => setSelectedImageName(null)}>
+          <img src={URL.createObjectURL(media)} alt="Post" />
+          <button onClick={() => setMedia(null)}>
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
