@@ -24,6 +24,11 @@ export const posts = [
         username: "davidkyle",
         text: "Awesome work Sudipta 🔥",
       },
+      {
+        _id: "hjThfd_6jfY_49H3_ks5kAt",
+        username: "julieadams",
+        text: "The UI is very beautiful with smooth, responsive and great colour combination. The user experience is amazing 🤩 with working backend.",
+      },
     ],
     username: "schakraborty",
     createdAt: "2023-05-21T10:55:06+05:30",
