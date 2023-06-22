@@ -13,3 +13,43 @@
   flex-direction: column;
   height: 100%;
 }
+
+.single-page-comment-container {
+  width: 500px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: var(--white-color);
+  padding: 20px 20px 0 20px;
+  text-align: left;
+  border: 1px solid var(--grey-color);
+}
+
+.post-comment-container {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  gap: 1rem;
+  margin-bottom: 20px;
+}
+
+.post-comment-container img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.post-comment-container div {
+  border-radius: 1rem;
+  border-top-left-radius: 0;
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  background-color: var(--lightgrey-color);
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+
+.post-comment-container div p {
+  font-size: 14px;
+}
