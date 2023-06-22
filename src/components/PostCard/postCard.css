@@ -65,3 +65,28 @@ a {
 .postcard-content-main {
   cursor: pointer;
 }
+
+.postcard-main .edit-delete-icon {
+  position: relative;
+}
+
+.postcard-main .edit-delete-icon .edit-delete-post-modal {
+  position: absolute;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: var(--white-color);
+  padding: 0.5rem;
+  font-weight: 700;
+  border: 1px solid var(--grey-color);
+  right: 0;
+}
+
+.postcard-main .edit-delete-icon .edit-delete-post-modal div {
+  padding: 5px;
+}
+
+.postcard-main .edit-delete-icon .edit-delete-post-modal div:hover {
+  background-color: var(--lightgrey-color);
+  cursor: pointer;
+  border-radius: 5px;
+}

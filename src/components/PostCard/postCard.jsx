@@ -9,6 +9,7 @@ import { removeFromBookmarkPostHandler } from "../../utils/removeFromBookmarkHan
 import { addToBookmarkPostHandler } from "../../utils/bookmarkPostHandler";
 import { useNavigate } from "react-router-dom";
 import Comment from "../Comment/comment";
+import { deletePostHandler } from "../../utils/deletePostHandler";
 
 const PostCard = ({ post }) => {
   const {
@@ -30,6 +31,16 @@ const PostCard = ({ post }) => {
   const navigate = useNavigate();
 
   const [showCommentSection, setShowCommentSection] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+
+  const editClickHandler = () => {
+    setShowOptions(false);
+  };
+
+  const deleteClickHandler = () => {
+    deletePostHandler(authState?.token, _id, dataDispatch);
+    setShowOptions(false);
+  };
 
   useEffect(() => {
     setUserDetails(
@@ -82,7 +93,19 @@ const PostCard = ({ post }) => {
           </div>
         </div>
         {username === authState?.user?.username && (
-          <i class="fa-solid fa-ellipsis"></i>
+          <div className="edit-delete-icon">
+            <i
+              class="fa-solid fa-ellipsis"
+              onClick={() => setShowOptions(!showOptions)}
+            ></i>
+            {showOptions && (
+              <div className="edit-delete-post-modal">
+                <div onClick={editClickHandler}>Edit</div>
+                <hr />
+                <div onClick={deleteClickHandler}>Delete</div>
+              </div>
+            )}
+          </div>
         )}
       </div>
       <div
@@ -159,11 +182,7 @@ const PostCard = ({ post }) => {
           ></i>
         </div>
       </div>
-      {showCommentSection && (
-        <Comment
-          post={post}
-        />
-      )}
+      {showCommentSection && <Comment post={post} />}
     </div>
   );
 };
