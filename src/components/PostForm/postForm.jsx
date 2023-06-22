@@ -31,6 +31,19 @@ const PostForm = () => {
     input.click();
   };
 
+  // const videoSelectHandler = () => {
+  //   const input = document.createElement("input");
+  //   input.type = "file";
+  //   input.accept = "video/*";
+  //   input.onchange = (e) => {
+  //     const file = e.target.files[0];
+  //     Math.round(file.size / 7168000) > 1
+  //       ? toast.error("File size should not be more than 7Mb")
+  //       : setMedia(file);
+  //   };
+  //   input.click();
+  // };
+
   console.log(media);
 
   const emojiClickHandler = (emojiObj) => {
@@ -83,7 +96,13 @@ const PostForm = () => {
       </div>
       {media && (
         <div className="selected-image-container">
-          <img src={URL.createObjectURL(media)} alt="Post" />
+          {media.type.slice(0, 5) === "image" ? (
+            <img src={URL.createObjectURL(media)} alt="Post-pic" />
+          ) : media.type.slice(0, 5) === "video" ? (
+            <video alt="Post-video">
+              <source src={URL.createObjectURL(media)} />
+            </video>
+          ) : null}
           <button onClick={() => setMedia(null)}>
             <i class="fa-solid fa-xmark"></i>
           </button>
@@ -92,6 +111,7 @@ const PostForm = () => {
       <div className="post-form-button-container">
         <div>
           <i class="fa-regular fa-image" onClick={imageSelectHandler}></i>
+          {/* <i class="fa-regular fa-file-video" onClick={videoSelectHandler}></i> */}
           <i
             class="fa-regular fa-face-smile"
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}

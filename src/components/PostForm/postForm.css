@@ -82,6 +82,11 @@
     width: 100%;
 }
 
+.post-form .selected-image-container video {
+    object-fit: cover;
+    width: 100%;
+}
+
 .post-form .selected-image-container button {
     cursor: pointer;
     font-size: 16px;
