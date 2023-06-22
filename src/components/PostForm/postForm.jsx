@@ -1,13 +1,16 @@
 import React, { useContext, useState } from "react";
 import "./postForm.css";
 import { AuthContext } from "../../contexts/authContext";
+import { DataContext } from "../../contexts/dataContext";
 import { useNavigate } from "react-router-dom";
 import Picker from "emoji-picker-react";
 import { toast } from "react-toastify";
 import { uploadMedia } from "../../utils/uploadMedia";
+import { createPostHandler } from "../../utils/createPostHandler";
 
 const PostForm = () => {
   const { authState } = useContext(AuthContext);
+  const { dataDispatch } = useContext(DataContext);
 
   const navigate = useNavigate();
 
@@ -39,17 +42,23 @@ const PostForm = () => {
 
   const isPostDisabled = postContent.trim() === "" && !media;
 
-  const postClickHandler = async() => {
-    // toast.loading("Creating a new Post...");
-    if(media) {
+  const postClickHandler = async () => {
+    // toast.warn("Creating a new Post...");
+    try {
       const response = await uploadMedia(media);
       console.log(response);
-    } else {
-      console.log("Failed");
+      createPostHandler(
+        { content: postContent, mediaURL: response.url },
+        authState?.token,
+        dataDispatch
+      );
+      toast.success("Added new post successfully!");
+    } catch (e) {
+      toast.error("Something went wrong, try again!");
+    } finally {
+      setPostContent("");
+      setMedia(null);
     }
-    toast.success("Added new post successfully!");
-    setPostContent("");
-    setMedia(null);
   };
 
   return (

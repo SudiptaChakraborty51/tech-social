@@ -19,6 +19,11 @@ export const dataReducer = (state, action) => {
           user._id === action.payload._id ? action.payload : user
         ),
       };
+    case "CREATE_NEW_POST":
+      return {
+        ...state,
+        posts: action.payload,
+      };
     default:
       return state;
   }
