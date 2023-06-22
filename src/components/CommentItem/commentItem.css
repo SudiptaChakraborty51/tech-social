@@ -1,0 +1,29 @@
+.commentItem-main-container {
+  display: flex;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.commentItem-main-container img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.commentItem-main-container div {
+    border-radius: 1rem;
+    border-top-left-radius: 0;
+    padding: 0.25rem 1rem 0.25rem 1rem;
+    background-color: var(--lightgrey-color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.commentItem-main-container div .comment-text {
+    font-size: 14px;
+}
+

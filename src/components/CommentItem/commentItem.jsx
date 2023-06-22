@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { DataContext } from "../../contexts/dataContext";
 import { AuthContext } from "../../contexts/authContext";
+import "./commentItem.css";
 
 const CommentItem = ({ comment }) => {
   console.log(comment);
@@ -12,10 +13,9 @@ const CommentItem = ({ comment }) => {
   );
   const isLoggedInUserComment = comment.username === authState?.user?.username;
   return (
-    <div key={comment._id} style={{ norder: "1px solid black" }}>
+    <div key={comment._id} className="commentItem-main-container">
       {isLoggedInUserComment ? (
         <img
-          style={{ width: "40px", height: "40px", objectFit: "cover", borderRadius: "50%" }}
           src={
             authState?.user?.profileAvatar ||
             `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
@@ -39,15 +39,15 @@ const CommentItem = ({ comment }) => {
       )}
       <div>
         {isLoggedInUserComment ? (
-          <span>
+          <strong>
             {authState?.user?.firstName} {authState?.user?.lastName}
-          </span>
+          </strong>
         ) : (
-          <span>
+          <strong>
             {commentUser?.firstName} {commentUser?.lastName}
-          </span>
+          </strong>
         )}
-        <p>{comment.text}</p>
+        <p className="comment-text">{comment.text}</p>
       </div>
     </div>
   );
