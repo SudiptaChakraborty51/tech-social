@@ -110,11 +110,7 @@ const PostCard = ({ post }) => {
               <div className="edit-delete-post-modal">
                 <div onClick={editClickHandler}>Edit</div>
                 <hr />
-                <div
-                  onClick={deleteClickHandler}
-                >
-                  Delete
-                </div>
+                <div onClick={deleteClickHandler}>Delete</div>
               </div>
             )}
           </div>
@@ -169,7 +165,11 @@ const PostCard = ({ post }) => {
         <div>
           <i
             className="fa-regular fa-comment"
-            onClick={() => setShowCommentSection(!showCommentSection)}
+            onClick={() => {
+              pathname === `/post/${_id}`
+                ? setShowCommentSection(false)
+                : setShowCommentSection(!showCommentSection);
+            }}
           ></i>{" "}
           <span>{comments?.length}</span>
         </div>

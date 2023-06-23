@@ -34,7 +34,7 @@ const Comment = ({ post }) => {
           <CommentItem comment={comment} key={comment._id} />
         ))
       ) : (
-        <p>Share your comment!</p>
+        <p>No comments!</p>
       )}
     </div>
   );
