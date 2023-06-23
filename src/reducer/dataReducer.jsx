@@ -24,6 +24,11 @@ export const dataReducer = (state, action) => {
         ...state,
         posts: action.payload,
       };
+    case "EDIT_POST":
+      return {
+        ...state,
+        posts: action.payload,
+      };
     default:
       return state;
   }

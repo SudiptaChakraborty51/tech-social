@@ -1,0 +1,119 @@
+.edit-post-modal-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    inset: 0;
+    width: 100%;
+    background-color: var(--lightgrey-color);
+}
+
+.edit-post-modal-container .edit-post-modal {
+    background-color: var(--white-color);
+    margin: 0;
+    max-width: 28rem;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    border: 1px solid var(--grey-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-post-modal h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.edit-post-modal .edit-post-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-post-modal .edit-post-modal-header i {
+    font-size: 24px;
+}
+
+.edit-post-modal textarea {
+    resize: vertical;
+    width: calc(100% - 20px);
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.edit-post-modal .selected-image-container {
+    width: 10rem;
+    position: relative;
+}
+
+.edit-post-modal .selected-image-container img,
+.edit-post-modal .selected-image-container video {
+    object-fit: cover;
+    width: 100%;
+}
+
+.edit-post-modal .selected-image-container button {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0.5rem;
+    background-color: var(--lightgrey-color);
+    border-radius: 50%;
+    position: absolute;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    top: 0.25rem;
+    right: 0.25rem;
+}
+
+.edit-post-modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-post-modal-buttons i {
+    cursor: pointer;
+    font-size: 24px;
+    color: var(--primary-dark);
+    padding-right: 1rem;
+}
+
+.edit-post-modal-buttons .modal-button {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.edit-post-modal-buttons .modal-button:hover {
+    background-color: var(--primary-dark);
+}
+
+.edit-post-modal-buttons .disabled {
+    border: 2px solid var(--primary-dark);
+    background-color: transparent;
+    cursor: not-allowed;
+    color: var(--primary-dark);
+}
+
+.edit-post-modal-buttons .disabled:hover {
+    background-color: transparent;
+}
+
+.edit-emoji-picker {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    right: auto;
+    height: 300px;
+    width: 25em;
+}

@@ -14,6 +14,6 @@ export const deletePostHandler = async (encodedToken, postId, dataDispatch) => {
     }
   } catch (e) {
     console.error(e);
-    toast.error(e?.response?.data?.errors[0]);
+    toast.error("Something went wrong, try again!");
   }
 };

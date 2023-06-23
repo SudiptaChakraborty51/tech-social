@@ -10,12 +10,13 @@ import { addToBookmarkPostHandler } from "../../utils/bookmarkPostHandler";
 import { useLocation, useNavigate } from "react-router-dom";
 import Comment from "../Comment/comment";
 import { deletePostHandler } from "../../utils/deletePostHandler";
+import PostModal from "../PostModal/postModal";
+import Linkify from "react-linkify";
 
 const PostCard = ({ post }) => {
   const {
     _id,
     content,
-    contentLink,
     mediaURL,
     likes,
     comments,
@@ -32,10 +33,14 @@ const PostCard = ({ post }) => {
 
   const [showCommentSection, setShowCommentSection] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const editClickHandler = () => {
     setShowOptions(false);
+    setShowEditModal(true);
   };
+
+  console.log(showEditModal);
 
   const deleteClickHandler = () => {
     deletePostHandler(authState?.token, _id, dataDispatch);
@@ -122,12 +127,7 @@ const PostCard = ({ post }) => {
           navigate(`/post/${_id}`);
         }}
       >
-        <p className="content">{content}</p>
-        {contentLink && (
-          <a href={`${contentLink}`} target="_blank" rel="noopener noreferrer">
-            {contentLink}
-          </a>
-        )}
+        <Linkify className="content">{content}</Linkify>
         {mediaURL && mediaURL.split("/")[4] === "image" ? (
           <img
             src={mediaURL}
@@ -195,6 +195,10 @@ const PostCard = ({ post }) => {
         </div>
       </div>
       {showCommentSection && <Comment post={post} />}
+
+      {showEditModal && (
+        <PostModal post={post} setShowEditModal={setShowEditModal} />
+      )}
     </div>
   );
 };
