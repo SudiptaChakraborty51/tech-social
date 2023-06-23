@@ -1,17 +1,17 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import CommentItem from "../CommentItem/commentItem";
-import { AuthContext } from "../../contexts/authContext";
+// import { AuthContext } from "../../contexts/authContext";
 import "./comment.css";
 
 const Comment = ({ post }) => {
   console.log(post);
-  const { authState } = useContext(AuthContext);
+  // const { authState } = useContext(AuthContext);
 
-  const [commentText, setCommentText] = useState("");
+  // const [commentText, setCommentText] = useState("");
 
   return (
     <div>
-      <div className="comment-main-container">
+      {/* <div className="comment-main-container">
         <img
           src={
             authState?.user?.profileAvatar ||
@@ -28,7 +28,7 @@ const Comment = ({ post }) => {
           />
           <i class="fa-solid fa-paper-plane"></i>
         </div>
-      </div>
+      </div> */}
       {post?.comments?.length > 0 ? (
         post?.comments?.map((comment) => (
           <CommentItem comment={comment} key={comment._id} />
