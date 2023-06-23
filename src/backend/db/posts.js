@@ -9,8 +9,7 @@ export const posts = [
   {
     _id: "sfgjuk_ftbj_6789_fghuSD",
     content:
-      "Excited to share my first e-commerce website built using ReactJS, mockbee server, vanilla CSS🥳.",
-    contentLink: "https://glamour-ecommerce.vercel.app/",
+      "Excited to share my first e-commerce website built using ReactJS, mockbee server, vanilla CSS🥳. https://glamour-ecommerce.vercel.app/",
     mediaURL:
       "https://res.cloudinary.com/dqlasoiaw/video/upload/v1686771977/tech-social/Glamour_Ecommerce_-_Google_Chrome_2023-06-08_17-22-56_online-video-cutter.com_uaylnt.mp4",
     likes: {
@@ -38,7 +37,6 @@ export const posts = [
     _id: "jdAd6u_gd8u_4g89_sHk3ED",
     content:
       "I’m happy to share that I’m starting a new position as Senior Software Engineer at Google!",
-    contentLink: "",
     mediaURL:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686811863/tech-social/shutterstock_630500720-4_bwekkt.jpg",
     likes: {
@@ -60,9 +58,7 @@ export const posts = [
   {
     _id: "gs5eubh_7hrk_6dg5_GfguQB",
     content:
-      "I write my first technical blog about querySelector() and querySelectorAll() on elements in JavaScript.",
-    contentLink:
-      "https://sudipta26.hashnode.dev/introducing-queryselector-and-queryselectorall-on-elements-in-javascript",
+      "I write my first technical blog about querySelector() and querySelectorAll() on elements in JavaScript. https://sudipta26.hashnode.dev/introducing-queryselector-and-queryselectorall-on-elements-in-javascript",
     mediaURL:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686808219/tech-social/EDAef5fL7_zkli5s.jpg",
     likes: {
@@ -79,7 +75,6 @@ export const posts = [
     _id: "gdko7tg_hdJu_1298_gfkiDR",
     content:
       "Optimizing Android app performance: Minimize APK size and optimize resource usage for faster app installation and startup.",
-    contentLink: "",
     mediaURL:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686814593/tech-social/How_to_Become_an_Android_Developer_qe0mpv.jpg",
     likes: {
@@ -96,7 +91,6 @@ export const posts = [
     _id: "gukRj5k_f5bj_6s89_fg5uSy",
     content:
       "Complete Backend Developer Roadmap in 2023. 150+ Free + Paid Resources. Drop a 👋 in the comments. Make sure you follow me so that I can DM You.",
-    contentLink: "",
     mediaURL:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686843689/tech-social/FyZwDsoXgAIi2H-_ydbpe4.jpg",
     likes: {
@@ -119,7 +113,6 @@ export const posts = [
     _id: "e5Hyswe_btry_5g06_fGrYH3dc",
     content:
       "🚀Join us at agprop and help shape the future of real estate! We're hiring talented interns and developers for Full Stack, Frontend, Backend, UI/UX, & DevOps roles. Work with cutting-edge tech like cloud and machine learning. Send your resume to vrijraj.s@agprop.in",
-    contentLink: "",
     mediaURL:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686846308/tech-social/FvRFiZ9XoAA3xxo_n0rclt.jpg",
     likes: {
