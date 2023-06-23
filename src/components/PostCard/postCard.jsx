@@ -7,7 +7,7 @@ import { likePostHandler } from "../../utils/likePostHandler";
 import { dislikePostHandler } from "../../utils/dislikePostHandler";
 import { removeFromBookmarkPostHandler } from "../../utils/removeFromBookmarkHandler";
 import { addToBookmarkPostHandler } from "../../utils/bookmarkPostHandler";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Comment from "../Comment/comment";
 import { deletePostHandler } from "../../utils/deletePostHandler";
 
@@ -39,7 +39,13 @@ const PostCard = ({ post }) => {
 
   const deleteClickHandler = () => {
     deletePostHandler(authState?.token, _id, dataDispatch);
-    setShowOptions(false);
+    if (pathname === `/post/${_id}`) {
+      setTimeout(() => {
+        navigate("/");
+        window.scroll({ top: 0, behavior: "smooth" });
+      }, 2000);
+    }
+    setShowOptions((prev) => !prev);
   };
 
   useEffect(() => {
@@ -70,6 +76,8 @@ const PostCard = ({ post }) => {
     navigator.clipboard.writeText(`https://tech-social.vercel.app/post/${_id}`);
     toast.success("Link Copied. Start sharing!");
   };
+
+  const { pathname } = useLocation();
 
   return (
     <div key={_id} className="postcard-main">
@@ -102,7 +110,11 @@ const PostCard = ({ post }) => {
               <div className="edit-delete-post-modal">
                 <div onClick={editClickHandler}>Edit</div>
                 <hr />
-                <div onClick={deleteClickHandler}>Delete</div>
+                <div
+                  onClick={deleteClickHandler}
+                >
+                  Delete
+                </div>
               </div>
             )}
           </div>

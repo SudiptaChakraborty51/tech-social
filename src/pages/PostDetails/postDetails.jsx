@@ -34,7 +34,7 @@ const PostDetails = () => {
   useEffect(() => {
     getPostDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [dataState.posts]);
 
   return (
     <div className="post-details">
