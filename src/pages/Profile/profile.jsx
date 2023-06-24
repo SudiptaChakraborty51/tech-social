@@ -13,6 +13,7 @@ import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
 import { followUserHandler } from "../../utils/followUserHandler";
 import { toast } from "react-toastify";
 import FollowModal from "../../components/FollowModal/followModal";
+import EditProfileModal from "../../components/EditProfileModal/editProfileModal";
 
 const Profile = () => {
   document.title = "tech-social | Profile";
@@ -23,6 +24,7 @@ const Profile = () => {
 
   const [profileData, setProfileData] = useState({});
   const [userPosts, setUserPosts] = useState([]);
+  const [editProfileModal, setEditProfileModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -78,6 +80,13 @@ const Profile = () => {
                   setShowFollowModal={setShowFollowModal}
                 />
               )}
+              {editProfileModal && (
+                <EditProfileModal
+                  profileData={profileData}
+                  editProfileModal={editProfileModal}
+                  setEditProfileModal={setEditProfileModal}
+                />
+              )}
               <div className="profile-container-header">
                 <div className="profile-name-avatar">
                   <img
@@ -97,7 +106,10 @@ const Profile = () => {
                 </div>
                 {profileData?.username === authState?.user?.username ? (
                   <button className="edit-button">
-                    <i className="fa-solid fa-pen fa-md"></i>
+                    <i
+                      className="fa-solid fa-pen fa-md"
+                      onClick={() => setEditProfileModal(true)}
+                    ></i>
                   </button>
                 ) : (
                   <button

@@ -40,7 +40,7 @@ const SuggestedUser = () => {
         <p>Loading...</p>
       ) : (
         <div className="suggested-users-main">
-          {getSuggestedUsers().length > 0 ? (
+          {getSuggestedUsers()?.length > 0 ? (
             getSuggestedUsers()?.map(
               ({ _id, firstName, lastName, username, profileAvatar }) => {
                 console.log(isFollowed(dataState?.users, _id));

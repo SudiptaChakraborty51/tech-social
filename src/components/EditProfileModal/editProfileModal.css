@@ -1,0 +1,117 @@
+.edit-profile-modal-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  inset: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.edit-profile-modal {
+  background-color: var(--white-color);
+  margin: 0;
+  max-width: 24rem;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 20px;
+  border: 1px solid var(--grey-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile-modal h2 {
+  margin: 0;
+}
+
+.edit-profile-modal .edit-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.edit-profile-modal .edit-profile-header .fa-xmark {
+  font-size: 18px;
+}
+
+.edit-profile-modal .avatar {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit-profile-modal .profile-image-edit {
+  position: relative;
+}
+
+.profile-image-edit .fa-camera {
+  border-radius: 50%;
+  background-color: var(--white-color);
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  position: absolute;
+  right: 10px;
+  width: 30px;
+  align-items: center;
+  bottom: 10px;
+  color: var(--primary-dark);
+}
+
+.edit-profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.edit-profile-details .edit-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.edit-profile-details label {
+  font-weight: bold;
+}
+
+.edit-profile-details input {
+  border: 1px solid var(--grey-color);
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.edit-profile-details .edit-website {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile-details .edit-bio {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile-details .edit-bio textarea {
+  resize: vertical;
+  width: calc(100% - 20px);
+  height: 6rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.edit-profile-modal button {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.edit-profile-modal button:hover {
+  background-color: var(--primary-dark);
+}

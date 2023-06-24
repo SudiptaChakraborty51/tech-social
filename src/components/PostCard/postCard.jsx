@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./postCard.css";
 import { DataContext } from "../../contexts/dataContext";
 import { AuthContext } from "../../contexts/authContext";
@@ -15,17 +15,7 @@ import Linkify from "react-linkify";
 import { contentLink } from "../../utils/contentLink";
 
 const PostCard = ({ post }) => {
-  const {
-    _id,
-    content,
-    mediaURL,
-    likes,
-    comments,
-    username,
-    createdAt,
-  } = post;
-
-  const [userDetails, setUserDetails] = useState({});
+  const { _id, content, mediaURL, likes, comments, username, createdAt } = post;
 
   const { dataState, dataDispatch } = useContext(DataContext);
   const { authState } = useContext(AuthContext);
@@ -53,13 +43,6 @@ const PostCard = ({ post }) => {
     }
     setShowOptions((prev) => !prev);
   };
-
-  useEffect(() => {
-    setUserDetails(
-      dataState?.users?.find((user) => user.username === username)
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const isliked = () =>
     likes?.likedBy?.filter(({ _id }) => _id === authState?.user?._id)
@@ -92,9 +75,21 @@ const PostCard = ({ post }) => {
           className="postcard-header-left"
           onClick={() => navigate(`/profile/${username}`)}
         >
-          <img src={userDetails?.profileAvatar} alt="avatar" />
+          <img
+            src={
+              dataState?.users?.find((user) => user.username === username)
+                ?.profileAvatar
+            }
+            alt="avatar"
+          />
           <div>
-            <h4>{`${userDetails?.firstName} ${userDetails?.lastName}`}</h4>
+            <h4>{`${
+              dataState?.users?.find((user) => user.username === username)
+                ?.firstName
+            } ${
+              dataState?.users?.find((user) => user.username === username)
+                ?.lastName
+            }`}</h4>
             <small>
               @{username}
               {" - "}
@@ -128,7 +123,9 @@ const PostCard = ({ post }) => {
           navigate(`/post/${_id}`);
         }}
       >
-        <Linkify className="content" componentDecorator = {contentLink}>{content}</Linkify>
+        <Linkify className="content" componentDecorator={contentLink}>
+          {content}
+        </Linkify>
         {mediaURL && mediaURL.split("/")[4] === "image" ? (
           <img
             src={mediaURL}
