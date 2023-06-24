@@ -29,18 +29,18 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
     input.click();
   };
 
-  const videoSelectHandler = () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "video/*";
-    input.onchange = (e) => {
-      const file = e.target.files[0];
-      Math.round(file.size / 7168000) > 1
-        ? toast.error("File size should not be more than 7Mb")
-        : setMedia(file);
-    };
-    input.click();
-  };
+  // const videoSelectHandler = () => {
+  //   const input = document.createElement("input");
+  //   input.type = "file";
+  //   input.accept = "video/*";
+  //   input.onchange = (e) => {
+  //     const file = e.target.files[0];
+  //     Math.round(file.size / 7168000) > 1
+  //       ? toast.error("File size should not be more than 7Mb")
+  //       : setMedia(file);
+  //   };
+  //   input.click();
+  // };
 
   console.log(media);
 
@@ -158,10 +158,10 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
         <div className="edit-post-modal-buttons">
           <div>
             <i class="fa-regular fa-image" onClick={imageSelectHandler}></i>
-            <i
+            {/* <i
               class="fa-regular fa-file-video"
               onClick={videoSelectHandler}
-            ></i>
+            ></i> */}
             <i
               class="fa-regular fa-face-smile"
               onClick={() => setShowEmojiPicker(!showEmojiPicker)}
