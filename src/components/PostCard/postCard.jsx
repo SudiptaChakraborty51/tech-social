@@ -12,6 +12,7 @@ import Comment from "../Comment/comment";
 import { deletePostHandler } from "../../utils/deletePostHandler";
 import PostModal from "../PostModal/postModal";
 import Linkify from "react-linkify";
+import { contentLink } from "../../utils/contentLink";
 
 const PostCard = ({ post }) => {
   const {
@@ -127,7 +128,7 @@ const PostCard = ({ post }) => {
           navigate(`/post/${_id}`);
         }}
       >
-        <Linkify className="content">{content}</Linkify>
+        <Linkify className="content" componentDecorator = {contentLink}>{content}</Linkify>
         {mediaURL && mediaURL.split("/")[4] === "image" ? (
           <img
             src={mediaURL}
