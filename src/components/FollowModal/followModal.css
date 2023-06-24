@@ -1,0 +1,59 @@
+.follow-modal-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  inset: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.follow-modal {
+  background-color: var(--white-color);
+  margin: 0;
+  max-width: 18rem;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px 20px;
+  border: 1px solid var(--grey-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.follow-modal h3 {
+  margin: 0;
+}
+
+.follow-modal .follow-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--grey-color);
+}
+
+.follow-modal .follow-modal-header .fa-xmark {
+  font-size: 18px;
+}
+
+.follow-modal .follow-modal-users-container {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 20px 0;
+}
+
+.follow-modal .follow-modal-users {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.follow-modal .follow-modal-users div {
+  display: flex;
+  flex-direction: column;
+}

@@ -12,6 +12,7 @@ import { isFollowed } from "../../utils/isFollowed";
 import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
 import { followUserHandler } from "../../utils/followUserHandler";
 import { toast } from "react-toastify";
+import FollowModal from "../../components/FollowModal/followModal";
 
 const Profile = () => {
   document.title = "tech-social | Profile";
@@ -24,6 +25,11 @@ const Profile = () => {
   const [userPosts, setUserPosts] = useState([]);
 
   const navigate = useNavigate();
+
+  const [showFollowModal, setShowFollowModal] = useState({
+    show: false,
+    type: "",
+  });
 
   const getUserDetails = async () => {
     try {
@@ -61,6 +67,17 @@ const Profile = () => {
         <div className="profile-main">
           <div>
             <div className="profile-container">
+              {showFollowModal.show && (
+                <FollowModal
+                  data={
+                    showFollowModal.type === "Following"
+                      ? profileData?.following
+                      : profileData?.followers
+                  }
+                  showFollowModal={showFollowModal}
+                  setShowFollowModal={setShowFollowModal}
+                />
+              )}
               <div className="profile-container-header">
                 <div className="profile-name-avatar">
                   <img
@@ -135,7 +152,15 @@ const Profile = () => {
                   {userPosts?.length}{" "}
                   {`${userPosts?.length > 1 ? "Posts" : "Post"}`}
                 </p>
-                <p>
+                <p
+                  onClick={() =>
+                    setShowFollowModal((prev) => ({
+                      ...prev,
+                      show: true,
+                      type: "Followers",
+                    }))
+                  }
+                >
                   {profileData?.followers?.length}{" "}
                   {`${
                     profileData?.followers?.length > 1
@@ -143,7 +168,15 @@ const Profile = () => {
                       : "Follower"
                   }`}
                 </p>
-                <p>
+                <p
+                  onClick={() =>
+                    setShowFollowModal((prev) => ({
+                      ...prev,
+                      show: true,
+                      type: "Following",
+                    }))
+                  }
+                >
                   {profileData?.following?.length}{" "}
                   {`${
                     profileData?.following?.length > 1
