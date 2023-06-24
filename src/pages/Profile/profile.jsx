@@ -14,6 +14,8 @@ import { followUserHandler } from "../../utils/followUserHandler";
 import { toast } from "react-toastify";
 import FollowModal from "../../components/FollowModal/followModal";
 import EditProfileModal from "../../components/EditProfileModal/editProfileModal";
+import { getPostDate } from "../../utils/getPostData";
+import { getSortedPosts } from "../../utils/sortPosts";
 
 const Profile = () => {
   document.title = "tech-social | Profile";
@@ -153,11 +155,7 @@ const Profile = () => {
               )}
               <p>
                 <i class="fa-solid fa-calendar"></i> Joined{" "}
-                {`${new Date(profileData?.createdAt)
-                  .toDateString()
-                  .split(" ")
-                  .slice(1, 4)
-                  .join(" ")}`}
+                {getPostDate(profileData?.createdAt)}
               </p>
               <div className="profile-post-follow-details">
                 <p>
@@ -200,7 +198,7 @@ const Profile = () => {
             </div>
             <div>
               {userPosts.length > 0 &&
-                userPosts?.map((post) => (
+                getSortedPosts(userPosts, "Latest")?.map((post) => (
                   <PostCard key={post._id} post={post} />
                 ))}
             </div>

@@ -13,6 +13,7 @@ import { deletePostHandler } from "../../utils/deletePostHandler";
 import PostModal from "../PostModal/postModal";
 import Linkify from "react-linkify";
 import { contentLink } from "../../utils/contentLink";
+import { getPostDate } from "../../utils/getPostData";
 
 const PostCard = ({ post }) => {
   const { _id, content, mediaURL, likes, comments, username, createdAt } = post;
@@ -93,11 +94,7 @@ const PostCard = ({ post }) => {
             <small>
               @{username}
               {" - "}
-              <span>{` ${new Date(createdAt)
-                .toDateString()
-                .split(" ")
-                .slice(1, 4)
-                .join(" ")}`}</span>
+              <span>{getPostDate(createdAt)}</span>
             </small>
           </div>
         </div>
