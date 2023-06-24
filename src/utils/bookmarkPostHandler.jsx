@@ -5,7 +5,6 @@ export const addToBookmarkPostHandler = async (
   postId,
   dataDispatch
 ) => {
-  console.log(postId);
   try {
     const { data, status } = await axios.post(
       `/api/users/bookmark/${postId}`,

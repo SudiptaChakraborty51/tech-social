@@ -32,8 +32,6 @@ const PostCard = ({ post }) => {
     setShowEditModal(true);
   };
 
-  console.log(showEditModal);
-
   const deleteClickHandler = () => {
     deletePostHandler(authState?.token, _id, dataDispatch);
     if (pathname === `/post/${_id}`) {

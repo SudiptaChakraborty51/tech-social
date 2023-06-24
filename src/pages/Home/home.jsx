@@ -19,8 +19,6 @@ const Home = () => {
     ({ username }) => username === authState?.user?.username
   );
 
-  console.log(loggedInUser);
-
   const postsOfFollowed = dataState?.posts?.filter(
     (post) =>
       loggedInUser?.following?.some(

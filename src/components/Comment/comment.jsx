@@ -4,7 +4,6 @@ import CommentItem from "../CommentItem/commentItem";
 import "./comment.css";
 
 const Comment = ({ post }) => {
-  console.log(post);
   // const { authState } = useContext(AuthContext);
 
   // const [commentText, setCommentText] = useState("");

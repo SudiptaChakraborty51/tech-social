@@ -5,7 +5,6 @@ import "./commentItem.css";
 import { useNavigate } from "react-router-dom";
 
 const CommentItem = ({ comment }) => {
-  console.log(comment);
   const { dataState } = useContext(DataContext);
   const { authState } = useState(AuthContext);
   const navigate = useNavigate();

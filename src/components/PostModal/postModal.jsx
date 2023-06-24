@@ -42,8 +42,6 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
   //   input.click();
   // };
 
-  console.log(media);
-
   const emojiClickHandler = (emojiObj) => {
     const emoji = emojiObj.emoji;
     const updatedContent = updatedPost?.content + emoji;
@@ -58,7 +56,6 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
       try {
         if (media) {
           const response = await uploadMedia(media);
-          console.log(response);
           editPostHandler(
             post._id,
             { content: updatedPost?.content, mediaURL: response.url },
@@ -84,7 +81,6 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
     } else {
       try {
         const response = await uploadMedia(media);
-        console.log(response);
         createPostHandler(
           { content: updatedPost?.content, mediaURL: response.url },
           authState?.token,
@@ -100,8 +96,6 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
       }
     }
   };
-
-  console.log("updatedPost", updatedPost);
 
   return (
     <div className="edit-post-modal-container">

@@ -24,7 +24,6 @@ const Login = () => {
   };
 
   const loginHandler = (e) => {
-    console.log(userData);
     e.preventDefault();
     if (!userData.username.trim() || !userData.password.trim()) {
       toast.error("Enter valid input!");

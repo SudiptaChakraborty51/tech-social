@@ -44,8 +44,6 @@ const PostForm = () => {
   //   input.click();
   // };
 
-  console.log(media);
-
   const emojiClickHandler = (emojiObj) => {
     const emoji = emojiObj.emoji;
     const updatedContent = postContent + emoji;
@@ -59,7 +57,6 @@ const PostForm = () => {
     // toast.warn("Creating a new Post...");
     try {
       const response = await uploadMedia(media);
-      console.log(response);
       createPostHandler(
         { content: postContent, mediaURL: response.url },
         authState?.token,
