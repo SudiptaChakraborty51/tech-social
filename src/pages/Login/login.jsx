@@ -84,9 +84,9 @@ const Login = () => {
               }
             >
               {isPasswordHide ? (
-                <i class="fa-regular fa-eye-slash"></i>
+                <i className="fa-regular fa-eye-slash"></i>
               ) : (
-                <i class="fa-regular fa-eye"></i>
+                <i className="fa-regular fa-eye"></i>
               )}
             </span>
           </div>
@@ -108,7 +108,7 @@ const Login = () => {
         onClick={() => navigate("/signup")}
         className="create-new-account-link"
       >
-        Create New account <i class="fa-solid fa-angle-right"></i>
+        Create New account <i className="fa-solid fa-angle-right"></i>
       </p>
     </div>
   );

@@ -11,7 +11,7 @@ const FollowModal = ({ data, showFollowModal, setShowFollowModal }) => {
         <div className="follow-modal-header">
           <h3>{showFollowModal.type}</h3>
           <i
-            class="fa-solid fa-xmark"
+            className="fa-solid fa-xmark"
             onClick={() =>
               setShowFollowModal((prev) => ({ ...prev, show: false, type: "" }))
             }

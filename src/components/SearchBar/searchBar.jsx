@@ -37,9 +37,9 @@ export const SearchBar = () => {
           onChange={inputChangeHandler}
         />
         {searchInput.trim().length === 0 ? (
-          <i class="fa-solid fa-magnifying-glass"></i>
+          <i className="fa-solid fa-magnifying-glass"></i>
         ) : (
-          <i class="fa-solid fa-xmark" onClick={clearSearch}></i>
+          <i className="fa-solid fa-xmark" onClick={clearSearch}></i>
         )}
       </div>
       <div className="search-main-container">

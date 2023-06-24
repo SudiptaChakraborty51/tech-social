@@ -144,9 +144,9 @@ const Signup = () => {
               }
             >
               {isPasswordHide ? (
-                <i class="fa-regular fa-eye-slash"></i>
+                <i className="fa-regular fa-eye-slash"></i>
               ) : (
-                <i class="fa-regular fa-eye"></i>
+                <i className="fa-regular fa-eye"></i>
               )}
             </span>
           </div>
@@ -180,9 +180,9 @@ const Signup = () => {
               }
             >
               {isConfirmPasswordHide ? (
-                <i class="fa-regular fa-eye-slash"></i>
+                <i className="fa-regular fa-eye-slash"></i>
               ) : (
-                <i class="fa-regular fa-eye"></i>
+                <i className="fa-regular fa-eye"></i>
               )}
             </span>
           </div>
@@ -194,7 +194,7 @@ const Signup = () => {
       </form>
 
       <p onClick={() => navigate("/login")}>
-        Already have an account <i class="fa-solid fa-angle-right"></i>
+        Already have an account <i className="fa-solid fa-angle-right"></i>
       </p>
     </div>
   );

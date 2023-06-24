@@ -99,7 +99,7 @@ const PostCard = ({ post }) => {
         {username === authState?.user?.username && (
           <div className="edit-delete-icon">
             <i
-              class="fa-solid fa-ellipsis"
+              className="fa-solid fa-ellipsis"
               onClick={() => setShowOptions(!showOptions)}
             ></i>
             {showOptions && (
@@ -182,7 +182,7 @@ const PostCard = ({ post }) => {
         </div>
         <div>
           <i
-            class="fa-regular fa-share-from-square"
+            className="fa-regular fa-share-from-square"
             onClick={copyLinkHandler}
           ></i>
         </div>

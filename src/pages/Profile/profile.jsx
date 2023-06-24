@@ -154,7 +154,7 @@ const Profile = () => {
                 </a>
               )}
               <p>
-                <i class="fa-solid fa-calendar"></i> Joined{" "}
+                <i className="fa-solid fa-calendar"></i> Joined{" "}
                 {getPostDate(profileData?.createdAt)}
               </p>
               <div className="profile-post-follow-details">

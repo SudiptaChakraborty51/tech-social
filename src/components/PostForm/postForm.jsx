@@ -101,16 +101,16 @@ const PostForm = () => {
             </video>
           ) : null}
           <button onClick={() => setMedia(null)}>
-            <i class="fa-solid fa-xmark"></i>
+            <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
       )}
       <div className="post-form-button-container">
         <div>
-          <i class="fa-regular fa-image" onClick={imageSelectHandler}></i>
-          {/* <i class="fa-regular fa-file-video" onClick={videoSelectHandler}></i> */}
+          <i className="fa-regular fa-image" onClick={imageSelectHandler}></i>
+          {/* <i className="fa-regular fa-file-video" onClick={videoSelectHandler}></i> */}
           <i
-            class="fa-regular fa-face-smile"
+            className="fa-regular fa-face-smile"
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
           ></i>
           {showEmojiPicker && (

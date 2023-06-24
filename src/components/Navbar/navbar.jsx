@@ -16,7 +16,7 @@ const Navbar = () => {
           <h2>tech-social</h2>
         </div>
         <div className="right-nav">
-          <i class="fa-solid fa-moon"></i>
+          <i className="fa-solid fa-moon"></i>
           {authState?.token && (
             <img
               onClick={() => {

@@ -25,7 +25,7 @@ const Comment = ({ post }) => {
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
           />
-          <i class="fa-solid fa-paper-plane"></i>
+          <i className="fa-solid fa-paper-plane"></i>
         </div>
       </div> */}
       {post?.comments?.length > 0 ? (

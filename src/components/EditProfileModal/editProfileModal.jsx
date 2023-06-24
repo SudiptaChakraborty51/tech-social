@@ -37,7 +37,7 @@ const EditProfileModal = ({
         <div className="edit-profile-header">
           <h2>Edit Profile</h2>
           <i
-            class="fa-solid fa-xmark"
+            className="fa-solid fa-xmark"
             onClick={() => setEditProfileModal(false)}
           ></i>
         </div>
@@ -57,7 +57,7 @@ const EditProfileModal = ({
               }
               alt="avatar"
             />
-            <i class="fa-solid fa-camera"></i>
+            <i className="fa-solid fa-camera"></i>
           </div>
         </div>
         <div className="edit-profile-details">

@@ -103,7 +103,7 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
         <div className="edit-post-modal-header">
           {post ? <h1>Edit Post</h1> : <h1>Create Post</h1>}
           <i
-            class="fa-solid fa-xmark"
+            className="fa-solid fa-xmark"
             onClick={() =>
               post ? setShowEditModal(false) : setShowCreatePostModal(false)
             }
@@ -143,7 +143,7 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
                   : setMedia(null)
               }
             >
-              <i class="fa-solid fa-xmark"></i>
+              <i className="fa-solid fa-xmark"></i>
             </button>
           </div>
         ) : (
@@ -151,13 +151,13 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
         )}
         <div className="edit-post-modal-buttons">
           <div>
-            <i class="fa-regular fa-image" onClick={imageSelectHandler}></i>
+            <i className="fa-regular fa-image" onClick={imageSelectHandler}></i>
             {/* <i
-              class="fa-regular fa-file-video"
+              className="fa-regular fa-file-video"
               onClick={videoSelectHandler}
             ></i> */}
             <i
-              class="fa-regular fa-face-smile"
+              className="fa-regular fa-face-smile"
               onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             ></i>
             {showEmojiPicker && (
