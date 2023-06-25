@@ -13,24 +13,18 @@ const SuggestedUser = () => {
 
   const { authState } = useContext(AuthContext);
 
-  const getSuggestedUsers = () => {
-    const suggestedUser = dataState?.users?.filter(
-      ({ username, followers }) => {
-        if (username === authState?.user?.username) {
-          return false;
-        } else if (followers.length === 0) {
-          return true;
-        } else {
-          return followers.some(
-            ({ username }) => username !== authState?.user?.username
-          );
-        }
-      }
+  const userData = dataState?.users?.find(
+    (user) => user.username === authState?.user?.username
+  );
+
+  const suggestedUsers = dataState?.users
+    ?.filter((user) => user.username !== userData?.username)
+    ?.filter(
+      (eachUser) =>
+        !userData?.following?.find(
+          (data) => data.username === eachUser.username
+        )
     );
-    return suggestedUser?.length > 3
-      ? suggestedUser.splice(0, 3)
-      : suggestedUser;
-  };
 
   const navigate = useNavigate();
 
@@ -40,9 +34,10 @@ const SuggestedUser = () => {
         <p>Loading...</p>
       ) : (
         <div className="suggested-users-main">
-          {getSuggestedUsers()?.length > 0 ? (
-            getSuggestedUsers()?.map(
-              ({ _id, firstName, lastName, username, profileAvatar }) => {
+          {suggestedUsers?.length > 0 ? (
+            suggestedUsers
+              ?.splice(0, 3)
+              ?.map(({ _id, firstName, lastName, username, profileAvatar }) => {
                 return (
                   <li key={_id} className="suggested-user">
                     <div
@@ -94,8 +89,7 @@ const SuggestedUser = () => {
                     </button>
                   </li>
                 );
-              }
-            )
+              })
           ) : (
             <p>No suggested user is present.</p>
           )}
