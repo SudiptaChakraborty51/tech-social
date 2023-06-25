@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
 import "./editProfileModal.css";
 import { editUserProfileHandler } from "../../utils/editUserProfileHandler";
-import {AuthContext} from "../../contexts/authContext";
-import {DataContext} from "../../contexts/dataContext";
+import { AuthContext } from "../../contexts/authContext";
+import { DataContext } from "../../contexts/dataContext";
 import { toast } from "react-toastify";
+import EditImageModal from "../EditImageModal/editImageModal";
 
-const EditProfileModal = ({
-  profileData,
-  setEditProfileModal,
-}) => {
+const EditProfileModal = ({ profileData, setEditProfileModal }) => {
   const [updatedProfileData, setUpdatedProfileData] = useState({
     firstName: profileData?.firstName,
     lastName: profileData?.lastName,
@@ -17,19 +15,21 @@ const EditProfileModal = ({
     profileAvatar: profileData?.profileAvatar,
   });
 
-  const {authState} = useContext(AuthContext);
-  const {dataDispatch} = useContext(DataContext);
+  const [editImageModal, setEditImageModal] = useState(false);
+
+  const { authState } = useContext(AuthContext);
+  const { dataDispatch } = useContext(DataContext);
 
   const updateProfileDetails = (e) => {
-    const {name, value} = e.target;
-    setUpdatedProfileData(prev => ({...prev, [name] : value}));
+    const { name, value } = e.target;
+    setUpdatedProfileData((prev) => ({ ...prev, [name]: value }));
   };
 
   const updateProfileHandler = () => {
     editUserProfileHandler(updatedProfileData, authState?.token, dataDispatch);
-    setEditProfileModal(editProfileModal => !editProfileModal);
+    setEditProfileModal((editProfileModal) => !editProfileModal);
     toast.success("Profile updated successfully!");
-  }
+  };
 
   return (
     <div className="edit-profile-modal-container">
@@ -57,7 +57,10 @@ const EditProfileModal = ({
               }
               alt="avatar"
             />
-            <i className="fa-solid fa-camera"></i>
+            <i
+              className="fa-solid fa-camera"
+              onClick={() => setEditImageModal(true)}
+            ></i>
           </div>
         </div>
         <div className="edit-profile-details">
@@ -84,14 +87,14 @@ const EditProfileModal = ({
             </div>
           </div>
           <div className="edit-website">
-          <label htmlFor="website">Website</label>
-          <input
-            id="website"
-            type="text"
-            name="website"
-            value={updatedProfileData?.website}
-            onChange={updateProfileDetails}
-          />
+            <label htmlFor="website">Website</label>
+            <input
+              id="website"
+              type="text"
+              name="website"
+              value={updatedProfileData?.website}
+              onChange={updateProfileDetails}
+            />
           </div>
           <div className="edit-bio">
             <label htmlFor="bio">Bio</label>
@@ -106,6 +109,13 @@ const EditProfileModal = ({
         </div>
         <button onClick={updateProfileHandler}>Update</button>
       </div>
+      {editImageModal && (
+        <EditImageModal
+          setUpdatedProfileData={setUpdatedProfileData}
+          setEditImageModal={setEditImageModal}
+          editImageModal={editImageModal}
+        />
+      )}
     </div>
   );
 };

@@ -96,7 +96,7 @@
 }
 
 .edit-profile-details .edit-bio textarea {
-  resize: vertical;
+  resize: none;
   width: calc(100% - 20px);
   height: 6rem;
   padding: 0.5rem;

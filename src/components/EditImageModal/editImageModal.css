@@ -1,0 +1,85 @@
+.edit-image-modal-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  inset: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.edit-image-modal {
+  background-color: var(--white-color);
+  margin: 0;
+  max-width: 24rem;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 20px;
+  border: 1px solid var(--grey-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-image-modal h3 {
+  margin: 0;
+}
+
+.edit-image-modal .edit-image-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.edit-image-modal .edit-image-modal-header .fa-xmark {
+  font-size: 18px;
+}
+
+.edit-image-modal .avatar-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-image-modal .avatar-container img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-color);
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+
+.edit-image-modal .avatar-container img:hover {
+  opacity: 0.7;
+}
+
+.edit-image-modal .edit-image-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.edit-image-modal .edit-image-buttons button {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.edit-image-modal .edit-image-buttons button:hover {
+  background-color: var(--primary-dark);
+}
+
+.edit-image-modal .edit-image-buttons button i {
+  font-size: 16px;
+  font-weight: bold;
+  padding-right: 10px;
+}

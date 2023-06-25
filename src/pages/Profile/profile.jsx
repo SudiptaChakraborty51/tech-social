@@ -14,7 +14,6 @@ import { followUserHandler } from "../../utils/followUserHandler";
 import { toast } from "react-toastify";
 import FollowModal from "../../components/FollowModal/followModal";
 import EditProfileModal from "../../components/EditProfileModal/editProfileModal";
-import { getPostDate } from "../../utils/getPostData";
 import { getSortedPosts } from "../../utils/sortPosts";
 
 const Profile = () => {
@@ -155,7 +154,11 @@ const Profile = () => {
               )}
               <p>
                 <i className="fa-solid fa-calendar"></i> Joined{" "}
-                {getPostDate(profileData?.createdAt)}
+                {` ${new Date(profileData?.createdAt)
+                    .toDateString()
+                    .split(" ")
+                    .slice(1, 4)
+                    .join(" ")}`}
               </p>
               <div className="profile-post-follow-details">
                 <p>
