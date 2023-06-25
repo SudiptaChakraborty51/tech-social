@@ -10,7 +10,7 @@ import { createPostHandler } from "../../utils/createPostHandler";
 
 const PostForm = () => {
   const { authState } = useContext(AuthContext);
-  const { dataDispatch } = useContext(DataContext);
+  const { dataState, dataDispatch } = useContext(DataContext);
 
   const navigate = useNavigate();
 
@@ -80,7 +80,8 @@ const PostForm = () => {
             navigate(`/profile/${authState?.user?.username}`);
           }}
           src={
-            authState?.user?.profileAvatar ||
+            dataState?.users?.find((user) => user._id === authState?.user?._id)
+              ?.profileAvatar ||
             `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
           }
           alt="profile-pic"

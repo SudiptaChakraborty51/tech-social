@@ -19,7 +19,20 @@ const EditImageModal = ({
         </div>
         <div className="avatar-container">
           {avatarDb?.map((avatar) => (
-            <img src={avatar} key={avatar} alt="avatar" />
+            <img
+              src={avatar}
+              key={avatar}
+              alt="avatar"
+              name="profileAvatar"
+              value={avatar}
+              onClick={() => {
+                setUpdatedProfileData((prev) => ({
+                  ...prev,
+                  profileAvatar: avatar,
+                }));
+                setEditImageModal(false);
+              }}
+            />
           ))}
         </div>
         <div className="edit-image-buttons">

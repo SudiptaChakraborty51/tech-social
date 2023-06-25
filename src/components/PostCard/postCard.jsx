@@ -77,7 +77,8 @@ const PostCard = ({ post }) => {
           <img
             src={
               dataState?.users?.find((user) => user.username === username)
-                ?.profileAvatar
+                ?.profileAvatar ||
+              `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
             }
             alt="avatar"
           />

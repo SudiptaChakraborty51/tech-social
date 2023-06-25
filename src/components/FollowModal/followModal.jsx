@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./followModal.css";
 import { useNavigate } from "react-router-dom";
+import { DataContext } from "../../contexts/dataContext";
 
 const FollowModal = ({ data, showFollowModal, setShowFollowModal }) => {
   const navigate = useNavigate();
+
+  const { dataState } = useContext(DataContext);
 
   return (
     <div className="follow-modal-container">
@@ -19,44 +22,50 @@ const FollowModal = ({ data, showFollowModal, setShowFollowModal }) => {
         </div>
         {data.length > 0 ? (
           <div className="follow-modal-users-container">
-            {data?.map(
-              ({ _id, firstName, lastName, username, profileAvatar }) => {
-                return (
-                  <li key={_id}>
-                    <div
-                      onClick={() => {
-                        navigate(`/profile/${username}`);
-                        setShowFollowModal((prev) => ({
-                          ...prev,
-                          show: false,
-                        }));
+            {data?.map(({ _id, username, firstName, lastName }) => {
+              return (
+                <li key={_id}>
+                  <div
+                    onClick={() => {
+                      navigate(`/profile/${username}`);
+                      setShowFollowModal((prev) => ({
+                        ...prev,
+                        show: false,
+                      }));
+                    }}
+                    className="follow-modal-users"
+                  >
+                    <img
+                      style={{
+                        height: "50px",
+                        width: "50px",
+                        objectFit: "cover",
+                        borderRadius: "50%",
                       }}
-                      className="follow-modal-users"
-                    >
-                      <img
-                        style={{
-                          height: "50px",
-                          width: "50px",
-                          objectFit: "cover",
-                          borderRadius: "50%",
-                        }}
-                        src={
-                          profileAvatar ||
-                          `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
+                      src={
+                        dataState?.users?.find((user) => user._id === _id)
+                          ?.profileAvatar ||
+                        `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
+                      }
+                      alt="avatar"
+                    />
+                    <div>
+                      <span>
+                        {
+                          dataState?.users?.find((user) => user._id === _id)
+                            ?.firstName
+                        }{" "}
+                        {
+                          dataState?.users?.find((user) => user._id === _id)
+                            ?.lastName
                         }
-                        alt="avatar"
-                      />
-                      <div>
-                        <span>
-                          {firstName} {lastName}
-                        </span>
-                        <small>@{username}</small>
-                      </div>
+                      </span>
+                      <small>@{username}</small>
                     </div>
-                  </li>
-                );
-              }
-            )}
+                  </div>
+                </li>
+              );
+            })}
           </div>
         ) : (
           <div>
