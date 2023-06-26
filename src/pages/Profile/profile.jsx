@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import FollowModal from "../../components/FollowModal/followModal";
 import EditProfileModal from "../../components/EditProfileModal/editProfileModal";
 import { getSortedPosts } from "../../utils/sortPosts";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Profile = () => {
   document.title = "tech-social | Profile";
@@ -69,136 +70,144 @@ const Profile = () => {
         <LeftSideBar />
         <div className="profile-main">
           <div>
-            <div className="profile-container">
-              {showFollowModal.show && (
-                <FollowModal
-                  data={
-                    showFollowModal.type === "Following"
-                      ? profileData?.following
-                      : profileData?.followers
-                  }
-                  showFollowModal={showFollowModal}
-                  setShowFollowModal={setShowFollowModal}
-                />
-              )}
-              {editProfileModal && (
-                <EditProfileModal
-                  profileData={profileData}
-                  editProfileModal={editProfileModal}
-                  setEditProfileModal={setEditProfileModal}
-                />
-              )}
-              <div className="profile-container-header">
-                <div className="profile-name-avatar">
-                  <img
-                    className="avatar"
-                    src={
-                      profileData?.profileAvatar ||
-                      `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
+            {Object.keys(profileData)?.length > 0 ? (
+              <div className="profile-container">
+                {showFollowModal.show && (
+                  <FollowModal
+                    data={
+                      showFollowModal.type === "Following"
+                        ? profileData?.following
+                        : profileData?.followers
                     }
-                    alt="avatar"
+                    showFollowModal={showFollowModal}
+                    setShowFollowModal={setShowFollowModal}
                   />
-                  <div>
-                    <h3>
-                      {profileData?.firstName} {profileData?.lastName}
-                    </h3>
-                    <small>@{profileData?.username}</small>
-                  </div>
-                </div>
-                {profileData?.username === authState?.user?.username ? (
-                  <button className="edit-button">
-                    <i
-                      className="fa-solid fa-pen fa-md"
-                      onClick={() => setEditProfileModal(true)}
-                    ></i>
-                  </button>
-                ) : (
-                  <button
-                    className={
-                      isFollowed(dataState?.users, profileData?._id)
-                        ? "following-button"
-                        : "follow-button"
-                    }
-                    onClick={() => {
-                      if (authState?.token) {
-                        if (isFollowed(dataState?.users, profileData?._id)) {
-                          unfollowUserHandler(
-                            authState?.token,
-                            profileData?._id,
-                            dataDispatch
-                          );
-                        } else {
-                          followUserHandler(
-                            authState?.token,
-                            profileData?._id,
-                            dataDispatch
-                          );
-                        }
-                      } else {
-                        toast.error("Please login to follow");
-                        navigate("/login");
-                      }
-                    }}
-                  >
-                    {isFollowed(dataState?.users, profileData?._id)
-                      ? "Following"
-                      : "Follow"}
-                  </button>
                 )}
-              </div>
-              {profileData?.bio && <p>{profileData?.bio}</p>}
-              {profileData?.website && (
-                <a href={profileData?.website} target="_blank" rel="noreferrer">
-                  {profileData?.website}
-                </a>
-              )}
-              <p>
-                <i className="fa-solid fa-calendar"></i> Joined{" "}
-                {` ${new Date(profileData?.createdAt)
+                {editProfileModal && (
+                  <EditProfileModal
+                    profileData={profileData}
+                    editProfileModal={editProfileModal}
+                    setEditProfileModal={setEditProfileModal}
+                  />
+                )}
+                <div className="profile-container-header">
+                  <div className="profile-name-avatar">
+                    <img
+                      className="avatar"
+                      src={
+                        profileData?.profileAvatar ||
+                        `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
+                      }
+                      alt="avatar"
+                    />
+                    <div>
+                      <h3>
+                        {profileData?.firstName} {profileData?.lastName}
+                      </h3>
+                      <small>@{profileData?.username}</small>
+                    </div>
+                  </div>
+                  {profileData?.username === authState?.user?.username ? (
+                    <button className="edit-button">
+                      <i
+                        className="fa-solid fa-pen fa-md"
+                        onClick={() => setEditProfileModal(true)}
+                      ></i>
+                    </button>
+                  ) : (
+                    <button
+                      className={
+                        isFollowed(dataState?.users, profileData?._id)
+                          ? "following-button"
+                          : "follow-button"
+                      }
+                      onClick={() => {
+                        if (authState?.token) {
+                          if (isFollowed(dataState?.users, profileData?._id)) {
+                            unfollowUserHandler(
+                              authState?.token,
+                              profileData?._id,
+                              dataDispatch
+                            );
+                          } else {
+                            followUserHandler(
+                              authState?.token,
+                              profileData?._id,
+                              dataDispatch
+                            );
+                          }
+                        } else {
+                          toast.error("Please login to follow");
+                          navigate("/login");
+                        }
+                      }}
+                    >
+                      {isFollowed(dataState?.users, profileData?._id)
+                        ? "Following"
+                        : "Follow"}
+                    </button>
+                  )}
+                </div>
+                {profileData?.bio && <p>{profileData?.bio}</p>}
+                {profileData?.website && (
+                  <a
+                    href={profileData?.website}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {profileData?.website}
+                  </a>
+                )}
+                <p>
+                  <i className="fa-solid fa-calendar"></i> Joined{" "}
+                  {` ${new Date(profileData?.createdAt)
                     .toDateString()
                     .split(" ")
                     .slice(1, 4)
                     .join(" ")}`}
-              </p>
-              <div className="profile-post-follow-details">
-                <p>
-                  {userPosts?.length}{" "}
-                  {`${userPosts?.length > 1 ? "Posts" : "Post"}`}
                 </p>
-                <p
-                  onClick={() =>
-                    setShowFollowModal((prev) => ({
-                      ...prev,
-                      show: true,
-                      type: "Followers",
-                    }))
-                  }
-                >
-                  {profileData?.followers?.length}{" "}
-                  {`${
-                    profileData?.followers?.length > 1
-                      ? "Followers"
-                      : "Follower"
-                  }`}
-                </p>
-                <p
-                  onClick={() =>
-                    setShowFollowModal((prev) => ({
-                      ...prev,
-                      show: true,
-                      type: "Following",
-                    }))
-                  }
-                >
-                  {profileData?.following?.length}{" "}
-                  {`${
-                    profileData?.following?.length > 1
-                      ? "Followings"
-                      : "Following"
-                  }`}
-                </p>
+                <div className="profile-post-follow-details">
+                  <p>
+                    {userPosts?.length}{" "}
+                    {`${userPosts?.length > 1 ? "Posts" : "Post"}`}
+                  </p>
+                  <p
+                    onClick={() =>
+                      setShowFollowModal((prev) => ({
+                        ...prev,
+                        show: true,
+                        type: "Followers",
+                      }))
+                    }
+                  >
+                    {profileData?.followers?.length}{" "}
+                    {`${
+                      profileData?.followers?.length > 1
+                        ? "Followers"
+                        : "Follower"
+                    }`}
+                  </p>
+                  <p
+                    onClick={() =>
+                      setShowFollowModal((prev) => ({
+                        ...prev,
+                        show: true,
+                        type: "Following",
+                      }))
+                    }
+                  >
+                    {profileData?.following?.length}{" "}
+                    {`${
+                      profileData?.following?.length > 1
+                        ? "Followings"
+                        : "Following"
+                    }`}
+                  </p>
+                </div>
               </div>
-            </div>
+            ) : (
+              <ClipLoader color="var(--primary-dark)" size={50} />
+            )}
             <div>
               {userPosts.length > 0 &&
                 getSortedPosts(userPosts, "Latest")?.map((post) => (
