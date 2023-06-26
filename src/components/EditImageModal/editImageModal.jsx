@@ -1,12 +1,29 @@
 import React from "react";
 import "./editImageModal.css";
 import { avatarDb } from "../Assets/avatarDb";
+import { toast } from "react-toastify";
 
-const EditImageModal = ({
-  setUpdatedProfileData,
-  editImageModal,
-  setEditImageModal,
-}) => {
+const EditImageModal = ({ setUpdatedProfileData, setEditImageModal }) => {
+  
+  const imageSelectHandler = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      if (Math.round(file.size / 1024000) > 1)
+        toast.error("File size should not be more than 1Mb");
+      else {
+        setUpdatedProfileData((prev) => ({
+          ...prev,
+          profileAvatar: URL.createObjectURL(file),
+        }));
+        setEditImageModal(false);
+      }
+    };
+    input.click();
+  };
+
   return (
     <div className="edit-image-modal-container">
       <div className="edit-image-modal">
@@ -36,10 +53,18 @@ const EditImageModal = ({
           ))}
         </div>
         <div className="edit-image-buttons">
-          <button>
+          <button onClick={imageSelectHandler}>
             <i className="fa-regular fa-image"></i> Browse Profile Image
           </button>
-          <button>
+          <button
+            onClick={() => {
+              setUpdatedProfileData((prev) => ({
+                ...prev,
+                profileAvatar: "",
+              }));
+              setEditImageModal(false);
+            }}
+          >
             <i class="fa-regular fa-trash-can"></i> Remove Profile Image
           </button>
         </div>

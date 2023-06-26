@@ -113,7 +113,6 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
         <EditImageModal
           setUpdatedProfileData={setUpdatedProfileData}
           setEditImageModal={setEditImageModal}
-          editImageModal={editImageModal}
         />
       )}
     </div>
