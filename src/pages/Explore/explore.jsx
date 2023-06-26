@@ -6,6 +6,7 @@ import RightSideBar from "../../components/RightSideBar/rightSideBar";
 import { DataContext } from "../../contexts/dataContext";
 import PostCard from "../../components/PostCard/postCard";
 import { sortOptions, getSortedPosts } from "../../utils/sortPosts";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Explore = () => {
   document.title = "tech-social | Explore";
@@ -22,14 +23,16 @@ const Explore = () => {
         <LeftSideBar />
         <div className="explore-main">
           {dataState.postsLoading ? (
-            <p>Loading...</p>
+            <ClipLoader color="var(--primary-dark)" size={60} />
           ) : (
             <div>
               <div className="sort-post">
                 <h3>{sortOptions[sortByOption]}</h3>
                 <select onChange={(e) => setSortByOption(e.target.value)}>
                   {Object.keys(sortOptions).map((option) => (
-                    <option value={option} key={option}>{option}</option>
+                    <option value={option} key={option}>
+                      {option}
+                    </option>
                   ))}
                 </select>
               </div>

@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import PostCard from "../../components/PostCard/postCard";
 import { DataContext } from "../../contexts/dataContext";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const PostDetails = () => {
   document.title = "tech-social | Post Details";
@@ -43,7 +44,7 @@ const PostDetails = () => {
         <LeftSideBar />
         <div className="post-details-main">
           {singlePostLoading ? (
-            <p>Loading...</p>
+            <ClipLoader color="var(--primary-dark)" size={60} />
           ) : (
             postDetails && (
               <div>

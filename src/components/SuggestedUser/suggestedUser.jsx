@@ -7,6 +7,7 @@ import { followUserHandler } from "../../utils/followUserHandler";
 import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
 import { toast } from "react-toastify";
 import { isFollowed } from "../../utils/isFollowed";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const SuggestedUser = () => {
   const { dataState, dataDispatch } = useContext(DataContext);
@@ -31,7 +32,15 @@ const SuggestedUser = () => {
   return (
     <div>
       {dataState.usersLoading ? (
-        <p>Loading...</p>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <ClipLoader color="var(--primary-dark)" size={50} />
+        </div>
       ) : (
         <div className="suggested-users-main">
           {suggestedUsers?.length > 0 ? (

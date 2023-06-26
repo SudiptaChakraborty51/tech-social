@@ -8,6 +8,7 @@ import { AuthContext } from "../../contexts/authContext";
 import PostCard from "../../components/PostCard/postCard";
 import { sortOptions, getSortedPosts } from "../../utils/sortPosts";
 import PostForm from "../../components/PostForm/postForm";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Home = () => {
   document.title = "tech-social | Home";
@@ -38,7 +39,7 @@ const Home = () => {
         <div className="home-main">
           <PostForm />
           {dataState?.postsLoading ? (
-            <p>Loading...</p>
+            <ClipLoader color="var(--primary-dark)" size={60} />
           ) : postsOfFollowed?.length === 0 ? (
             <h3>No Posts to Display!</h3>
           ) : (
