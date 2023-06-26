@@ -14,6 +14,9 @@ import PostModal from "../PostModal/postModal";
 import Linkify from "react-linkify";
 import { contentLink } from "../../utils/contentLink";
 import { getPostDate } from "../../utils/getPostData";
+import { isFollowed } from "../../utils/isFollowed";
+import { followUserHandler } from "../../utils/followUserHandler";
+import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
 
 const PostCard = ({ post }) => {
   const { _id, content, mediaURL, likes, comments, username, createdAt } = post;
@@ -67,6 +70,10 @@ const PostCard = ({ post }) => {
 
   const { pathname } = useLocation();
 
+  const userData = dataState?.users?.find(
+    (user) => user?.username === username
+  );
+
   return (
     <div key={_id} className="postcard-main">
       <div className="postcard-header">
@@ -97,21 +104,51 @@ const PostCard = ({ post }) => {
             </small>
           </div>
         </div>
-        {username === authState?.user?.username && (
-          <div className="edit-delete-icon">
-            <i
-              className="fa-solid fa-ellipsis"
-              onClick={() => setShowOptions(!showOptions)}
-            ></i>
-            {showOptions && (
+        <div className="edit-delete-icon">
+          <i
+            className="fa-solid fa-ellipsis"
+            onClick={() => setShowOptions(!showOptions)}
+          ></i>
+          {showOptions &&
+            (username === authState?.user?.username ? (
               <div className="edit-delete-post-modal">
                 <div onClick={editClickHandler}>Edit</div>
                 <hr />
                 <div onClick={deleteClickHandler}>Delete</div>
               </div>
-            )}
-          </div>
-        )}
+            ) : (
+              <div className="edit-delete-post-modal">
+                <div
+                  onClick={() => {
+                    if (authState?.token) {
+                      if (isFollowed(dataState?.users, userData._id)) {
+                        unfollowUserHandler(
+                          authState?.token,
+                          userData?._id,
+                          dataDispatch
+                        );
+                        setShowOptions(false);
+                      } else {
+                        followUserHandler(
+                          authState?.token,
+                          userData?._id,
+                          dataDispatch
+                        );
+                        setShowOptions(false);
+                      }
+                    } else {
+                      toast.error("Please login to follow");
+                      navigate("/login");
+                    }
+                  }}
+                >
+                  {isFollowed(dataState?.users, userData?._id)
+                    ? "Following"
+                    : "Follow"}
+                </div>
+              </div>
+            ))}
+        </div>
       </div>
       <div
         className="postcard-content-main"
