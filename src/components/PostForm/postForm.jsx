@@ -106,7 +106,7 @@ const PostForm = () => {
           </button>
         </div>
       )}
-      <div className="post-form-button-container">
+      <div className="post-form-button-container" >
         <div>
           <i className="fa-regular fa-image" onClick={imageSelectHandler}></i>
           {/* <i className="fa-regular fa-file-video" onClick={videoSelectHandler}></i> */}

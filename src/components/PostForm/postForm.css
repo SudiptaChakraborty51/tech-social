@@ -106,5 +106,7 @@
 
 .show-emoji-picker {
   position: absolute;
-  top: 40px;
+  left: 0px;
+  top: 0;
+  /* pointer-events: all; */
 }

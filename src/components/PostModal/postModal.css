@@ -110,10 +110,5 @@
 
 .edit-emoji-picker {
     position: absolute;
-    display: flex;
-    align-items: center;
     bottom: 0;
-    right: auto;
-    height: 300px;
-    width: 25em;
 }
