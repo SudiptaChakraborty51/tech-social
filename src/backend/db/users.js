@@ -46,7 +46,7 @@ export const users = [
     website: "https://linaabott.netlify.app/",
     profileAvatar:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686659986/tech-social/overjoyed-pretty-asian-woman-look-at-camera-with-sincere-laughter_b9hnrt.jpg",
-    createdAt: "2023-06-12T10:25:07+05:30",
+    createdAt: "2022-01-11T10:25:07+05:30",
     updatedAt: formatDate(),
     bookmarks: [],
   },
@@ -77,6 +77,21 @@ export const users = [
     profileAvatar:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686659986/tech-social/photo-1544005313-94ddf0286df2_qz2jqa.jpg",
     createdAt: "2022-04-22T10:25:24+05:30",
+    updatedAt: formatDate(),
+    bookmarks: [],
+  },
+  {
+    _id: "fi72Kea-7",
+    firstName: "Carl",
+    lastName: "Smith",
+    username: "carlsmith",
+    email: "carlsmith34@gmail.com",
+    password: "carl34@52",
+    bio: "SDE - Frontend Developer 🧑‍💻",
+    website: "https://carlsmith.netlify.app/",
+    profileAvatar:
+      "https://res.cloudinary.com/dqlasoiaw/image/upload/v1687869079/tech-social/pexels-photo-220453_xrctn8.jpg",
+    createdAt: "2022-08-30T10:25:24+05:30",
     updatedAt: formatDate(),
     bookmarks: [],
   },
