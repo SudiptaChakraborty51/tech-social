@@ -17,6 +17,7 @@ import { getPostDate } from "../../utils/getPostData";
 import { isFollowed } from "../../utils/isFollowed";
 import { followUserHandler } from "../../utils/followUserHandler";
 import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 
 const PostCard = ({ post }) => {
   const { _id, content, mediaURL, likes, comments, username, createdAt } = post;
@@ -29,6 +30,8 @@ const PostCard = ({ post }) => {
   const [showCommentSection, setShowCommentSection] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
+
+  const domNode = useOutsideClick(() => setShowOptions(false));
 
   const editClickHandler = () => {
     setShowOptions(false);
@@ -104,17 +107,34 @@ const PostCard = ({ post }) => {
             </small>
           </div>
         </div>
-        <div className="edit-delete-icon">
+        <div className="edit-delete-icon" ref={domNode}>
           <i
             className="fa-solid fa-ellipsis"
-            onClick={() => setShowOptions(!showOptions)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowOptions(!showOptions);
+            }}
           ></i>
           {showOptions &&
             (username === authState?.user?.username ? (
               <div className="edit-delete-post-modal">
-                <div onClick={editClickHandler}>Edit</div>
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    editClickHandler();
+                  }}
+                >
+                  Edit
+                </div>
                 <hr />
-                <div onClick={deleteClickHandler}>Delete</div>
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteClickHandler();
+                  }}
+                >
+                  Delete
+                </div>
               </div>
             ) : (
               <div className="edit-delete-post-modal">

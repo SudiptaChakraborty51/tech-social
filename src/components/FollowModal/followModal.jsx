@@ -2,15 +2,20 @@ import React, { useContext } from "react";
 import "./followModal.css";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../contexts/dataContext";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 
 const FollowModal = ({ data, showFollowModal, setShowFollowModal }) => {
   const navigate = useNavigate();
 
   const { dataState } = useContext(DataContext);
 
+  const domNode = useOutsideClick(() =>
+    setShowFollowModal(() => ({ show: false }))
+  );
+
   return (
     <div className="follow-modal-container">
-      <div className="follow-modal">
+      <div className="follow-modal" ref={domNode}>
         <div className="follow-modal-header">
           <h3>{showFollowModal.type}</h3>
           <i
