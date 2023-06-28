@@ -19,6 +19,10 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
 
   const domNode = useOutsideClick(() => setShowEmojiPicker(false));
 
+  const postModalNode = useOutsideClick(() =>
+    post ? setShowEditModal(false) : setShowCreatePostModal(false)
+  );
+
   const imageSelectHandler = () => {
     const input = document.createElement("input");
     input.type = "file";
@@ -104,7 +108,7 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
 
   return (
     <div className="edit-post-modal-container">
-      <div className="edit-post-modal">
+      <div className="edit-post-modal" ref={postModalNode}>
         <div className="edit-post-modal-header">
           {post ? <h1>Edit Post</h1> : <h1>Create Post</h1>}
           <i
