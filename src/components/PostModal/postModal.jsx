@@ -23,18 +23,18 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
     post ? setShowEditModal(false) : setShowCreatePostModal(false)
   );
 
-  const imageSelectHandler = () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.onchange = (e) => {
-      const file = e.target.files[0];
-      Math.round(file.size / 1024000) > 1
-        ? toast.error("File size should not be more than 1Mb")
-        : setMedia(file);
-    };
-    input.click();
-  };
+  // const imageSelectHandler = () => {
+  //   const input = document.createElement("input");
+  //   input.type = "file";
+  //   input.accept = "image/*";
+  //   input.onchange = (e) => {
+  //     const file = e.target.files[0];
+  //     Math.round(file.size / 1024000) > 1
+  //       ? toast.error("File size should not be more than 1Mb")
+  //       : setMedia(file);
+  //   };
+  //   input.click();
+  // };
 
   // const videoSelectHandler = () => {
   //   const input = document.createElement("input");
@@ -160,12 +160,12 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
         )}
         <div className="edit-post-modal-buttons">
           <div className="edit-post-modal-icons">
-            <div>
+            {/* <div>
               <i
                 className="fa-regular fa-image"
                 onClick={imageSelectHandler}
               ></i>
-            </div>
+            </div> */}
             {/* <div>
               <i
                 className="fa-regular fa-file-video"
