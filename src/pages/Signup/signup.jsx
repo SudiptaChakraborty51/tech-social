@@ -20,6 +20,8 @@ const Signup = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    profileAvatar:
+      "https://res.cloudinary.com/dqlasoiaw/image/upload/v1687963822/tech-social/cute-cat-sitting-laptop-with-coffee-plant-illustration-developer-programmer-icon-isolated_138676-1110_uuy2qm.jpg",
   });
 
   const signupHandler = (e) => {
