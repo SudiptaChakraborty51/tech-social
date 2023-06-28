@@ -2,9 +2,9 @@ import React from "react";
 import "./editImageModal.css";
 import { avatarDb } from "../Assets/avatarDb";
 import { toast } from "react-toastify";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 
 const EditImageModal = ({ setUpdatedProfileData, setEditImageModal }) => {
-  
   const imageSelectHandler = () => {
     const input = document.createElement("input");
     input.type = "file";
@@ -24,9 +24,11 @@ const EditImageModal = ({ setUpdatedProfileData, setEditImageModal }) => {
     input.click();
   };
 
+  const editImageModalNode = useOutsideClick(() => setEditImageModal(false));
+
   return (
     <div className="edit-image-modal-container">
-      <div className="edit-image-modal">
+      <div className="edit-image-modal" ref={editImageModalNode}>
         <div className="edit-image-modal-header">
           <h3>Edit Profile Image</h3>
           <i

@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { DataContext } from "../../contexts/dataContext";
 import { toast } from "react-toastify";
 import EditImageModal from "../EditImageModal/editImageModal";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 
 const EditProfileModal = ({ profileData, setEditProfileModal }) => {
   const [updatedProfileData, setUpdatedProfileData] = useState({
@@ -31,9 +32,19 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
     toast.success("Profile updated successfully!");
   };
 
+  const editProfileModalNode = useOutsideClick(() =>
+    setEditProfileModal(false)
+  );
+
   return (
     <div className="edit-profile-modal-container">
-      <div className="edit-profile-modal">
+      <div className="edit-profile-modal" ref={editProfileModalNode}>
+        {editImageModal && (
+          <EditImageModal
+            setUpdatedProfileData={setUpdatedProfileData}
+            setEditImageModal={setEditImageModal}
+          />
+        )}
         <div className="edit-profile-header">
           <h2>Edit Profile</h2>
           <i
@@ -109,12 +120,6 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
         </div>
         <button onClick={updateProfileHandler}>Update</button>
       </div>
-      {editImageModal && (
-        <EditImageModal
-          setUpdatedProfileData={setUpdatedProfileData}
-          setEditImageModal={setEditImageModal}
-        />
-      )}
     </div>
   );
 };
