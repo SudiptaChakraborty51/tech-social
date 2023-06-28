@@ -7,6 +7,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { createPostHandler } from "../../utils/createPostHandler";
 import { DataContext } from "../../contexts/dataContext";
 import { editPostHandler } from "../../utils/editPostHandler";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 
 const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
   const [updatedPost, setUpdatedPost] = useState(post || {});
@@ -15,6 +16,8 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
 
   const { authState } = useContext(AuthContext);
   const { dataDispatch } = useContext(DataContext);
+
+  const domNode = useOutsideClick(() => setShowEmojiPicker(false));
 
   const imageSelectHandler = () => {
     const input = document.createElement("input");
@@ -44,7 +47,9 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
 
   const emojiClickHandler = (emojiObj) => {
     const emoji = emojiObj.emoji;
-    const updatedContent = updatedPost?.content + emoji;
+    const updatedContent = updatedPost?.content
+      ? updatedPost?.content + emoji
+      : emoji;
     setUpdatedPost((prev) => ({ ...prev, content: updatedContent }));
     setShowEmojiPicker(false);
   };
@@ -150,21 +155,33 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
           <></>
         )}
         <div className="edit-post-modal-buttons">
-          <div>
-            <i className="fa-regular fa-image" onClick={imageSelectHandler}></i>
-            {/* <i
-              className="fa-regular fa-file-video"
-              onClick={videoSelectHandler}
-            ></i> */}
-            <i
-              className="fa-regular fa-face-smile"
-              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-            ></i>
-            {showEmojiPicker && (
-              <div className="edit-emoji-picker">
-                <Picker onEmojiClick={emojiClickHandler} />
-              </div>
-            )}
+          <div className="edit-post-modal-icons">
+            <div>
+              <i
+                className="fa-regular fa-image"
+                onClick={imageSelectHandler}
+              ></i>
+            </div>
+            {/* <div>
+              <i
+                className="fa-regular fa-file-video"
+                onClick={videoSelectHandler}
+              ></i>
+            </div> */}
+            <div ref={domNode}>
+              <i
+                className="fa-regular fa-face-smile"
+                onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+              ></i>
+              {showEmojiPicker && (
+                <div
+                  className="edit-emoji-picker"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Picker onEmojiClick={emojiClickHandler} />
+                </div>
+              )}
+            </div>
           </div>
           <button
             onClick={buttonClickHandler}

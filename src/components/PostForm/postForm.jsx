@@ -7,6 +7,7 @@ import Picker from "emoji-picker-react";
 import { toast } from "react-toastify";
 import { uploadMedia } from "../../utils/uploadMedia";
 import { createPostHandler } from "../../utils/createPostHandler";
+import { useOutsideClick } from "../../hooks/useOutsideClick";
 
 const PostForm = () => {
   const { authState } = useContext(AuthContext);
@@ -17,6 +18,8 @@ const PostForm = () => {
   const [postContent, setPostContent] = useState("");
   const [media, setMedia] = useState(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+
+  const domNode = useOutsideClick(() => setShowEmojiPicker(false));
 
   const imageSelectHandler = () => {
     const input = document.createElement("input");
@@ -31,18 +34,18 @@ const PostForm = () => {
     input.click();
   };
 
-  // const videoSelectHandler = () => {
-  //   const input = document.createElement("input");
-  //   input.type = "file";
-  //   input.accept = "video/*";
-  //   input.onchange = (e) => {
-  //     const file = e.target.files[0];
-  //     Math.round(file.size / 7168000) > 1
-  //       ? toast.error("File size should not be more than 7Mb")
-  //       : setMedia(file);
-  //   };
-  //   input.click();
-  // };
+  const videoSelectHandler = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "video/*";
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      Math.round(file.size / 7168000) > 1
+        ? toast.error("File size should not be more than 7Mb")
+        : setMedia(file);
+    };
+    input.click();
+  };
 
   const emojiClickHandler = (emojiObj) => {
     const emoji = emojiObj.emoji;
@@ -106,19 +109,31 @@ const PostForm = () => {
           </button>
         </div>
       )}
-      <div className="post-form-button-container" >
-        <div>
-          <i className="fa-regular fa-image" onClick={imageSelectHandler}></i>
-          {/* <i className="fa-regular fa-file-video" onClick={videoSelectHandler}></i> */}
-          <i
-            className="fa-regular fa-face-smile"
-            onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-          ></i>
-          {showEmojiPicker && (
-            <div className="show-emoji-picker">
-              <Picker onEmojiClick={emojiClickHandler} />
-            </div>
-          )}
+      <div className="post-form-button-container">
+        <div className="post-form-icons">
+          <div>
+            <i className="fa-regular fa-image" onClick={imageSelectHandler}></i>
+          </div>
+          <div>
+            <i
+              className="fa-regular fa-file-video"
+              onClick={videoSelectHandler}
+            ></i>
+          </div>
+          <div ref={domNode}>
+            <i
+              className="fa-regular fa-face-smile"
+              onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+            ></i>
+            {showEmojiPicker && (
+              <div
+                className="show-emoji-picker"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Picker onEmojiClick={emojiClickHandler} />
+              </div>
+            )}
+          </div>
         </div>
         <button
           onClick={postClickHandler}
