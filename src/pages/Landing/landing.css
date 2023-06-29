@@ -1,9 +1,9 @@
 .landing-main {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
-  gap: 10rem;
+  gap: 1rem;
   margin: 2.5rem auto;
 }
 
@@ -14,7 +14,6 @@
 
 .landing-main .landing-right {
   justify-content: space-between;
-  width: 50%;
 }
 
 .landing-logo {
@@ -72,3 +71,21 @@
   height: 70vh;
   width: 30rem;
 }
+
+@media (max-width: 600px) {
+  .header-image {
+    height: 20vh;
+  }
+} 
+
+@media (max-width: 768px) {
+  .header-image {
+    height: 30vh;
+  }
+} 
+
+@media (max-width: 1024px) {
+  .header-image {
+    height: 40vh;
+  }
+} 
