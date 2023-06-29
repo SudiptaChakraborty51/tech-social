@@ -12,3 +12,7 @@
   align-items: center;
   flex-direction: column;
 }
+
+select {
+  border: 2px solid var(--primary-dark);
+}
