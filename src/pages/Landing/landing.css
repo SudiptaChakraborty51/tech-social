@@ -74,18 +74,6 @@
 
 @media (max-width: 600px) {
   .header-image {
-    height: 20vh;
-  }
-} 
-
-@media (max-width: 768px) {
-  .header-image {
-    height: 30vh;
-  }
-} 
-
-@media (max-width: 1024px) {
-  .header-image {
-    height: 40vh;
+    display: none;
   }
 } 
