@@ -4,6 +4,7 @@ import logo from "../../assets/logo.png";
 import { AuthContext } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../contexts/dataContext";
+import SearchBar from "../SearchBar/searchBar";
 
 const Navbar = () => {
   const { authState } = useContext(AuthContext);
@@ -18,7 +19,10 @@ const Navbar = () => {
           <h2>tech-social</h2>
         </div>
         <div className="right-nav">
-          {/* <i className="fa-solid fa-moon"></i> */}
+          <div className="searchBar">
+          <SearchBar />
+          </div>
+          <i className="fa-solid fa-moon"></i>
           {authState?.token && (
             <img
               onClick={() => {

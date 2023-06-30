@@ -7,10 +7,10 @@
   padding: 10px 0;
   position: relative;
   left: 15%;
-  border-radius: 0.75rem;
   display: flex;
   align-items: center;
   flex-direction: column;
+  padding-bottom: 60px;
 }
 
 select {
@@ -20,5 +20,10 @@ select {
 @media (max-width: 600px) {
   .home-content .rightSideBar {
     display: none;
+  }
+
+  .home-main {
+    width: 100%;
+    left: 0%;
   }
 }

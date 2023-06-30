@@ -12,6 +12,7 @@
   align-items: center;
   flex-direction: column;
   height: 100%;
+  padding-bottom: 60px;
 }
 
 .profile-container {
@@ -103,5 +104,10 @@
 @media (max-width: 600px) {
   .profile-content .rightSideBar {
     display: none;
+  }
+
+  .profile-main {
+    width: 100%;
+    left: 0%;
   }
 }

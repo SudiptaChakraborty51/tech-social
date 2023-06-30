@@ -12,6 +12,7 @@
   align-items: center;
   flex-direction: column;
   height: 100%;
+  padding-bottom: 60px;
 }
 
 .single-page-comment-container {
@@ -57,5 +58,10 @@
 @media (max-width: 600px) {
   .post-details-content .rightSideBar {
     display: none;
+  }
+
+  .post-details-main {
+    width: 100%;
+    left: 0%;
   }
 }

@@ -12,10 +12,16 @@
   align-items: center;
   flex-direction: column;
   height: 100%;
+  padding-bottom: 60px;
 }
 
 @media (max-width: 600px) {
   .liked-posts-content .rightSideBar {
     display: none;
+  }
+
+  .liked-posts-main {
+    width: 100%;
+    left: 0%;
   }
 }
