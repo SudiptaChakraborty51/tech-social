@@ -42,3 +42,54 @@
 .left-sidebar .create-post-btn:hover {
   background-color: var(--primary-dark);
 }
+
+.left-sidebar-items + .create {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .left-sidebar {
+    bottom: 0;
+    background-color: var(--primary-dark);
+    color: var(--white-color);
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    position: fixed;
+    gap: 0;
+    justify-content: space-evenly;
+    align-items: center;
+    border: none;
+  }
+
+  .left-sidebar .left-sidebar-items {
+    padding: 10px;
+  }
+
+  .left-sidebar-items + .create {
+    display: block;
+    color: var(--black-color);
+  }
+
+  .left-sidebar-items span {
+    display: none;
+  }
+
+  .left-sidebar-items:last-of-type {
+    display: block;
+  }
+
+  .left-sidebar button {
+    display: none;
+  }
+
+  .left-sidebar-items-modal i {
+    color: var(--white-color);
+    font-size: 18px;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    padding: 10px;
+  }
+}

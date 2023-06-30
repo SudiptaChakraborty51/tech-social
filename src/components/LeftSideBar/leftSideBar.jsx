@@ -51,9 +51,22 @@ const LeftSideBar = () => {
         >
           <i className="fa-solid fa-user"></i> <span>Profile</span>
         </NavLink>
+        <p
+          onClick={() => {
+            setShowCreatePostModal((prev) => !prev);
+          }}
+          className={
+            showCreatePostModal
+              ? "left-sidebar-items-modal create"
+              : "left-sidebar-items create"
+          }
+        >
+          <i className="fa-solid fa-plus"></i>
+        </p>
         {authState?.token ? (
           <p onClick={() => userLogout()} className="left-sidebar-items">
-            <i className="fa-solid fa-right-from-bracket"></i> <span>Logout</span>
+            <i className="fa-solid fa-right-from-bracket"></i>{" "}
+            <span>Logout</span>
           </p>
         ) : (
           <p onClick={() => navigate("/login")} className="left-sidebar-items">
@@ -70,9 +83,7 @@ const LeftSideBar = () => {
         </button>
       </div>
       {showCreatePostModal && (
-        <PostModal
-          setShowCreatePostModal={setShowCreatePostModal}
-        />
+        <PostModal setShowCreatePostModal={setShowCreatePostModal} />
       )}
     </div>
   );
