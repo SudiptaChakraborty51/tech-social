@@ -12,11 +12,10 @@
   align-items: center;
   flex-direction: column;
   height: 100%;
-  padding-bottom: 60px;
 }
 
 .profile-container {
-  width: 500px;
+  width: 75%;
   margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -109,5 +108,6 @@
   .profile-main {
     width: 100%;
     left: 0%;
+    padding-bottom: 60px;
   }
 }

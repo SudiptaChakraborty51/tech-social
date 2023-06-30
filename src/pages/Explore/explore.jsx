@@ -36,11 +36,18 @@ const Explore = () => {
                   ))}
                 </select>
               </div>
-              {sortedPosts?.map((post) => (
-                <div key={post?._id}>
-                  <PostCard post={post} />
-                </div>
-              ))}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {sortedPosts?.map((post) => (
+                  <PostCard post={post} key={post._id} />
+                ))}
+              </div>
             </div>
           )}
         </div>

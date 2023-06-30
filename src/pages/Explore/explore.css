@@ -7,16 +7,14 @@
   padding: 10px 0;
   position: relative;
   left: 15%;
-  border-radius: 0.75rem;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 60px;
 }
 
 .sort-post {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -32,5 +30,6 @@
   .explore-main {
     width: 100%;
     left: 0%;
+    padding-bottom: 60px;
   }
 }

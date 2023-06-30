@@ -54,9 +54,18 @@ const Home = () => {
                   ))}
                 </select>
               </div>
-              {sortedPosts?.map((post) => (
-                <PostCard key={post._id} post={post} />
-              ))}
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {sortedPosts?.map((post) => (
+                  <PostCard key={post._id} post={post} />
+                ))}
+              </div>
             </div>
           )}
         </div>

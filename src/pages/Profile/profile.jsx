@@ -69,7 +69,14 @@ const Profile = () => {
       <div className="profile-content">
         <LeftSideBar />
         <div className="profile-main">
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             {Object.keys(profileData)?.length > 0 ? (
               <div className="profile-container">
                 {showFollowModal.show && (
@@ -208,7 +215,14 @@ const Profile = () => {
             ) : (
               <ClipLoader color="var(--primary-dark)" size={50} />
             )}
-            <div>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               {userPosts.length > 0 &&
                 getSortedPosts(userPosts, "Latest")?.map((post) => (
                   <PostCard key={post._id} post={post} />
