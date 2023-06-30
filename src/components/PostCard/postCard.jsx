@@ -190,9 +190,9 @@ const PostCard = ({ post }) => {
             <video
               controls
               onClick={(e) => e.stopPropagation()}
+              src={mediaURL}
               style={{ width: "100%", height: "auto", objectFit: "contain" }}
             >
-              <source src={mediaURL} />
             </video>
           )
         )}

@@ -138,11 +138,11 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
             ) : updatedPost?.mediaURL?.split("/")[4] === "video" ||
               media?.type?.split("/")[0] === "video" ? (
               <video alt="Post-video">
-                <source
-                  src={
-                    media ? URL.createObjectURL(media) : updatedPost?.mediaURL
-                  }
-                />
+                {media ? (
+                  <source src={URL.createObjectURL(media)} />
+                ) : (
+                  <source src={updatedPost?.mediaURL} />
+                )}
               </video>
             ) : null}
             <button
@@ -165,8 +165,8 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
                 className="fa-regular fa-image"
                 onClick={imageSelectHandler}
               ></i>
-            </div> */}
-            {/* <div>
+            </div>
+            <div>
               <i
                 className="fa-regular fa-file-video"
                 onClick={videoSelectHandler}
