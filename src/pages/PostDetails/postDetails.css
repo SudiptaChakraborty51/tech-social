@@ -53,3 +53,9 @@
 .post-comment-container div p {
   font-size: 14px;
 }
+
+@media (max-width: 600px) {
+  .post-details-content .rightSideBar {
+    display: none;
+  }
+}

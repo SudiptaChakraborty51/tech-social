@@ -216,7 +216,9 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <RightSideBar />
+        <div className="rightSideBar">
+          <RightSideBar />
+        </div>
       </div>
     </div>
   );

@@ -22,3 +22,9 @@
 .sort-post select {
   padding: 5px;
 }
+
+@media (max-width: 600px) {
+  .explore-content .rightSideBar {
+    display: none;
+  }
+}

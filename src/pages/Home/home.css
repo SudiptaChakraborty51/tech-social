@@ -16,3 +16,9 @@
 select {
   border: 2px solid var(--primary-dark);
 }
+
+@media (max-width: 600px) {
+  .home-content .rightSideBar {
+    display: none;
+  }
+}

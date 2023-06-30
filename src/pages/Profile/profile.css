@@ -99,3 +99,9 @@
   color: var(--primary-dark);
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .profile-content .rightSideBar {
+    display: none;
+  }
+}

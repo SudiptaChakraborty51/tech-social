@@ -13,3 +13,9 @@
   flex-direction: column;
   height: 100%;
 }
+
+@media (max-width: 600px) {
+  .liked-posts-content .rightSideBar {
+    display: none;
+  }
+}
