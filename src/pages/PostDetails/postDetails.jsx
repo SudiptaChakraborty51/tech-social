@@ -15,7 +15,7 @@ const PostDetails = () => {
   const [singlePostLoading, setSinglePostLoading] = useState(false);
   const [postDetails, setPostDetails] = useState({});
 
-  const { dataState } = useContext(DataContext);
+  const { dataState, darkMode } = useContext(DataContext);
 
   const { postID } = useParams();
 
@@ -38,7 +38,7 @@ const PostDetails = () => {
   }, [dataState.posts]);
 
   return (
-    <div className="post-details">
+    <div className={`post-details ${darkMode && "bgDarkmode"}`}>
       <Navbar />
       <div className="post-details-content">
         <LeftSideBar />
@@ -47,10 +47,21 @@ const PostDetails = () => {
             <ClipLoader color="var(--primary-dark)" size={60} />
           ) : (
             postDetails && (
-              <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <PostCard key={postDetails._id} post={postDetails} />
                 {postDetails?.comments?.length > 0 ? (
-                  <div className="single-page-comment-container">
+                  <div
+                    className={`single-page-comment-container ${
+                      darkMode && "bgSecondaryDarkMode"
+                    }`}
+                  >
                     {postDetails?.comments?.map((comment) => {
                       const userComment = dataState?.users?.find(
                         (user) => user.username === comment?.username
@@ -67,7 +78,7 @@ const PostDetails = () => {
                             }
                             alt="profile-pic"
                           />
-                          <div>
+                          <div className={`${darkMode && "bgDarkmode"}`}>
                             <strong>{`${userComment?.firstName} ${userComment?.lastName}`}</strong>
                             <p className="commnet-text">{comment?.text}</p>
                           </div>

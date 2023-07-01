@@ -38,7 +38,10 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
 
   return (
     <div className="edit-profile-modal-container">
-      <div className={`edit-profile-modal ${darkMode && "bgDarkmode"}`} ref={editProfileModalNode}>
+      <div
+        className={`edit-profile-modal ${darkMode && "bgDarkmode"}`}
+        ref={editProfileModalNode}
+      >
         {editImageModal && (
           <EditImageModal
             setUpdatedProfileData={setUpdatedProfileData}
@@ -69,7 +72,7 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
               alt="avatar"
             />
             <i
-             className={`fa-solid fa-camera ${darkMode && "bgDarkmode"}`}
+              className={`fa-solid fa-camera ${darkMode && "bgDarkmode"}`}
               onClick={() => setEditImageModal(true)}
             ></i>
           </div>
@@ -79,7 +82,7 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
             <div>
               <label htmlFor="firstName">First Name</label>
               <input
-              className={`${darkMode && "bgDarkmode"}`}
+                className={`${darkMode && "bgDarkmode"}`}
                 id="firstName"
                 type="text"
                 name="firstName"
@@ -90,7 +93,7 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
             <div>
               <label htmlFor="lastName">last Name</label>
               <input
-               className={`${darkMode && "bgDarkmode"}`}
+                className={`${darkMode && "bgDarkmode"}`}
                 id="lastName"
                 type="text"
                 name="lastName"
@@ -102,7 +105,7 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
           <div className="edit-website">
             <label htmlFor="website">Website</label>
             <input
-             className={`${darkMode && "bgDarkmode"}`}
+              className={`${darkMode && "bgDarkmode"}`}
               id="website"
               type="text"
               name="website"
@@ -113,7 +116,7 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
           <div className="edit-bio">
             <label htmlFor="bio">Bio</label>
             <textarea
-             className={`${darkMode && "bgDarkmode"}`}
+              className={`${darkMode && "bgDarkmode"}`}
               id="bio"
               placeholder="bio"
               name="bio"

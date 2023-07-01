@@ -1,8 +1,8 @@
 .comment-main-container {
-    display: flex;
-    margin-top: 1rem;
-    gap: 0.5rem;
-    align-items: center;
+  display: flex;
+  margin-top: 1rem;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .comment-main-container img {
@@ -13,20 +13,20 @@
 }
 
 .comment-main-container .comment-input-container {
-    position: relative;
-    flex-grow: 0.94;
+  position: relative;
+  flex-grow: 0.94;
 }
 
 .comment-main-container .comment-input-container input {
-    padding: 0.5rem;
-    border: 1px solid var(--grey-color);
-    border-radius: 0.5rem;
-    width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--grey-color);
+  border-radius: 0.5rem;
+  width: 100%;
 }
 
 .comment-main-container .comment-input-container i {
-    position: absolute;
-    top: 0.5rem;
-    right: 0;
-    cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0;
+  cursor: pointer;
 }

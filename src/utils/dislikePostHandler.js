@@ -1,6 +1,10 @@
 import axios from "axios";
 
-export const dislikePostHandler = async (encodedToken, postId, dataDispatch) => {
+export const dislikePostHandler = async (
+  encodedToken,
+  postId,
+  dataDispatch
+) => {
   try {
     const { data, status } = await axios.post(
       `/api/posts/dislike/${postId}`,

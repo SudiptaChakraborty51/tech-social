@@ -5,7 +5,7 @@ import SearchBar from "../SearchBar/searchBar";
 import { DataContext } from "../../contexts/dataContext";
 
 const RightSideBar = () => {
-  const {darkMode} = useContext(DataContext);
+  const { darkMode } = useContext(DataContext);
 
   return (
     <div className={`right-sidebar ${darkMode && "bgDarkmode darkModeBorder"}`}>

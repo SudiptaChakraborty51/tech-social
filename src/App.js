@@ -18,8 +18,7 @@ import { useContext } from "react";
 import { DataContext } from "./contexts/dataContext";
 
 function App() {
-
-  const {darkMode} = useContext(DataContext);
+  const { darkMode } = useContext(DataContext);
 
   return (
     <div className="App">

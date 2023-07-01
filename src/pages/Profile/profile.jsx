@@ -78,7 +78,11 @@ const Profile = () => {
             }}
           >
             {Object.keys(profileData)?.length > 0 ? (
-              <div className={`profile-container ${darkMode && "bgSecondaryDarkMode"}`}>
+              <div
+                className={`profile-container ${
+                  darkMode && "bgSecondaryDarkMode"
+                }`}
+              >
                 {showFollowModal.show && (
                   <FollowModal
                     data={

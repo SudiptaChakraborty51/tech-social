@@ -2,8 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export const createPostHandler = async (
-  {content,
-  mediaURL},
+  { content, mediaURL },
   encodedToken,
   dataDispatch
 ) => {

@@ -1,3 +1,7 @@
+.post-details {
+  min-height: 100vh;
+}
+
 .post-details-content {
   display: flex;
 }
@@ -68,6 +72,6 @@
 
 @media only screen and (max-width: 1024px) and (min-width: 601px) {
   .post-details-main {
-    width: 52%
+    width: 52%;
   }
 }

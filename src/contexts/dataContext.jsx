@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { dataReducer } from "../reducer/dataReducer";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -71,7 +77,9 @@ const DataProvider = ({ children }) => {
   }, [authState.token]);
 
   return (
-    <DataContext.Provider value={{ dataState, dataDispatch, darkMode, setDarkMode }}>
+    <DataContext.Provider
+      value={{ dataState, dataDispatch, darkMode, setDarkMode }}
+    >
       {children}
     </DataContext.Provider>
   );

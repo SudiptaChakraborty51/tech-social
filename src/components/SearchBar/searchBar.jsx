@@ -44,46 +44,50 @@ export const SearchBar = () => {
         )}
       </div>
       <div className="search-main-container">
-      {searchedUsers.length > 0 && searchInput.trim().length > 0 ? (
-        <div className={`searched-users-container ${darkMode && "bgDarkmode"}`}>
-          {searchedUsers?.map(
-            ({ _id, firstName, lastName, username, profileAvatar }) => {
-              return (
-                <li key={_id} className="searched-user">
-                  <div
-                    className="searched-user-name-profile"
-                    onClick={() => {
-                      navigate(`/profile/${username}`);
-                      clearSearch();
-                    }}
-                  >
-                    <img
-                      className="user-avatar"
-                      src={
-                        profileAvatar ||
-                        `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
-                      }
-                      alt="avatar"
-                    />
-                    <div className="searchedUser-name">
-                      <span>
-                        {firstName} {lastName}
-                      </span>
-                      <small>@{username}</small>
+        {searchedUsers.length > 0 && searchInput.trim().length > 0 ? (
+          <div
+            className={`searched-users-container ${darkMode && "bgDarkmode"}`}
+          >
+            {searchedUsers?.map(
+              ({ _id, firstName, lastName, username, profileAvatar }) => {
+                return (
+                  <li key={_id} className="searched-user">
+                    <div
+                      className="searched-user-name-profile"
+                      onClick={() => {
+                        navigate(`/profile/${username}`);
+                        clearSearch();
+                      }}
+                    >
+                      <img
+                        className="user-avatar"
+                        src={
+                          profileAvatar ||
+                          `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
+                        }
+                        alt="avatar"
+                      />
+                      <div className="searchedUser-name">
+                        <span>
+                          {firstName} {lastName}
+                        </span>
+                        <small>@{username}</small>
+                      </div>
                     </div>
-                  </div>
-                </li>
-              );
-            }
-          )}
-        </div>
-      ) : (
-        searchInput.trim().length > 0 && (
-          <div className={`searched-users-container ${darkMode && "bgDarkmode"}`}>
-            <p>User not found!</p>
+                  </li>
+                );
+              }
+            )}
           </div>
-        )
-      )}
+        ) : (
+          searchInput.trim().length > 0 && (
+            <div
+              className={`searched-users-container ${darkMode && "bgDarkmode"}`}
+            >
+              <p>User not found!</p>
+            </div>
+          )
+        )}
       </div>
     </div>
   );

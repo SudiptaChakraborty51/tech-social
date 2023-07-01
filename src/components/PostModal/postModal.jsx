@@ -108,7 +108,10 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
 
   return (
     <div className="edit-post-modal-container">
-      <div className={`edit-post-modal ${darkMode && "bgDarkmode"}`} ref={postModalNode}>
+      <div
+        className={`edit-post-modal ${darkMode && "bgDarkmode"}`}
+        ref={postModalNode}
+      >
         <div className="edit-post-modal-header">
           {post ? <h1>Edit Post</h1> : <h1>Create Post</h1>}
           <i
@@ -183,7 +186,11 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
                   className="edit-emoji-picker"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <Picker onEmojiClick={emojiClickHandler}  width={300} height={450}/>
+                  <Picker
+                    onEmojiClick={emojiClickHandler}
+                    width={300}
+                    height={450}
+                  />
                 </div>
               )}
             </div>

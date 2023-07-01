@@ -6,8 +6,7 @@ import { useOutsideClick } from "../../hooks/useOutsideClick";
 import { DataContext } from "../../contexts/dataContext";
 
 const EditImageModal = ({ setUpdatedProfileData, setEditImageModal }) => {
-
-  const {darkMode} = useContext(DataContext);
+  const { darkMode } = useContext(DataContext);
 
   // const imageSelectHandler = () => {
   //   const input = document.createElement("input");
@@ -32,7 +31,10 @@ const EditImageModal = ({ setUpdatedProfileData, setEditImageModal }) => {
 
   return (
     <div className="edit-image-modal-container">
-      <div className={`edit-image-modal ${darkMode && "bgDarkmode"}`} ref={editImageModalNode}>
+      <div
+        className={`edit-image-modal ${darkMode && "bgDarkmode"}`}
+        ref={editImageModalNode}
+      >
         <div className="edit-image-modal-header">
           <h3>Edit Profile Image</h3>
           <i

@@ -78,7 +78,10 @@ const PostCard = ({ post }) => {
   );
 
   return (
-    <div key={_id} className={`postcard-main ${darkMode && "bgSecondaryDarkMode"}`}>
+    <div
+      key={_id}
+      className={`postcard-main ${darkMode && "bgSecondaryDarkMode"}`}
+    >
       <div className="postcard-header">
         <div
           className="postcard-header-left"
@@ -117,7 +120,9 @@ const PostCard = ({ post }) => {
           ></i>
           {showOptions &&
             (username === authState?.user?.username ? (
-              <div className={`edit-delete-post-modal ${darkMode && "bgDarkmode"}`}>
+              <div
+                className={`edit-delete-post-modal ${darkMode && "bgDarkmode"}`}
+              >
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
@@ -137,7 +142,9 @@ const PostCard = ({ post }) => {
                 </div>
               </div>
             ) : (
-              <div className={`edit-delete-post-modal ${darkMode && "bgDarkmode"}`}>
+              <div
+                className={`edit-delete-post-modal ${darkMode && "bgDarkmode"}`}
+              >
                 <div
                   onClick={() => {
                     if (authState?.token) {
@@ -192,8 +199,7 @@ const PostCard = ({ post }) => {
               onClick={(e) => e.stopPropagation()}
               src={mediaURL}
               style={{ width: "100%", height: "auto", objectFit: "contain" }}
-            >
-            </video>
+            ></video>
           )
         )}
       </div>

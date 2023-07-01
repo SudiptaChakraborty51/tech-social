@@ -9,7 +9,7 @@ const LeftSideBar = () => {
   const { userLogout } = useContext(AuthContext);
   const { authState } = useContext(AuthContext);
 
-  const {darkMode} = useContext(DataContext);
+  const { darkMode } = useContext(DataContext);
 
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
 
@@ -22,8 +22,14 @@ const LeftSideBar = () => {
 
   return (
     <div>
-      <div className={`left-sidebar ${darkMode && "bgDarkmode darkModeBorder"}`}>
-        <NavLink to="/" className={`left-sidebar-items ${darkMode && "darkModeColor"}`} style={getActiveStyle}>
+      <div
+        className={`left-sidebar ${darkMode && "bgDarkmode darkModeBorder"}`}
+      >
+        <NavLink
+          to="/"
+          className={`left-sidebar-items ${darkMode && "darkModeColor"}`}
+          style={getActiveStyle}
+        >
           <i className="fa-solid fa-house"></i> <span>Home</span>
         </NavLink>
         <NavLink
@@ -67,7 +73,10 @@ const LeftSideBar = () => {
           <i className="fa-solid fa-plus"></i>
         </p>
         {authState?.token ? (
-          <p onClick={() => userLogout()} className={`left-sidebar-items ${darkMode && "darkModeColor"}`}>
+          <p
+            onClick={() => userLogout()}
+            className={`left-sidebar-items ${darkMode && "darkModeColor"}`}
+          >
             <i className="fa-solid fa-right-from-bracket"></i>{" "}
             <span>Logout</span>
           </p>

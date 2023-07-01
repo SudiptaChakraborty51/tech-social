@@ -33,7 +33,7 @@ export const dataReducer = (state, action) => {
       return {
         ...state,
         users: state?.users?.map((user) =>
-          action.payload?._id === user._id ? {...action.payload} : user
+          action.payload?._id === user._id ? { ...action.payload } : user
         ),
       };
     default:
