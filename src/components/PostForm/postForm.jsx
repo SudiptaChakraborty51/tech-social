@@ -11,7 +11,7 @@ import { useOutsideClick } from "../../hooks/useOutsideClick";
 
 const PostForm = () => {
   const { authState } = useContext(AuthContext);
-  const { dataState, dataDispatch } = useContext(DataContext);
+  const { dataState, dataDispatch, darkMode } = useContext(DataContext);
 
   const navigate = useNavigate();
 
@@ -75,7 +75,7 @@ const PostForm = () => {
   };
 
   return (
-    <div className="post-form">
+    <div className={`post-form ${darkMode && "bgSecondaryDarkMode"}`}>
       <div className="post-form-container">
         <img
           className="create-post-avatar"
@@ -90,6 +90,7 @@ const PostForm = () => {
           alt="profile-pic"
         />
         <textarea
+          className={`${darkMode && "bgSecondaryDarkMode"}`}
           placeholder="What's on your mind?"
           value={postContent}
           onChange={(e) => setPostContent(e.target.value)}

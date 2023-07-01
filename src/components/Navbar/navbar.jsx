@@ -8,11 +8,11 @@ import SearchBar from "../SearchBar/searchBar";
 
 const Navbar = () => {
   const { authState } = useContext(AuthContext);
-  const { dataState } = useContext(DataContext);
+  const { dataState, darkMode, setDarkMode } = useContext(DataContext);
 
   const navigate = useNavigate();
   return (
-    <div className="navbar">
+    <div className={`navbar ${darkMode && "bgDarkmode"}`}>
       <nav>
         <div className="left-nav" onClick={() => navigate("/")}>
           <img src={logo} alt="logo" />
@@ -20,9 +20,16 @@ const Navbar = () => {
         </div>
         <div className="right-nav">
           <div className="searchBar">
-          <SearchBar />
+            <SearchBar />
           </div>
-          <i className="fa-solid fa-moon"></i>
+          {darkMode ? (
+            <i class="fa-solid fa-sun" onClick={() => setDarkMode(false)}></i>
+          ) : (
+            <i
+              className="fa-solid fa-moon"
+              onClick={() => setDarkMode(true)}
+            ></i>
+          )}
           {authState?.token && (
             <img
               onClick={() => {

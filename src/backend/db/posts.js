@@ -68,7 +68,7 @@ export const posts = [
   {
     _id: "gs5eubh_7hrk_6dg5_GfguQB",
     content:
-      "I write my first technical blog about querySelector() and querySelectorAll() on elements in JavaScript.",
+      "I write my first technical blog about querySelector() and querySelectorAll() on elements in JavaScript. https://sudipta26.hashnode.dev/introducing-queryselector-and-queryselectorall-on-elements-in-javascript",
       // " https://sudipta26.hashnode.dev/introducing-queryselector-and-queryselectorall-on-elements-in-javascript"
     mediaURL:
       "https://res.cloudinary.com/dqlasoiaw/image/upload/v1686808219/tech-social/EDAef5fL7_zkli5s.jpg",

@@ -14,8 +14,13 @@ import Bookmarks from "./pages/Bookmarks/bookmarks";
 import LikedPosts from "./pages/LikedPosts/likedPosts";
 import PostDetails from "./pages/PostDetails/postDetails";
 import Profile from "./pages/Profile/profile";
+import { useContext } from "react";
+import { DataContext } from "./contexts/dataContext";
 
 function App() {
+
+  const {darkMode} = useContext(DataContext);
+
   return (
     <div className="App">
       <Routes>
@@ -42,7 +47,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="light"
+        theme={darkMode ? "dark" : "light"}
       />
     </div>
   );

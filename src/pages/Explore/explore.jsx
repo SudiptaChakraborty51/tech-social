@@ -10,14 +10,14 @@ import ClipLoader from "react-spinners/ClipLoader";
 
 const Explore = () => {
   document.title = "tech-social | Explore";
-  const { dataState } = useContext(DataContext);
+  const { dataState, darkMode } = useContext(DataContext);
 
   const [sortByOption, setSortByOption] = useState("Latest");
 
   const sortedPosts = getSortedPosts(dataState?.posts, sortByOption);
 
   return (
-    <div className="explore">
+    <div className={`explore ${darkMode && "bgDarkmode"}`}>
       <Navbar />
       <div className="explore-content">
         <LeftSideBar />
@@ -28,7 +28,7 @@ const Explore = () => {
             <div>
               <div className="sort-post">
                 <h3>{sortOptions[sortByOption]}</h3>
-                <select onChange={(e) => setSortByOption(e.target.value)}>
+                <select onChange={(e) => setSortByOption(e.target.value)}  className={`${darkMode && "bgDarkmode"}`}>
                   {Object.keys(sortOptions).map((option) => (
                     <option value={option} key={option}>
                       {option}

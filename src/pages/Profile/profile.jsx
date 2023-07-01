@@ -22,7 +22,7 @@ const Profile = () => {
 
   const { username } = useParams();
   const { authState } = useContext(AuthContext);
-  const { dataState, dataDispatch } = useContext(DataContext);
+  const { dataState, dataDispatch, darkMode } = useContext(DataContext);
 
   const [profileData, setProfileData] = useState({});
   const [userPosts, setUserPosts] = useState([]);
@@ -64,7 +64,7 @@ const Profile = () => {
   }, [username, dataState?.posts, dataState?.users]);
 
   return (
-    <div className="profile">
+    <div className={`profile ${darkMode && "bgDarkmode"}`}>
       <Navbar />
       <div className="profile-content">
         <LeftSideBar />
@@ -78,7 +78,7 @@ const Profile = () => {
             }}
           >
             {Object.keys(profileData)?.length > 0 ? (
-              <div className="profile-container">
+              <div className={`profile-container ${darkMode && "bgSecondaryDarkMode"}`}>
                 {showFollowModal.show && (
                   <FollowModal
                     data={
@@ -158,6 +158,7 @@ const Profile = () => {
                 {profileData?.bio && <p>{profileData?.bio}</p>}
                 {profileData?.website && (
                   <a
+                    style={{ wordBreak: "break-all" }}
                     href={profileData?.website}
                     target="_blank"
                     rel="noreferrer"

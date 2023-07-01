@@ -1,3 +1,7 @@
+.bookmarks {
+  min-height: 100vh;
+}
+
 .bookmarks-content {
   display: flex;
 }

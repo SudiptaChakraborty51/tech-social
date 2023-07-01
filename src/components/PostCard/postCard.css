@@ -88,5 +88,6 @@ a {
 .postcard-main .edit-delete-icon .edit-delete-post-modal div:hover {
   background-color: var(--lightgrey-color);
   cursor: pointer;
+  color: var(--primary-dark);
   border-radius: 5px;
 }

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./editImageModal.css";
 import { avatarDb } from "../Assets/avatarDb";
 // import { toast } from "react-toastify";
 import { useOutsideClick } from "../../hooks/useOutsideClick";
+import { DataContext } from "../../contexts/dataContext";
 
 const EditImageModal = ({ setUpdatedProfileData, setEditImageModal }) => {
+
+  const {darkMode} = useContext(DataContext);
+
   // const imageSelectHandler = () => {
   //   const input = document.createElement("input");
   //   input.type = "file";
@@ -28,7 +32,7 @@ const EditImageModal = ({ setUpdatedProfileData, setEditImageModal }) => {
 
   return (
     <div className="edit-image-modal-container">
-      <div className="edit-image-modal" ref={editImageModalNode}>
+      <div className={`edit-image-modal ${darkMode && "bgDarkmode"}`} ref={editImageModalNode}>
         <div className="edit-image-modal-header">
           <h3>Edit Profile Image</h3>
           <i

@@ -14,4 +14,25 @@ body {
   --lightgrey-color: #e5e7eb;
   --red-color: red;
   --offwhite-color: #faf9f9;
+  --primary-darkmode: #0b2239;
+  --secondary-darkmode: #020a12;
+}
+
+.bgDarkmode {
+  background-color: var(--primary-darkmode) !important;
+  color: var(--white-color) !important;
+}
+
+.bgSecondaryDarkMode {
+  background-color: var(--secondary-darkmode) !important;
+  color: var(--white-color) !important;
+  border-radius: 5px !important;
+}
+
+.darkModeColor {
+  color: var(--white-color) !important;
+}
+
+.darkModeBorder {
+  border-color: var(--primary-darkmode) !important;
 }

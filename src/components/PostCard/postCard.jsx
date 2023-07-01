@@ -22,7 +22,7 @@ import { useOutsideClick } from "../../hooks/useOutsideClick";
 const PostCard = ({ post }) => {
   const { _id, content, mediaURL, likes, comments, username, createdAt } = post;
 
-  const { dataState, dataDispatch } = useContext(DataContext);
+  const { dataState, dataDispatch, darkMode } = useContext(DataContext);
   const { authState } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -78,7 +78,7 @@ const PostCard = ({ post }) => {
   );
 
   return (
-    <div key={_id} className="postcard-main">
+    <div key={_id} className={`postcard-main ${darkMode && "bgSecondaryDarkMode"}`}>
       <div className="postcard-header">
         <div
           className="postcard-header-left"
@@ -117,7 +117,7 @@ const PostCard = ({ post }) => {
           ></i>
           {showOptions &&
             (username === authState?.user?.username ? (
-              <div className="edit-delete-post-modal">
+              <div className={`edit-delete-post-modal ${darkMode && "bgDarkmode"}`}>
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
@@ -137,7 +137,7 @@ const PostCard = ({ post }) => {
                 </div>
               </div>
             ) : (
-              <div className="edit-delete-post-modal">
+              <div className={`edit-delete-post-modal ${darkMode && "bgDarkmode"}`}>
                 <div
                   onClick={() => {
                     if (authState?.token) {

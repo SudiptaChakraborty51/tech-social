@@ -11,7 +11,7 @@ const LikedPosts = () => {
   document.title = "tech-social | Liked Posts";
 
   const { authState } = useContext(AuthContext);
-  const { dataState } = useContext(DataContext);
+  const { dataState, darkMode } = useContext(DataContext);
   const [postsLikedByUser, setPostsLikedByUser] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const LikedPosts = () => {
   }, [dataState?.posts]);
 
   return (
-    <div className="liked-posts">
+    <div className={`liked-posts ${darkMode && "bgDarkmode"}`}>
       <Navbar />
       <div className="liked-posts-content">
         <LeftSideBar />

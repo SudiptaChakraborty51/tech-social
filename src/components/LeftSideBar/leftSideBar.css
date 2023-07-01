@@ -62,6 +62,7 @@
     justify-content: space-evenly;
     align-items: center;
     border: none;
+    box-shadow: 0 -5px 8px -5px var(--grey-color);
   }
 
   .left-sidebar .left-sidebar-items {

@@ -7,7 +7,7 @@ export const SearchBar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchedUsers, setSearchedUsers] = useState([]);
 
-  const { dataState } = useContext(DataContext);
+  const { dataState, darkMode } = useContext(DataContext);
 
   const navigate = useNavigate();
 
@@ -29,9 +29,10 @@ export const SearchBar = () => {
 
   return (
     <div>
-      <div className="search-bar">
+      <div className={`search-bar ${darkMode && "bgSecondaryDarkMode"}`}>
         <input
           type="text"
+          className={`${darkMode && "bgSecondaryDarkMode"}`}
           placeholder="Search Users"
           value={searchInput}
           onChange={inputChangeHandler}
@@ -44,7 +45,7 @@ export const SearchBar = () => {
       </div>
       <div className="search-main-container">
       {searchedUsers.length > 0 && searchInput.trim().length > 0 ? (
-        <div className="searched-users-container">
+        <div className={`searched-users-container ${darkMode && "bgDarkmode"}`}>
           {searchedUsers?.map(
             ({ _id, firstName, lastName, username, profileAvatar }) => {
               return (
@@ -78,7 +79,7 @@ export const SearchBar = () => {
         </div>
       ) : (
         searchInput.trim().length > 0 && (
-          <div className="searched-users-container">
+          <div className={`searched-users-container ${darkMode && "bgDarkmode"}`}>
             <p>User not found!</p>
           </div>
         )

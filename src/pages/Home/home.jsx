@@ -13,7 +13,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 const Home = () => {
   document.title = "tech-social | Home";
 
-  const { dataState } = useContext(DataContext);
+  const { dataState, darkMode } = useContext(DataContext);
   const { authState } = useContext(AuthContext);
 
   const loggedInUser = dataState?.users?.find(
@@ -32,21 +32,21 @@ const Home = () => {
   const sortedPosts = getSortedPosts(postsOfFollowed, sortByOption);
 
   return (
-    <div className="home">
+    <div className={`home ${darkMode && "bgDarkmode"}`}>
       <Navbar />
       <div className="home-content">
         <LeftSideBar />
-        <div className="home-main">
+        <div className={`home-main ${darkMode && "bgDarkmode"}`}>
           <PostForm />
           {dataState?.postsLoading ? (
             <ClipLoader color="var(--primary-dark)" size={60} />
           ) : postsOfFollowed?.length === 0 ? (
             <h3>No Posts to Display!</h3>
           ) : (
-            <div>
+            <div style={{width: "100%"}}>
               <div className="sort-post">
                 <h3>{sortOptions[sortByOption]}</h3>
-                <select onChange={(e) => setSortByOption(e.target.value)}>
+                <select onChange={(e) => setSortByOption(e.target.value)} className={`${darkMode && "bgDarkmode"}`}>
                   {Object.keys(sortOptions).map((option) => (
                     <option value={option} key={option}>
                       {option}

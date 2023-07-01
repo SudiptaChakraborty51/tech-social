@@ -9,13 +9,13 @@ import PostCard from "../../components/PostCard/postCard";
 const Bookmarks = () => {
   document.title = "tech-social | Bookmarks";
 
-  const { dataState } = useContext(DataContext);
+  const { dataState, darkMode } = useContext(DataContext);
 
   const getBookmarkPosts = (postId) =>
     dataState?.posts?.filter((post) => post._id === postId)[0];
 
   return (
-    <div className="bookmarks">
+    <div className={`bookmarks ${darkMode && "bgDarkmode"}`}>
       <Navbar />
       <div className="bookmarks-content">
         <LeftSideBar />

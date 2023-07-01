@@ -5,7 +5,7 @@ import "./commentItem.css";
 import { useNavigate } from "react-router-dom";
 
 const CommentItem = ({ comment }) => {
-  const { dataState } = useContext(DataContext);
+  const { dataState, darkMode } = useContext(DataContext);
   const { authState } = useState(AuthContext);
   const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ const CommentItem = ({ comment }) => {
           alt="profile-pic"
         />
       )}
-      <div>
+      <div className={`${darkMode && "bgDarkmode"}`}>
         {isLoggedInUserComment ? (
           <strong>
             {authState?.user?.firstName} {authState?.user?.lastName}

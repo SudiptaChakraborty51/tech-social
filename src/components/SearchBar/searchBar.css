@@ -16,6 +16,7 @@
   background-color: var(--white-color);
   position: absolute;
   width: calc(100% - 20px);
+  border: 1px solid var(--grey-color);
 }
 
 .searched-user {

@@ -7,7 +7,7 @@ import { useOutsideClick } from "../../hooks/useOutsideClick";
 const FollowModal = ({ data, showFollowModal, setShowFollowModal }) => {
   const navigate = useNavigate();
 
-  const { dataState } = useContext(DataContext);
+  const { dataState, darkMode } = useContext(DataContext);
 
   const domNode = useOutsideClick(() =>
     setShowFollowModal(() => ({ show: false }))
@@ -15,7 +15,7 @@ const FollowModal = ({ data, showFollowModal, setShowFollowModal }) => {
 
   return (
     <div className="follow-modal-container">
-      <div className="follow-modal" ref={domNode}>
+      <div className={`follow-modal ${darkMode && "bgDarkmode"}`} ref={domNode}>
         <div className="follow-modal-header">
           <h3>{showFollowModal.type}</h3>
           <i

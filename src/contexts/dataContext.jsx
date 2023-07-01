@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useReducer } from "react";
+import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { dataReducer } from "../reducer/dataReducer";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -9,13 +9,15 @@ export const DataContext = createContext();
 const DataProvider = ({ children }) => {
   const { authState } = useContext(AuthContext);
 
+  const [darkMode, setDarkMode] = useState(false);
+
   const [dataState, dataDispatch] = useReducer(dataReducer, {
     users: [],
     usersLoading: false,
     posts: [],
     postsLoading: false,
     bookmarks: [],
-    userPost: []
+    userPost: [],
   });
 
   const getAllUsers = async () => {
@@ -69,7 +71,7 @@ const DataProvider = ({ children }) => {
   }, [authState.token]);
 
   return (
-    <DataContext.Provider value={{ dataState, dataDispatch }}>
+    <DataContext.Provider value={{ dataState, dataDispatch, darkMode, setDarkMode }}>
       {children}
     </DataContext.Provider>
   );
