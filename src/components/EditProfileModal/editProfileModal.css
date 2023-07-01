@@ -61,6 +61,7 @@
   bottom: 10px;
   color: var(--primary-dark);
   border: 1px solid var(--primary-color);
+  cursor: pointer;
 }
 
 .edit-profile-details {
