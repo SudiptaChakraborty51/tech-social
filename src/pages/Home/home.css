@@ -1,7 +1,7 @@
 .home {
   min-height: 100vh;
-  position: relative;
 }
+
 .home-content {
   display: flex;
 }

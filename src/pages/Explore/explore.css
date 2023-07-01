@@ -1,3 +1,7 @@
+.explore {
+  min-height: 100vh;
+}
+
 .explore-content {
   display: flex;
 }
