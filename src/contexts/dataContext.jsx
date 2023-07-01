@@ -15,7 +15,9 @@ export const DataContext = createContext();
 const DataProvider = ({ children }) => {
   const { authState } = useContext(AuthContext);
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark" ? true : false
+  );
 
   const [dataState, dataDispatch] = useReducer(dataReducer, {
     users: [],
@@ -75,6 +77,10 @@ const DataProvider = ({ children }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState.token]);
+
+  useEffect(() => {
+    localStorage.setItem("theme", `${darkMode ? "dark" : "light"}`);
+  }, [darkMode]);
 
   return (
     <DataContext.Provider
