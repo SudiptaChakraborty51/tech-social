@@ -1,10 +1,15 @@
+.landing-container {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
 .landing-main {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin: 2.5rem auto;
+  gap: 2rem;
 }
 
 .header-image {
@@ -72,7 +77,7 @@
   width: 30rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .header-image {
     display: none;
   }

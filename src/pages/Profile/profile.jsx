@@ -75,6 +75,7 @@ const Profile = () => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
+              width: "100%"
             }}
           >
             {Object.keys(profileData)?.length > 0 ? (
@@ -226,6 +227,7 @@ const Profile = () => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "center",
+                width: "100%"
               }}
             >
               {userPosts.length > 0 &&

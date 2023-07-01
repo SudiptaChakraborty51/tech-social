@@ -1,7 +1,12 @@
+.signup-container {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
 .signup {
   padding: 10px 40px;
   width: 70%;
-  margin: 20px auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 10px;
   display: flex;
