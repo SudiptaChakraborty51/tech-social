@@ -78,7 +78,6 @@ const PostCard = ({ post }) => {
         text: "Check out this post",
         url: `https://tech-social.vercel.app/post/${_id}`,
       });
-      toast.success("Start Sharing!");
     } catch (e) {
       console.error(e);
       toast.error("Something went wrong. Try again!");
