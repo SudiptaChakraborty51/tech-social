@@ -83,3 +83,9 @@
   font-weight: bold;
   padding-right: 10px;
 }
+
+@media (max-width: 600px) {
+  .edit-image-modal {
+    max-width: 18rem;
+  }
+}

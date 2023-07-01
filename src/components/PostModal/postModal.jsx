@@ -182,7 +182,7 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
                   className="edit-emoji-picker"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <Picker onEmojiClick={emojiClickHandler} />
+                  <Picker onEmojiClick={emojiClickHandler}  width={300} height={450}/>
                 </div>
               )}
             </div>

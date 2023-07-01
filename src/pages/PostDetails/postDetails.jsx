@@ -47,7 +47,7 @@ const PostDetails = () => {
             <ClipLoader color="var(--primary-dark)" size={60} />
           ) : (
             postDetails && (
-              <div>
+              <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
                 <PostCard key={postDetails._id} post={postDetails} />
                 {postDetails?.comments?.length > 0 ? (
                   <div className="single-page-comment-container">

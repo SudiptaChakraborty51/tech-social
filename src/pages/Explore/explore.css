@@ -33,3 +33,9 @@
     padding-bottom: 60px;
   }
 }
+
+@media only screen and (max-width: 1024px) and (min-width: 601px) {
+  .explore-main {
+    width: 52%
+  }
+}

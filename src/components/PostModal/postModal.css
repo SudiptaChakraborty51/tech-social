@@ -117,3 +117,9 @@
   position: absolute;
   bottom: 0;
 }
+
+@media (max-width: 600px) {
+  .edit-post-modal-container .edit-post-modal {
+    max-width: 18rem;
+  }
+}

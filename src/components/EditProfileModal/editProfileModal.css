@@ -115,3 +115,17 @@
 .edit-profile-modal button:hover {
   background-color: var(--primary-dark);
 }
+
+@media (max-width: 600px) {
+  .edit-profile-modal {
+    max-width: 18rem;
+  }
+  .edit-profile-details input {
+    width: 90%;
+  }
+
+  .edit-profile-details .edit-website input {
+    width: 95%;
+  }
+  
+}

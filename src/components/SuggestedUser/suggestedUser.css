@@ -40,3 +40,16 @@
 .suggested-users-main .suggested-user button:hover {
   background-color: var(--primary-dark);
 }
+
+@media only screen and (max-width: 1024px) and (min-width: 601px) {
+  .suggested-users-main .suggested-user {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    border: 0.5px solid var(--grey-color);
+    padding: 10px;
+  }
+
+  .suggested-users-main .suggested-user button {
+    width: 100%;
+  }
+}
