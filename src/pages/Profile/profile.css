@@ -31,25 +31,54 @@
 
 .profile-container .profile-container-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  width: 100%;
+  position: relative;
 }
 
-.profile-name-avatar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.profile-name-avatar .avatar {
-  width: 60px;
-  height: 60px;
+.profile-container-content .avatar {
+  width: 120px;
+  height: 120px;
   object-fit: cover;
   border-radius: 50%;
+  top: 105px;
+  left: 24px;
+  position: absolute;
 }
 
-.profile-name-avatar div h3 {
-  margin: 0;
+.profile-container-content .avatar-edit-follow-button .edit-follow-button {
+  margin: 10px 0;
+}
+
+.profile-container-header .background-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.profile-container-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.profile-container-content .avatar-edit-follow-button {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.profile-details {
+  margin: 0px 24px;
+}
+
+.profile-details .profile-name-username h3 {
+  margin: 10px 0px 0px 0px;
+}
+
+.profile-details .profile-name-username small {
+  color: var(--grey-color);
 }
 
 .profile-container .fa-calendar {
@@ -94,14 +123,15 @@
 }
 
 .profile-container .edit-button {
-  background-color: transparent;
+  background-color: var(--primary-color);
   border: none;
+  color: var(--white-color);
+  height: 40px;
+  cursor: pointer;
 }
 
-.profile-container .edit-button i {
-  font-size: 18px;
-  color: var(--primary-dark);
-  cursor: pointer;
+.profile-container .edit-button:hover {
+  background-color: var(--primary-dark);
 }
 
 @media (max-width: 600px) {
