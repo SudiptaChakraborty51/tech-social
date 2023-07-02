@@ -135,6 +135,7 @@ const PostForm = () => {
                   onEmojiClick={emojiClickHandler}
                   width={300}
                   height={450}
+                  theme={darkMode ? "dark" : "light"}
                 />
               </div>
             )}
