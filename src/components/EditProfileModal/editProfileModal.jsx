@@ -14,12 +14,31 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
     bio: profileData?.bio,
     website: profileData?.website,
     profileAvatar: profileData?.profileAvatar,
+    backgroundImage: profileData?.backgroundImage,
   });
 
   const [editImageModal, setEditImageModal] = useState(false);
 
   const { authState } = useContext(AuthContext);
   const { dataDispatch, darkMode } = useContext(DataContext);
+
+  const imageSelectHandler = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      if (Math.round(file.size / 1024000) > 1)
+        toast.error("File size should not be more than 1Mb");
+      else {
+        setUpdatedProfileData((prev) => ({
+          ...prev,
+          backgroundImage: URL.createObjectURL(file),
+        }));
+      }
+    };
+    input.click();
+  };
 
   const updateProfileDetails = (e) => {
     const { name, value } = e.target;
@@ -55,26 +74,46 @@ const EditProfileModal = ({ profileData, setEditProfileModal }) => {
             onClick={() => setEditProfileModal(false)}
           ></i>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div className="profile-image-edit">
+        <div className="edit-image-bgImage-container">
+          <div className="edit-bgImage-container">
             <img
-              className="avatar"
+              className="background-image"
               src={
-                updatedProfileData?.profileAvatar ||
-                `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
+                updatedProfileData?.backgroundImage ||
+                `https://res.cloudinary.com/dqlasoiaw/image/upload/v1688279047/tech-social/programming-code-coding-or-hacker-background-programming-code-icon-made-with-binary-code-digital-binary-data-and-streaming-digital-code-matrix-background-with-digits-1-0-illustration-vector_vzvd5n.jpg`
               }
-              alt="avatar"
+              alt="background-pic"
             />
             <i
               className={`fa-solid fa-camera ${darkMode && "bgDarkmode"}`}
-              onClick={() => setEditImageModal(true)}
+              onClick={imageSelectHandler}
             ></i>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              position: "absolute",
+              top: "70px",
+              left: "0px",
+              right: "0px",
+            }}
+          >
+            <div className="profile-image-edit">
+              <img
+                className="avatar"
+                src={
+                  updatedProfileData?.profileAvatar ||
+                  `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
+                }
+                alt="avatar"
+              />
+              <i
+                className={`fa-solid fa-camera ${darkMode && "bgDarkmode"}`}
+                onClick={() => setEditImageModal(true)}
+              ></i>
+            </div>
           </div>
         </div>
         <div className="edit-profile-details">

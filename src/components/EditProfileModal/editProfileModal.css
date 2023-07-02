@@ -48,6 +48,39 @@
   position: relative;
 }
 
+.edit-bgImage-container {
+  width: 100%;
+  position: relative;
+}
+
+.edit-bgImage-container .fa-camera {
+  border-radius: 50%;
+  background-color: var(--white-color);
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  position: absolute;
+  right: 10px;
+  width: 30px;
+  align-items: center;
+  top: 10px;
+  color: var(--primary-dark);
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+}
+
+.edit-bgImage-container .background-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.edit-profile-modal .edit-image-bgImage-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .profile-image-edit .fa-camera {
   border-radius: 50%;
   background-color: var(--white-color);
@@ -68,6 +101,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 60px;
 }
 
 .edit-profile-details .edit-name {
