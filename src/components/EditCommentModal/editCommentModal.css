@@ -1,0 +1,81 @@
+.edit-comment-modal-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  inset: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.edit-comment-modal {
+  background-color: var(--white-color);
+  margin: 0;
+  max-width: 24rem;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 20px;
+  border: 1px solid var(--grey-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-comment-modal h2 {
+  margin: 0;
+}
+
+.edit-comment-modal .edit-comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.edit-comment-modal .edit-comment-header .fa-xmark {
+  font-size: 20px;
+}
+
+.edit-comment-modal textarea {
+  resize: vertical;
+  width: calc(100% - 20px);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.edit-comment-modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-comment-modal-buttons i {
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--primary-dark);
+  padding-right: 1rem;
+}
+
+.edit-comment-modal-buttons .edit-comment-modal-icons {
+  display: flex;
+  align-items: center;
+}
+
+.edit-comment-modal-buttons .modal-button {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.edit-comment-modal-buttons .modal-button:hover {
+  background-color: var(--primary-dark);
+}
+
+@media (max-width: 600px) {
+  .edit-comment-modal-container .edit-comment-modal {
+    max-width: 18rem;
+  }
+}

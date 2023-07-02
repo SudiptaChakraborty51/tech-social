@@ -11,6 +11,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { addCommentHandler } from "../../utils/addCommentHandler";
 import { deleteCommentHandler } from "../../utils/deleteCommentHandler";
 import { AuthContext } from "../../contexts/authContext";
+import EditCommentModal from "../../components/EditCommentModal/editCommentModal";
 
 const PostDetails = () => {
   document.title = "tech-social | Post Details";
@@ -18,6 +19,7 @@ const PostDetails = () => {
   const [singlePostLoading, setSinglePostLoading] = useState(true);
   const [postDetails, setPostDetails] = useState({});
   const [commentText, setCommentText] = useState("");
+  const [showEditCommentModal, setShowEditCommentModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -108,6 +110,14 @@ const PostDetails = () => {
                           key={comment._id}
                           className="post-comment-container"
                         >
+                          {showEditCommentModal && (
+                            <EditCommentModal
+                              comment={comment}
+                              showEditCommentModal={showEditCommentModal}
+                              setShowEditCommentModal={setShowEditCommentModal}
+                              postId={postDetails?._id}
+                            />
+                          )}
                           <img
                             src={
                               userComment?.profileAvatar ||
@@ -135,7 +145,12 @@ const PostDetails = () => {
                               {userComment?.username ===
                                 authState?.user?.username && (
                                 <div className="comment-edit-delete-icon">
-                                  <i class="fa-solid fa-pen"></i>
+                                  <i
+                                    class="fa-solid fa-pen"
+                                    onClick={() =>
+                                      setShowEditCommentModal(true)
+                                    }
+                                  ></i>
                                   <i
                                     class="fa-solid fa-trash-can"
                                     onClick={() =>
