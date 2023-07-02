@@ -3,7 +3,7 @@ import "./postDetails.css";
 import Navbar from "../../components/Navbar/navbar";
 import LeftSideBar from "../../components/LeftSideBar/leftSideBar";
 import RightSideBar from "../../components/RightSideBar/rightSideBar";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import PostCard from "../../components/PostCard/postCard";
 import { DataContext } from "../../contexts/dataContext";
@@ -14,6 +14,8 @@ const PostDetails = () => {
 
   const [singlePostLoading, setSinglePostLoading] = useState(false);
   const [postDetails, setPostDetails] = useState({});
+
+  const navigate = useNavigate();
 
   const { dataState, darkMode } = useContext(DataContext);
 
@@ -77,6 +79,9 @@ const PostDetails = () => {
                               `https://res.cloudinary.com/dqlasoiaw/image/upload/v1686688962/tech-social/blank-profile-picture-973460_1280_d1qnjd.png`
                             }
                             alt="profile-pic"
+                            onClick={() =>
+                              navigate(`/profile/${userComment?.username}`)
+                            }
                           />
                           <div className={`${darkMode && "bgDarkmode"}`}>
                             <strong>{`${userComment?.firstName} ${userComment?.lastName}`}</strong>
