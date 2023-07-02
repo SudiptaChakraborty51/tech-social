@@ -18,15 +18,16 @@ import { getSortedPosts } from "../../utils/sortPosts";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const Profile = () => {
-  document.title = "tech-social | Profile";
-
   const { username } = useParams();
   const { authState } = useContext(AuthContext);
   const { dataState, dataDispatch, darkMode } = useContext(DataContext);
 
   const [profileData, setProfileData] = useState({});
-  const [userPosts, setUserPosts] = useState([]);
   const [editProfileModal, setEditProfileModal] = useState(false);
+
+  document.title = `tech-social | ${
+    profileData?.firstName + " " + profileData?.lastName
+  }`;
 
   const navigate = useNavigate();
 
@@ -50,22 +51,14 @@ const Profile = () => {
     }
   };
 
-  const getUserPost = async () => {
-    try {
-      const { data, status } = await axios.get(`/api/posts/user/${username}`);
-      if (status === 200) {
-        setUserPosts(data?.posts);
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  const userPosts = dataState?.posts?.filter(
+    (post) => post?.username === profileData?.username
+  );
 
   useEffect(() => {
     getUserDetails();
-    getUserPost();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [username, dataState?.posts, dataState?.users]);
+  }, [username, dataState?.users]);
 
   return (
     <div className={`profile ${darkMode && "bgDarkmode"}`}>

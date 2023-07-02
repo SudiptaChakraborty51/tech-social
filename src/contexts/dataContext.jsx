@@ -25,7 +25,6 @@ const DataProvider = ({ children }) => {
     posts: [],
     postsLoading: false,
     bookmarks: [],
-    userPost: [],
   });
 
   const getAllUsers = async () => {
