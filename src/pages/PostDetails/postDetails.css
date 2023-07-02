@@ -45,7 +45,7 @@
   cursor: pointer;
 }
 
-.post-comment-container div {
+.post-comment-container .post-comment-content {
   border-radius: 1rem;
   border-top-left-radius: 0;
   padding: 0.25rem 1rem 0.25rem 1rem;
@@ -55,8 +55,58 @@
   width: 85%;
 }
 
-.post-comment-container div p {
+.post-comment-container .post-comment-content p {
   font-size: 14px;
+}
+
+.comment-main-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: center;
+  width: 75%;
+  margin-bottom: 20px;
+}
+
+.comment-main-container img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.comment-main-container .comment-input-container {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-main-container .comment-input-container input {
+  padding: 1rem;
+  border: 2px solid var(--grey-color);
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.comment-main-container .comment-input-container i {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.comment-edit-delete-icon {
+  display: flex;
+  gap: 1rem;
+}
+
+.comment-edit-delete-icon i {
+  cursor: pointer;
+}
+
+.comment-edit-delete-icon .fa-trash-can {
+  color: var(--red-color);
 }
 
 @media (max-width: 600px) {

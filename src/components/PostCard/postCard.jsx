@@ -8,7 +8,6 @@ import { dislikePostHandler } from "../../utils/dislikePostHandler";
 import { removeFromBookmarkPostHandler } from "../../utils/removeFromBookmarkHandler";
 import { addToBookmarkPostHandler } from "../../utils/bookmarkPostHandler";
 import { useLocation, useNavigate } from "react-router-dom";
-import Comment from "../Comment/comment";
 import { deletePostHandler } from "../../utils/deletePostHandler";
 import PostModal from "../PostModal/postModal";
 import Linkify from "react-linkify";
@@ -27,7 +26,6 @@ const PostCard = ({ post }) => {
 
   const navigate = useNavigate();
 
-  const [showCommentSection, setShowCommentSection] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
 
@@ -236,11 +234,7 @@ const PostCard = ({ post }) => {
         <div>
           <i
             className="fa-regular fa-comment"
-            onClick={() => {
-              pathname === `/post/${_id}`
-                ? setShowCommentSection(false)
-                : setShowCommentSection(!showCommentSection);
-            }}
+            onClick={() => navigate(`/post/${_id}`)}
           ></i>{" "}
           <span>{comments?.length}</span>
         </div>
@@ -265,7 +259,6 @@ const PostCard = ({ post }) => {
           ></i>
         </div>
       </div>
-      {showCommentSection && <Comment post={post} />}
 
       {showEditModal && (
         <PostModal post={post} setShowEditModal={setShowEditModal} />
