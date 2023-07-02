@@ -15,6 +15,10 @@ const EditCommentModal = ({ comment, setShowEditCommentModal, postId }) => {
     text: comment?.text,
   });
 
+  console.log("comment",comment);
+
+  console.log(updatedComment);
+
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const editCommentModalNode = useOutsideClick(() =>
