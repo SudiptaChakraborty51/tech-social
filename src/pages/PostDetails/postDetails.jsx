@@ -19,7 +19,10 @@ const PostDetails = () => {
   const [singlePostLoading, setSinglePostLoading] = useState(true);
   const [postDetails, setPostDetails] = useState({});
   const [commentText, setCommentText] = useState("");
-  const [showEditCommentModal, setShowEditCommentModal] = useState(false);
+  const [showEditCommentModal, setShowEditCommentModal] = useState({
+    show: false,
+    commentId: "",
+  });
 
   const navigate = useNavigate();
 
@@ -28,6 +31,12 @@ const PostDetails = () => {
   const { dataState, darkMode, dataDispatch } = useContext(DataContext);
 
   const { postID } = useParams();
+
+  const commentDetails =
+    showEditCommentModal.show &&
+    postDetails?.comments?.find(
+      (comment) => comment._id === showEditCommentModal.commentId
+    );
 
   const getPostDetails = async () => {
     try {
@@ -110,14 +119,6 @@ const PostDetails = () => {
                           key={comment._id}
                           className="post-comment-container"
                         >
-                          {showEditCommentModal && (
-                            <EditCommentModal
-                              comment={comment}
-                              showEditCommentModal={showEditCommentModal}
-                              setShowEditCommentModal={setShowEditCommentModal}
-                              postId={postDetails?._id}
-                            />
-                          )}
                           <img
                             src={
                               userComment?.profileAvatar ||
@@ -148,7 +149,10 @@ const PostDetails = () => {
                                   <i
                                     class="fa-solid fa-pen"
                                     onClick={() =>
-                                      setShowEditCommentModal(true)
+                                      setShowEditCommentModal({
+                                        show: true,
+                                        commentId: comment._id,
+                                      })
                                     }
                                   ></i>
                                   <i
@@ -165,7 +169,7 @@ const PostDetails = () => {
                                 </div>
                               )}
                             </div>
-                            <p className="commnet-text">{comment?.text}</p>
+                            <p className="comment-text">{comment?.text}</p>
                           </div>
                         </div>
                       );
@@ -182,6 +186,13 @@ const PostDetails = () => {
           <RightSideBar />
         </div>
       </div>
+      {showEditCommentModal.show && (
+        <EditCommentModal
+          comment={commentDetails}
+          setShowEditCommentModal={setShowEditCommentModal}
+          postId={postDetails?._id}
+        />
+      )}
     </div>
   );
 };

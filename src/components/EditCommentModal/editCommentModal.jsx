@@ -15,14 +15,10 @@ const EditCommentModal = ({ comment, setShowEditCommentModal, postId }) => {
     text: comment?.text,
   });
 
-  console.log("comment",comment);
-
-  console.log(updatedComment);
-
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const editCommentModalNode = useOutsideClick(() =>
-    setShowEditCommentModal(false)
+    setShowEditCommentModal((prev) => ({ ...prev, show: false }))
   );
   const showEmojiPickerNode = useOutsideClick(() => setShowEmojiPicker(false));
 
@@ -43,7 +39,7 @@ const EditCommentModal = ({ comment, setShowEditCommentModal, postId }) => {
       updatedComment?.text,
       dataDispatch
     );
-    setShowEditCommentModal(false);
+    setShowEditCommentModal((prev) => ({ ...prev, show: false }));
   };
 
   return (
@@ -56,7 +52,9 @@ const EditCommentModal = ({ comment, setShowEditCommentModal, postId }) => {
           <h2>Edit Comment</h2>
           <i
             className="fa-solid fa-xmark"
-            onClick={() => setShowEditCommentModal(false)}
+            onClick={() =>
+              setShowEditCommentModal((prev) => ({ ...prev, show: false }))
+            }
           ></i>
         </div>
         <textarea
