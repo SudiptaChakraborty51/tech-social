@@ -83,11 +83,7 @@ const PostCard = ({ post }) => {
   };
 
   const shareIconHandler = () => {
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    ) {
+    if (navigator.userAgent.includes("Mac")) {
       copyLinkHandler();
     } else {
       shareHandler();
