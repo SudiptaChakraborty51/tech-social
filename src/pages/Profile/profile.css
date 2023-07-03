@@ -102,7 +102,8 @@
   background-color: var(--primary-color);
   border: none;
   color: var(--white-color);
-  height: 40px;
+  padding: 10px 25px;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
 }
 
@@ -114,7 +115,8 @@
   background-color: transparent;
   border: 2px solid var(--primary-dark);
   color: var(--primary-dark);
-  height: 40px;
+  padding: 10px 18px;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
 }
 
@@ -126,7 +128,8 @@
   background-color: var(--primary-color);
   border: none;
   color: var(--white-color);
-  height: 40px;
+  padding: 10px 18px;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
 }
 

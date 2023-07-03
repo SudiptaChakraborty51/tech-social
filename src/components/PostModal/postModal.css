@@ -42,6 +42,7 @@
   width: calc(100% - 20px);
   padding: 0.5rem;
   margin-bottom: 0.5rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .edit-post-modal .selected-image-container {
@@ -94,8 +95,9 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   border: none;
-  padding: 10px;
   cursor: pointer;
+  padding: 10px 25px;
+  font-family: "Poppins", sans-serif;
 }
 
 .edit-post-modal-buttons .modal-button:hover {
@@ -107,6 +109,8 @@
   background-color: transparent;
   cursor: not-allowed;
   color: var(--primary-dark);
+  font-family: "Poppins", sans-serif;
+  padding: 8px 25px;
 }
 
 .edit-post-modal-buttons .disabled:hover {

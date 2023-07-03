@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 10rem;
 }
 
 .header-image {
@@ -46,6 +46,7 @@
   color: var(--grey-color);
   font-size: 24px;
   font-weight: bold;
+  margin-right: 10px;
 }
 
 .landing-content p {
@@ -58,9 +59,10 @@
   border: none;
   padding: 10px;
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
   margin-top: 3rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .login-link span {
@@ -80,5 +82,11 @@
 @media (max-width: 800px) {
   .header-image {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 801px) {
+  .landing-main {
+    gap: 2rem;
   }
 }

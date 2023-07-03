@@ -27,7 +27,7 @@ const Explore = () => {
           ) : (
             <div>
               <div className="sort-post">
-                <h3>{sortOptions[sortByOption]}</h3>
+                <h3 className="sort-text">{sortOptions[sortByOption]}</h3>
                 <select
                   onChange={(e) => setSortByOption(e.target.value)}
                   className={`${darkMode && "bgDarkmode"}`}

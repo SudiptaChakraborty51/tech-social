@@ -30,6 +30,7 @@
   margin: 0;
   padding: 0.5rem;
   height: 6rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .post-form-container textarea:focus {
@@ -58,8 +59,9 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   border: none;
-  padding: 10px;
   cursor: pointer;
+  padding: 10px 25px;
+  font-family: "Poppins", sans-serif;
 }
 
 .post-form .post-form-button-container .post-button:hover {
@@ -71,6 +73,8 @@
   background-color: transparent;
   cursor: not-allowed;
   color: var(--primary-dark);
+  font-family: "Poppins", sans-serif;
+  padding: 8px 25px;
 }
 
 .post-form .post-form-button-container .disabled:hover {

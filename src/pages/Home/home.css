@@ -18,6 +18,7 @@
 
 select {
   border: 2px solid var(--primary-dark);
+  font-family: "Poppins", sans-serif;
 }
 
 @media (max-width: 600px) {

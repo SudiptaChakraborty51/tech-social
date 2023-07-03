@@ -48,7 +48,7 @@ const Login = () => {
           <img src={logo} alt="logo" />
           <h2>tech-social</h2>
         </div>
-        <p>Social media for programmers</p>
+        <p className="tagline">Social media for programmers</p>
         <h2>Login</h2>
         <form>
           <div className="login-form-div">
@@ -75,6 +75,8 @@ const Login = () => {
             <div className="password-wrapper">
               <input
                 className={`${darkMode && "bgDarkmode"}`}
+                minlength="4"
+                maxlength="10"
                 id="password"
                 type={isPasswordHide ? "password" : "text"}
                 placeholder={isPasswordHide ? "********" : "Enter password"}

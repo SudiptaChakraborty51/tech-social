@@ -70,8 +70,9 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   border: none;
-  padding: 10px;
   cursor: pointer;
+  padding: 10px 25px;
+  font-family: "Poppins", sans-serif;
 }
 
 .edit-image-modal .edit-image-buttons button:hover {

@@ -42,6 +42,7 @@
   width: calc(100% - 20px);
   padding: 0.5rem;
   margin-bottom: 0.5rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .edit-comment-modal-buttons {
@@ -66,8 +67,9 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   border: none;
-  padding: 10px;
   cursor: pointer;
+  padding: 10px 25px;
+  font-family: "Poppins", sans-serif;
 }
 
 .edit-comment-modal-buttons .modal-button:hover {

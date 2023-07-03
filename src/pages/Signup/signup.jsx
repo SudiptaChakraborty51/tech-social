@@ -170,6 +170,8 @@ const Signup = () => {
             <div className="password-wrapper">
               <input
                 className={`${darkMode && "bgDarkmode"}`}
+                minlength="4"
+                maxlength="10"
                 id="confirm-password"
                 type={isConfirmPasswordHide ? "password" : "text"}
                 placeholder={

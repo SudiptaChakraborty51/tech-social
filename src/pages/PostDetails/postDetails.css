@@ -84,10 +84,11 @@
 }
 
 .comment-main-container .comment-input-container input {
-  padding: 1rem;
+  padding: 10px;
   border: 2px solid var(--grey-color);
   border-radius: 0.5rem;
   width: 100%;
+  font-family: "Poppins", sans-serif;
 }
 
 .comment-main-container .comment-input-container i {
