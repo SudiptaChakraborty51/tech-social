@@ -64,10 +64,10 @@ const PostCard = ({ post }) => {
     }
   };
 
-  // const copyLinkHandler = () => {
-  //   navigator.clipboard.writeText(`https://tech-social.vercel.app/post/${_id}`);
-  //   toast.success("Link Copied. Start sharing!");
-  // };
+  const copyLinkHandler = () => {
+    navigator.clipboard.writeText(`https://tech-social.vercel.app/post/${_id}`);
+    toast.success("Link Copied. Start sharing!");
+  };
 
   const shareHandler = async () => {
     try {
@@ -79,6 +79,18 @@ const PostCard = ({ post }) => {
     } catch (e) {
       console.error(e);
       toast.error("Something went wrong. Try again!");
+    }
+  };
+
+  const shareIconHandler = () => {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      copyLinkHandler();
+    } else {
+      shareHandler();
     }
   };
 
@@ -201,7 +213,7 @@ const PostCard = ({ post }) => {
           <img
             src={mediaURL}
             alt="post-pic"
-            style={{ width: "100%", height: "300px", objectFit: "cover" }}
+            style={{ width: "100%", height: "auto", objectFit: "cover" }}
           />
         ) : (
           mediaURL && (
@@ -255,7 +267,7 @@ const PostCard = ({ post }) => {
         <div>
           <i
             className="fa-regular fa-share-from-square"
-            onClick={shareHandler}
+            onClick={shareIconHandler}
           ></i>
         </div>
       </div>
