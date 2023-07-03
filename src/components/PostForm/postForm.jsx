@@ -21,31 +21,31 @@ const PostForm = () => {
 
   const domNode = useOutsideClick(() => setShowEmojiPicker(false));
 
-  // const imageSelectHandler = () => {
-  //   const input = document.createElement("input");
-  //   input.type = "file";
-  //   input.accept = "image/*";
-  //   input.onchange = (e) => {
-  //     const file = e.target.files[0];
-  //     Math.round(file.size / 1024000) > 1
-  //       ? toast.error("File size should not be more than 1Mb")
-  //       : setMedia(file);
-  //   };
-  //   input.click();
-  // };
+  const imageSelectHandler = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      Math.round(file.size / 1024000) > 1
+        ? toast.error("File size should not be more than 1Mb")
+        : setMedia(file);
+    };
+    input.click();
+  };
 
-  // const videoSelectHandler = () => {
-  //   const input = document.createElement("input");
-  //   input.type = "file";
-  //   input.accept = "video/*";
-  //   input.onchange = (e) => {
-  //     const file = e.target.files[0];
-  //     Math.round(file.size / 7168000) > 1
-  //       ? toast.error("File size should not be more than 7Mb")
-  //       : setMedia(file);
-  //   };
-  //   input.click();
-  // };
+  const videoSelectHandler = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "video/*";
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      Math.round(file.size / 7168000) > 1
+        ? toast.error("File size should not be more than 7Mb")
+        : setMedia(file);
+    };
+    input.click();
+  };
 
   const emojiClickHandler = (emojiObj) => {
     const emoji = emojiObj.emoji;
@@ -112,15 +112,15 @@ const PostForm = () => {
       )}
       <div className="post-form-button-container">
         <div className="post-form-icons">
-          {/* <div>
+          <div>
             <i className="fa-regular fa-image" onClick={imageSelectHandler}></i>
-          </div> */}
-          {/* <div>
+          </div>
+          <div>
             <i
               className="fa-regular fa-file-video"
               onClick={videoSelectHandler}
             ></i>
-          </div> */}
+          </div>
           <div ref={domNode}>
             <i
               className="fa-regular fa-face-smile"
