@@ -64,10 +64,10 @@ const PostCard = ({ post }) => {
     }
   };
 
-  const copyLinkHandler = () => {
-    navigator.clipboard.writeText(`https://tech-social.vercel.app/post/${_id}`);
-    toast.success("Link Copied. Start sharing!");
-  };
+  // const copyLinkHandler = () => {
+  //   navigator.clipboard.writeText(`https://tech-social.vercel.app/post/${_id}`);
+  //   toast.success("Link Copied. Start sharing!");
+  // };
 
   const shareHandler = async () => {
     try {
@@ -82,13 +82,13 @@ const PostCard = ({ post }) => {
     }
   };
 
-  const shareIconHandler = () => {
-    if (navigator.userAgent.includes("Mac")) {
-      copyLinkHandler();
-    } else {
-      shareHandler();
-    }
-  };
+  // const shareIconHandler = () => {
+  //   if (navigator.userAgent.includes("Mac")) {
+  //     copyLinkHandler();
+  //   } else {
+  //     shareHandler();
+  //   }
+  // };
 
   const { pathname } = useLocation();
 
@@ -263,7 +263,7 @@ const PostCard = ({ post }) => {
         <div>
           <i
             className="fa-regular fa-share-from-square"
-            onClick={shareIconHandler}
+            onClick={shareHandler}
           ></i>
         </div>
       </div>
