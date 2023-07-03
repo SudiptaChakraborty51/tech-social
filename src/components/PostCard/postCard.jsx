@@ -12,7 +12,7 @@ import { deletePostHandler } from "../../utils/deletePostHandler";
 import PostModal from "../PostModal/postModal";
 import Linkify from "react-linkify";
 import { contentLink } from "../../utils/contentLink";
-import { getPostDate } from "../../utils/getPostData";
+import { getPostDate } from "../../utils/getPostDate";
 import { isFollowed } from "../../utils/isFollowed";
 import { followUserHandler } from "../../utils/followUserHandler";
 import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
