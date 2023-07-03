@@ -179,7 +179,10 @@ const Profile = () => {
                   {profileData?.bio && <p>{profileData?.bio}</p>}
                   {profileData?.website && (
                     <a
-                      style={{ wordBreak: "break-all" }}
+                      style={{
+                        wordBreak: "break-all",
+                        color: "var(--primary-color)",
+                      }}
                       href={profileData?.website}
                       target="_blank"
                       rel="noreferrer"
