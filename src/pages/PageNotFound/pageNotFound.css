@@ -1,0 +1,33 @@
+.page-not-found-main {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.page-not-found-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-not-found-page img {
+  max-width: 30rem;
+  width: 100%;
+  height: auto;
+}
+
+.page-not-found-page button {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 3rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.page-not-found-page button:hover {
+  background-color: var(--primary-dark);
+}

@@ -16,6 +16,7 @@ import PostDetails from "./pages/PostDetails/postDetails";
 import Profile from "./pages/Profile/profile";
 import { useContext } from "react";
 import { DataContext } from "./contexts/dataContext";
+import PageNotFound from "./pages/PageNotFound/pageNotFound";
 
 function App() {
   const { darkMode } = useContext(DataContext);
@@ -35,6 +36,7 @@ function App() {
           <Route path="/profile/:username" element={<Profile />} />
         </Route>
         <Route path="/explore" element={<Explore />} />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <ToastContainer
         position="bottom-right"
