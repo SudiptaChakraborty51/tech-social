@@ -265,7 +265,7 @@ const PostCard = ({ post }) => {
         <div>
           <i
             className="fa-regular fa-share-from-square"
-            onClick={shareIconHandler}
+            onClick={shareHandler}
           ></i>
         </div>
       </div>
