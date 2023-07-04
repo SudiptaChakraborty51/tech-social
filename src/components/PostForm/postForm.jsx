@@ -57,7 +57,6 @@ const PostForm = () => {
   const isPostDisabled = postContent.trim() === "" && !media;
 
   const postClickHandler = async () => {
-    toast.warn("Uploading your Post...");
     try {
       const response = await uploadMedia(media);
       createPostHandler(
