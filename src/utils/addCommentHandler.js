@@ -13,11 +13,12 @@ export const addCommentHandler = async (
       { commentData },
       { headers: { authorization: encodedToken } }
     );
-    if (status === 201 || status === 200) {
+    if (status === 201) {
       dataDispatch({ type: "SET_ALL_POSTS", payload: data?.posts });
       toast.success("Comment is added!");
     }
   } catch (e) {
-    toast.error(e.response.data.errors[0]);
+    console.error(e);
+    toast.error("Something went wrong, try again!");
   }
 };

@@ -58,9 +58,9 @@ const PostForm = () => {
 
   const postClickHandler = async () => {
     try {
-      const response = await uploadMedia(media);
+      const response = media && (await uploadMedia(media));
       createPostHandler(
-        { content: postContent, mediaURL: response.url },
+        { content: postContent, mediaURL: response ? response?.url : "", comments: [] },
         authState?.token,
         dataDispatch
       );

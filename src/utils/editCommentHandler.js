@@ -19,6 +19,7 @@ export const editCommentHandler = async (
       toast.success("Comment is edited!");
     }
   } catch (e) {
-    toast.error(e.response.data.errors[0]);
+    console.error(e);
+    toast.error("Something went wrong, try again!");
   }
 };

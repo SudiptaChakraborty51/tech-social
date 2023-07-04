@@ -88,9 +88,13 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
       }
     } else {
       try {
-        const response = await uploadMedia(media);
+        const response = media && (await uploadMedia(media));
         createPostHandler(
-          { content: updatedPost?.content, mediaURL: response.url },
+          {
+            content: updatedPost?.content,
+            mediaURL: response ? response?.url : "",
+            comments: [],
+          },
           authState?.token,
           dataDispatch
         );

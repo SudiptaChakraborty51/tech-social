@@ -18,6 +18,7 @@ export const deleteCommentHandler = async (
       toast.success("Comment is removed!");
     }
   } catch (e) {
-    toast.error(e.response.data.errors[0]);
+    console.error(e);
+    toast.error("Something went wrong, try again!");
   }
 };
