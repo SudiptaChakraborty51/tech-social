@@ -50,6 +50,8 @@ const PostDetails = () => {
     }
   };
 
+  const isCommentDisabled = commentText.trim() === "";
+
   useEffect(() => {
     getPostDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -92,13 +94,17 @@ const PostDetails = () => {
                     />
                     <i
                       className="fa-solid fa-paper-plane"
+                      style={{
+                        cursor: isCommentDisabled && "not-allowed",
+                      }}
                       onClick={() => {
-                        addCommentHandler(
-                          authState?.token,
-                          postID,
-                          commentText,
-                          dataDispatch
-                        );
+                        !isCommentDisabled &&
+                          addCommentHandler(
+                            authState?.token,
+                            postID,
+                            commentText,
+                            dataDispatch
+                          );
                         setCommentText("");
                       }}
                     ></i>
