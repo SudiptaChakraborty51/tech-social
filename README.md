@@ -2,6 +2,9 @@
 
 [tech-social](https://tech-social.vercel.app/) - A social media website where you can share your thoughts and connect with your friends.
 
+## Demo video 
+[tech-social-demo-video](https://www.loom.com/share/9983a0d1f3074defb7dc4b2b8f5a506b)
+
 ## How to install and run locally?
 
 ```
