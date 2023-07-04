@@ -69,13 +69,15 @@ const PostCard = ({ post }) => {
     toast.success("Link Copied. Start sharing!");
   };
 
+  const shareData = {
+    title: "tech-social",
+    text: "Check out this post",
+    url: `https://tech-social.vercel.app/post/${_id}`,
+  };
+
   const shareHandler = async () => {
     try {
-      await navigator.share({
-        title: "tech-social",
-        text: "Check out this post",
-        url: `https://tech-social.vercel.app/post/${_id}`,
-      });
+      await navigator.share(shareData);
     } catch (e) {
       console.error(e);
       toast.error("Something went wrong. Try again!");
@@ -83,10 +85,10 @@ const PostCard = ({ post }) => {
   };
 
   const shareIconHandler = () => {
-    if (navigator.userAgent.includes("Mac")) {
-      copyLinkHandler();
-    } else {
+    if (navigator.share && navigator.canShare(shareData)) {
       shareHandler();
+    } else {
+      copyLinkHandler();
     }
   };
 
