@@ -64,9 +64,8 @@ const PostForm = () => {
         authState?.token,
         dataDispatch
       );
-      toast.success("Added new post successfully!");
     } catch (e) {
-      toast.error("Something went wrong, try again!");
+      console.error(e);
     } finally {
       setPostContent("");
       setMedia(null);
@@ -141,7 +140,13 @@ const PostForm = () => {
           </div>
         </div>
         <button
-          onClick={postClickHandler}
+          onClick={() => {
+            toast.promise(postClickHandler, {
+              pending: "Creating your post...",
+              success: "Added new post successfully!",
+              error: "Something went wrong, try again!",
+            });
+          }}
           disabled={isPostDisabled}
           className={isPostDisabled ? "post-button disabled" : "post-button"}
         >

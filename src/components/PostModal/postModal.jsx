@@ -79,9 +79,8 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
             dataDispatch
           );
         }
-        toast.success("Edited post successfully!");
       } catch (e) {
-        toast.error("Something went wrong, try again!");
+        console.error(e);
       } finally {
         setUpdatedPost({});
         setMedia(null);
@@ -95,9 +94,8 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
           authState?.token,
           dataDispatch
         );
-        toast.success("Added new post successfully!");
       } catch (e) {
-        toast.error("Something went wrong, try again!");
+        console.error(e);
       } finally {
         setUpdatedPost({});
         setMedia(null);
@@ -197,7 +195,15 @@ const PostModal = ({ post, setShowEditModal, setShowCreatePostModal }) => {
             </div>
           </div>
           <button
-            onClick={buttonClickHandler}
+            onClick={() => {
+              toast.promise(buttonClickHandler, {
+                pending: post ? "Editing your post" : "Creating your post",
+                success: post
+                  ? "Edited your post successfully!"
+                  : "Added new post successfully!",
+                error: "Something went wrong, try again!",
+              });
+            }}
             disabled={isPostDisabled}
             className={
               isPostDisabled ? "modal-button disabled" : "modal-button"
