@@ -80,7 +80,6 @@ const PostCard = ({ post }) => {
       await navigator.share(shareData);
     } catch (e) {
       console.error(e);
-      toast.error("Something went wrong. Try again!");
     }
   };
 
@@ -265,7 +264,7 @@ const PostCard = ({ post }) => {
         <div>
           <i
             className="fa-regular fa-share-from-square"
-            onClick={shareHandler}
+            onClick={shareIconHandler}
           ></i>
         </div>
       </div>
