@@ -73,6 +73,7 @@ const PostDetails = () => {
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
+                  width: "100%"
                 }}
               >
                 <PostCard key={postDetails._id} post={postDetails} />
@@ -153,7 +154,7 @@ const PostDetails = () => {
                                 authState?.user?.username && (
                                 <div className="comment-edit-delete-icon">
                                   <i
-                                    class="fa-solid fa-pen"
+                                    className="fa-solid fa-pen"
                                     onClick={() =>
                                       setShowEditCommentModal({
                                         show: true,
@@ -162,7 +163,7 @@ const PostDetails = () => {
                                     }
                                   ></i>
                                   <i
-                                    class="fa-solid fa-trash-can"
+                                    className="fa-solid fa-trash-can"
                                     onClick={() =>
                                       deleteCommentHandler(
                                         authState?.token,
