@@ -73,6 +73,14 @@
   .left-sidebar-items + .create {
     display: block;
     color: var(--black-color);
+    bottom: 4rem;
+    margin-right: 0.5rem;
+    right: 0;
+    position: fixed;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .left-sidebar-items span {
