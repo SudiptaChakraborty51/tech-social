@@ -39,6 +39,7 @@ $ npm start
   - Sort posts based on Latest/ Trending / Oldest.
 
 - Single post page
+  - Image preview
 
 - User Suggestions
   - Follow / Unfollow users
