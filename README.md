@@ -3,7 +3,7 @@
 [tech-social](https://tech-social.vercel.app/) - A social media website where you can share your thoughts and connect with your friends.
 
 ## Demo video 
-[tech-social-demo-video](https://www.loom.com/share/9983a0d1f3074defb7dc4b2b8f5a506b)
+[tech-social-demo-video](https://www.loom.com/share/f08a08398a324e1c8b7c2601183d51e4)
 
 ## How to install and run locally?
 
@@ -37,6 +37,8 @@ $ npm start
 - Explore Feed
   - List all user posts
   - Sort posts based on Latest/ Trending / Oldest.
+
+- Single post page
 
 - User Suggestions
   - Follow / Unfollow users
