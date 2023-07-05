@@ -38,6 +38,8 @@ $ npm start
   - List all user posts
   - Sort posts based on Latest/ Trending / Oldest.
 
+- Single post page
+
 - User Suggestions
   - Follow / Unfollow users
   - Search Users
