@@ -91,3 +91,9 @@ a {
   color: var(--primary-dark);
   border-radius: 5px;
 }
+
+.postcard-content-main .postcard-content-img {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+}

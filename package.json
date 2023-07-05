@@ -16,6 +16,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-linkify": "^1.0.0-alpha",
+    "react-modal-image": "^2.6.0",
     "react-router-dom": "^6.12.1",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.8",

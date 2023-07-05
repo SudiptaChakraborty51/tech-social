@@ -17,6 +17,7 @@ import { isFollowed } from "../../utils/isFollowed";
 import { followUserHandler } from "../../utils/followUserHandler";
 import { unfollowUserHandler } from "../../utils/unfollowUserHandler";
 import { useOutsideClick } from "../../hooks/useOutsideClick";
+import ModalImage from "react-modal-image";
 
 const PostCard = ({ post }) => {
   const { _id, content, mediaURL, likes, comments, username, createdAt } = post;
@@ -207,10 +208,15 @@ const PostCard = ({ post }) => {
           {content}
         </Linkify>
         {mediaURL && mediaURL.split("/")[4] === "image" ? (
-          <img
-            src={mediaURL}
-            alt="post-pic"
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
+          <ModalImage
+            small={mediaURL}
+            medium={mediaURL}
+            large={mediaURL}
+            showRotate={true}
+            hideDownload={true}
+            imageBackgroundColor={"rgba(255, 0, 0, 0)"}
+            className="postcard-content-img"
+            alt=""
           />
         ) : (
           mediaURL && (
